@@ -2,7 +2,7 @@ import './_landing.scss';
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import WaveUploader from '../wav-uploader';
+import WaveUploader from '../wave-uploader';
 
 import StyleSheet from '../style-sheet';
 

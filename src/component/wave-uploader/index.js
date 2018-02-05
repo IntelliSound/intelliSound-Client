@@ -13,7 +13,7 @@ class WaveUploader extends React.Component{
 
     };
 
-    this.state = emptyState;
+    this.state = this.emptyState;
 
     //-------------------------------------------------------------
     // BINDING HANDLES 
