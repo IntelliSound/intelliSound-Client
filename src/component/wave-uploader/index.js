@@ -105,6 +105,7 @@ class WaveUploader extends React.Component{
         </audio>
 
         <input
+          dragable
           type='file'
           name='wav'
           onChange={this.handleChange}
