@@ -7,6 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
+    "watch": "webpack-dev-server --inline --hot",
+    "build": "webpack",
     "test": "jest -i --coverage"
   },
   "repository": {
