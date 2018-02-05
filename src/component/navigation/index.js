@@ -12,7 +12,8 @@ class Navigation extends React.Component{
         <ul>
           <li><a href="/">Link to Home</a> </li>
           <li><a href="/login">Link to Login</a> </li>
-          <li><a href="/styleSheet">Link to styleSheet</a> </li>
+          <li><a href="/home">Link to Home</a></li>
+          <li><a href="/styleSheet">Link to styleSheet</a></li>
         </ul>
       </section>);
   }

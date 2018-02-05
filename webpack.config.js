@@ -1,39 +1,47 @@
 'use strict';
 
 require('dotenv').config();
-const PRODUCTION = process.env.NODE_ENV === 'production';
-const { EnvironmentPlugin, DefinePlugin } = require('webpack');
+
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const extractTextPlugin = require('extract-text-webpack-plugin');
+const webPackConfig = module.exports = {};
 
-let webpackConfig = module.exports = {};
-webpackConfig.entry = `${__dirname}/src/main.js`,
-webpackConfig.output = {
-  path: `${__dirname}/src/build`,
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const PRODUCTION = process.env.NODE_ENV === 'production';
+//=======================================
+
+webPackConfig.entry = `${__dirname}/src/main.js`;
+webPackConfig.output = {
+  path: `${__dirname}/build`,
   filename: 'bundle.[hash].js',
-  publicPath: process.env.CDN_URL,
-};
+  publicPath : process.env.CDN_URL,
+},
 
-webpackConfig.plugins = [
-  new htmlWebpackPlugin(),
+//=======================================
+
+webPackConfig.plugins = [
+  new HTMLWebpackPlugin({title : 'Day 37 Fullstack App'}),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
   }),
-  new extractTextPlugin('bundle.[hash].scss'),
+  new ExtractTextPlugin('bundle.[hash].css'),
 ];
 
-if(PRODUCTION){
-  webpackConfig.plugins = webpackConfig.plugins.concat([
+if(PRODUCTION) {
+  webPackConfig.plugins = webPackConfig.plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
   ]);
 }
 
-webpackConfig.module = {
+//=======================================
+
+webPackConfig.module = {
   rules: [
     {
       test: /\.js$/,
@@ -41,13 +49,26 @@ webpackConfig.module = {
       loader: 'babel-loader',
     },
     {
-      test: /\.scss/,
-      loader: 'style-loader!css-loader!sass-loader',
+      test:  /\.scss$/,
+      loader: ExtractTextPlugin.extract({
+        use: [
+          'css-loader',
+          'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [`${__dirname}/src/style`],
+            },
+          },
+        ],
+      }),
     },
   ],
 };
 
-webpackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
-webpackConfig.devServer = {
+webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
+
+webPackConfig.devServer = {
   historyApiFallback: true,
 };
