@@ -10,11 +10,11 @@ class Landing extends React.Component{
   render(){
     return (
       <div className="app">
-      
+
         <h2>Landing</h2>
 
         <WaveUploader/>
-        
+
       </div>);
   }
 }

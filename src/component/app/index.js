@@ -16,8 +16,7 @@ class App extends React.Component{
         <Navigation/>
         <BrowserRouter>
           <div>
-            <Route path="/" component={Landing} />
-            <Route path="/home" component={Home} />
+            <Route exact path="/" component={Landing} />
             <Route path="/styleSheet" component={StyleSheet} />
             <Route path="/login" component={AuthForm} />
           </div>

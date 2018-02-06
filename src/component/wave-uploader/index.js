@@ -16,7 +16,7 @@ class WaveUploader extends React.Component{
     this.state = this.emptyState;
 
     //-------------------------------------------------------------
-    // BINDING HANDLES 
+    // BINDING HANDLES
     //-------------------------------------------------------------
     let memberFunctions = Object.getOwnPropertyNames(WaveUploader.prototype);
     for(let functionName of memberFunctions){
@@ -27,7 +27,7 @@ class WaveUploader extends React.Component{
   }
 
   //-------------------------------------------------------------
-  // MEMBER FUNCTIONS 
+  // MEMBER FUNCTIONS
   //-------------------------------------------------------------
 
   handleValidate({type, value, files}){
@@ -47,7 +47,7 @@ class WaveUploader extends React.Component{
         if(!validFileExtensions.includes(fileType)){
           return `${FileTypeErrorMessage}`;
         }
-      case 'text': 
+      case 'text':
         if(value.length < 5){
           return `${FileNameLengthError}`;
         }
@@ -99,7 +99,7 @@ class WaveUploader extends React.Component{
         onSubmit={this.handleSubmit}
         className='wave-file-uploader'>
         <audio
-          controls 
+          controls
           src={this.state.preview}
           type='audio/wav'>
         </audio>
@@ -136,4 +136,3 @@ const fileToDataURL = (file) => {
 };
 
 export default WaveUploader;
-
