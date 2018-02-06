@@ -24,7 +24,7 @@ webPackConfig.output = {
 //=======================================
 
 webPackConfig.plugins = [
-  new HTMLWebpackPlugin({title : 'Day 37 Fullstack App'}),
+  new HTMLWebpackPlugin({title : 'intelliSound'}),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
