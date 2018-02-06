@@ -1,6 +1,5 @@
 * {
   position: static;
-  display: block;
   width: 100%;
   height: auto;
   margin: 0;
@@ -20,5 +19,7 @@ input, textarea {
     border: none;
   }
 }
-
-// Borrowed from lecture code
+//
+// *{
+//   outline: red dotted 2px;
+// }

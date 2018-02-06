@@ -6,6 +6,7 @@ import StyleSheet from '../style-sheet';
 import Landing from '../landing';
 import Navigation from '../navigation';
 import AuthForm from '../auth-form';
+import Home from '../home';
 
 class App extends React.Component{
   render(){
@@ -16,6 +17,7 @@ class App extends React.Component{
         <BrowserRouter>
           <div>
             <Route path="/" component={Landing} />
+            <Route path="/home" component={Home} />
             <Route path="/styleSheet" component={StyleSheet} />
             <Route path="/login" component={AuthForm} />
           </div>
