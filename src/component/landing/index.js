@@ -53,9 +53,7 @@ class Landing extends React.Component{
     let {location} = this.props;
 
     let defaultJSX =
-      <div>
-        <h1>default landing message</h1>
-      </div>;
+        <WaveUploader/>;
 
     let signupJSX =
         <AuthForm
@@ -87,6 +85,6 @@ const mapStateToProps = state => ({token : state.token});
 const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
-  fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()), //Nicholas: may need this
+  fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
