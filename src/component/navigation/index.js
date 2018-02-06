@@ -19,7 +19,6 @@ class Navigation extends React.Component{
   render(){
     return (
       <section className="navigation">
-        <h2>Navigation</h2>
         <nav className="navbar is-primary">
 
           <div className="navbar-brand">

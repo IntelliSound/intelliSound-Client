@@ -11,7 +11,7 @@ class Landing extends React.Component{
     return (
       <div className="landing">
 
-        <section className="hero is-medium is-primary is-bold">
+        <section className="hero is-medium is-bold">
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title">
