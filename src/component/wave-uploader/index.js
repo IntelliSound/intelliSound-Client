@@ -100,7 +100,23 @@ class WaveUploader extends React.Component{
   //-------------------------------------------------------------
   render(){
     return(
-      <section className="section wave-uploader-div">
+      <section className="section is-medium wave-uploader-div">
+
+        <div className="columns">
+          <div className="column">
+            <span className="fa-stack fa-lg">
+              <i className="fa fa-circle fa-stack-2x"></i>
+              <i className="fa fa-inverse fa-stack-1x">1</i>
+            </span>
+          </div>
+          <div className="column">
+
+          </div>
+          <div className="column">
+
+          </div>
+        </div>
+
         <form
           onSubmit={this.handleSubmit}
           className='wave-file-uploader'>
@@ -111,7 +127,7 @@ class WaveUploader extends React.Component{
           </audio>
 
           <input
-            dragable
+            dragable='true'
             type='file'
             name='wav'
             onChange={this.handleChange}
