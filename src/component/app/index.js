@@ -6,8 +6,17 @@ import StyleSheet from '../style-sheet';
 import Landing from '../landing';
 import Navigation from '../navigation';
 import AuthForm from '../auth-form';
-    
+import * as routes from '../../routes';
+
+
 class App extends React.Component{
+  componentDidMount(){
+    if(this.props.loggedIn){
+      // this.props.fetchUserNeuralNetworks()
+      // .catch(console.error)
+
+    }
+  }
   render(){
     return (
       <div className="app">
@@ -15,13 +24,18 @@ class App extends React.Component{
         <Navigation/>
         <BrowserRouter>
           <div>
-            <Route exact path="/" component={Landing} />
-            <Route path="/styleSheet" component={StyleSheet} />
-            <Route path="/login" component={AuthForm} />
+            <Route path={routes.ROOT_ROUTE} component={Landing} />
+            <Route path={routes.LOGIN_ROUTE} component={Landing} />
+            <Route path={routes.SIGNUP_ROUTE} component={Landing} />
+            <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
           </div>
         </BrowserRouter>
       </div>);
   }
 }
+
+const mapStateToProps = dispatch => ({
+  fetchUserNeuralNetworks: () => dispatch(neuralNetworks.fetchAction()),
+});
 
 export default App;

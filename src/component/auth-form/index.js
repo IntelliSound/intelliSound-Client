@@ -83,20 +83,4 @@ class AuthForm extends React.Component{
   }
 }
 
-
-handleSignup(user){
-    this.props.doSignup(user)
-      .then(() => {
-        this.props.history.push(routes.PROFILE_ROUTE);
-      })
-      .catch(console.error);
-  }
-
-  const mapDispatchToProps = (dispatch) => ({
-  doSignup : (user) => dispatch(authActions.signupAction(user)),
-  doLogin : (user) => dispatch(authActions.loginAction(user)),
-  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
-});
-
-
 export default AuthForm;

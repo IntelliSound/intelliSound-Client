@@ -1,14 +1,23 @@
 import './_landing.scss';
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 import * as routes from '../../routes';
 
+//========================================
+// Components and Actions
+//========================================
 import WaveUploader from '../wave-uploader';
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
-
-
+import * as userActions from '../../action/user';
 import StyleSheet from '../style-sheet';
+
+//========================================
+// Magic Strings
+//========================================
+const SWITCH_TO_LOGIN_MESSAGE = 'Already a User?';
+const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
+
 
 class Landing extends React.Component{
   constructor(props){
@@ -40,26 +49,44 @@ class Landing extends React.Component{
   }
 
   render(){
-    return (
-      <div className="landing">
 
-        <h2>Landing</h2>
+    let {location} = this.props;
 
-        <WaveUploader/>
+    let defaultJSX =
+      <div>
+        <h1>default landing message</h1>
+      </div>;
 
-      </div>);
+    let signupJSX =
+        <AuthForm
+          type={'signup'}
+          handleComplete={this.handleSignup}
+          authMessage={SWITCH_TO_LOGIN_MESSAGE}
+          authLink={routes.LOGIN_ROUTE}/>;
+
+    let loginJSX =
+      <AuthForm
+        type={'login'}
+        handleComplete={this.handleLogin}
+        authMessage={SWITCH_TO_SIGNUP_MESSAGE}
+        authLink={routes.SIGNUP_ROUTE}/>;
+
+    console.log('location.pathname :', location.pathname);
+    return(
+      <div className='landing'>
+        {location.pathname === routes.ROOT_ROUTE ? defaultJSX : undefined}
+        {location.pathname === routes.SIGNUP_ROUTE ? signupJSX : undefined}
+        {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({token : state.token});
 
-const mapDispatchToProps = (dispatch) => ({
-  doSignup : (user) => dispatch(authActions.signupAction(user)),
-  doLogin : (user) => dispatch(authActions.loginAction(user)),
-  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
+const mapDispatchToProps = dispatch => ({
+  handleSignup : (user) => dispatch(authActions.signupAction(user)),
+  handleLogin : (user) => dispatch(authActions.loginAction(user)),
+  fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()), //Nicholas: may need this
 });
-
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
-
-
-componentWillMount check for token
