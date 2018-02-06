@@ -40,6 +40,7 @@ class WaveUploader extends React.Component{
 
     switch(type){
       case 'file':
+      {
         fileType = files[0].type;
         if(files.length > 1){
           return `${MultipleFileUploadErrorMessage}`;
@@ -47,6 +48,8 @@ class WaveUploader extends React.Component{
         if(!validFileExtensions.includes(fileType)){
           return `${FileTypeErrorMessage}`;
         }
+        return null;
+      }
       case 'text':
         if(value.length < 5){
           return `${FileNameLengthError}`;

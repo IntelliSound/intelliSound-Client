@@ -9,7 +9,7 @@ import StyleSheet from '../style-sheet';
 class Landing extends React.Component{
   render(){
     return (
-      <div className="app">
+      <div className="landing">
 
         <h2>Landing</h2>
 
