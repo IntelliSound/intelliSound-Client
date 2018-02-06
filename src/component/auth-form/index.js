@@ -50,10 +50,8 @@ class AuthForm extends React.Component{
 
 
     return(
-      <div>
-        <form
-          onSubmit = {this.handleSubmit}
-          className = "auth-form">
+      <section className="auth-form">
+        <form onSubmit = {this.handleSubmit}>
 
           <input
             type="text"
@@ -80,7 +78,7 @@ class AuthForm extends React.Component{
         <a href="#">Google</a>
         <a href="#">Facebook</a>
         <a href="#">Twitter</a>
-      </div>
+      </section>
     );
   }
 }
