@@ -11,21 +11,29 @@ $white: #F8F8F8;
 $gray: #9E9E9E;
 $very-dark-blue: #0A2239;
 
+//size variables
+$border-radius: .6em;
+$measures: 1.2em;
+$margin-standard: .666em;
+
 $pink-invert: #fff;
 // Add a serif family
 $family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: $blue;
-$primary-invert: $pink-invert;
+$color-primary: $blue;
+$color-primary-invert: $pink-invert;
+$color-secondary: $dark-blue;
+$color-accent: $gray;
+$color-development: red;
 // Use the existing orange as the danger color
 $danger: $orange;
 // Use the new serif family
 $family-primary: $family-serif;
 
-// david - setting up navbar color background : 
-$navbar-background-color: $primary;
+// david - setting up navbar color background :
+$navbar-background-color: $color-primary;
 
 // 4. Setup your Custom Colors
 $linkedin: #0077b5;
