@@ -1,3 +1,5 @@
+import './_wave-uploader.scss';
+
 import React from 'react';
 
 class WaveUploader extends React.Component{
@@ -98,26 +100,28 @@ class WaveUploader extends React.Component{
   //-------------------------------------------------------------
   render(){
     return(
-      <form
-        onSubmit={this.handleSubmit}
-        className='wave-file-uploader'>
-        <audio
-          controls
-          src={this.state.preview}
-          type='audio/wav'>
-        </audio>
+      <section className="section wave-uploader-div">
+        <form
+          onSubmit={this.handleSubmit}
+          className='wave-file-uploader'>
+          <audio
+            controls
+            src={this.state.preview}
+            type='audio/wav'>
+          </audio>
 
-        <input
-          dragable
-          type='file'
-          name='wav'
-          onChange={this.handleChange}
-        />
+          <input
+            dragable
+            type='file'
+            name='wav'
+            onChange={this.handleChange}
+          />
 
-        <p>{this.state.wavenameDirty ? this.state.wavenameError : null} </p>
+          <p>{this.state.wavenameDirty ? this.state.wavenameError : null} </p>
 
-        <button type='submit'> upload wav file </button>
-      </form>
+          <button type='submit'> upload wav file </button>
+        </form>
+      </section>
     );
   }
 }
