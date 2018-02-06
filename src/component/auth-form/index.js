@@ -50,32 +50,35 @@ class AuthForm extends React.Component{
 
 
     return(
-      <form
-        onSubmit = {this.handleSubmit}
-        className = "auth-form">
+      <section className="auth-form">
+        <form onSubmit = {this.handleSubmit}>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-          required={true}
-        />
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+            required={true}
+          />
 
-        {signupRenderedJSX}
+          {signupRenderedJSX}
 
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required={true}
-        />
-        <button type='submit' onClick={this.handleSubmit}> {type} </button>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required={true}
+          />
+          <button type='submit' onClick={this.handleSubmit}> {type} </button>
 
-      </form>
+        </form>
+        <a href="#">Google</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+      </section>
     );
   }
 }
