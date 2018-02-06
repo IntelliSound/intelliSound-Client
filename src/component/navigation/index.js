@@ -1,6 +1,6 @@
 import './_navigation.scss';
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import StyleSheet from '../style-sheet';
 
@@ -10,10 +10,10 @@ class Navigation extends React.Component{
       <section className="navigation">
         <h2>Navigation</h2>
         <ul>
-          <li><a href="/">Link to Landing</a> </li>
-          <li><a href="/login">Link to Login</a> </li>
-          <li><a href="/home">Link to Home</a></li>
-          <li><a href="/styleSheet">Link to styleSheet</a></li>
+          <li><Link to="/">Link to Landing</Link> </li>
+          <li><Link to="/login">Link to Login</Link> </li>
+          <li><Link to="/home">Link to Home</Link></li>
+          <li><Link to="/styleSheet">Link to styleSheet</Link></li>
 
         </ul>
       </section>);
