@@ -11,10 +11,18 @@ class Landing extends React.Component{
     return (
       <div className="landing">
 
-        <h2>Landing</h2>
-
-        <WaveUploader/>
-
+        <section className="hero is-medium is-primary is-bold">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <h1 className="title">
+              Train a Neural Network using a WAV file
+              </h1>
+              <h2 className="subtitle">
+              Experience the raw power of machine learning
+              </h2>
+            </div>
+          </div>
+        </section>
       </div>);
   }
 }

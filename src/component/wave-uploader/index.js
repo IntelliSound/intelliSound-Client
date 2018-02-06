@@ -1,3 +1,5 @@
+import './_wave-uploader.scss';
+
 import React from 'react';
 
 class WaveUploader extends React.Component{

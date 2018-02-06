@@ -1,6 +1,8 @@
 // 1. Import the initial variables
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 @import "../../node_modules/bulma/sass/utilities/functions";
+@import "../../node_modules/bulma/sass/utilities/_all";
+
 
 // 2. Set your own initial variables
 // Update blue
@@ -19,6 +21,9 @@ $primary-invert: $pink-invert;
 $danger: $orange;
 // Use the new serif family
 $family-primary: $family-serif;
+
+// david - setting up navbar color background : 
+$navbar-background-color: $primary;
 
 // 4. Setup your Custom Colors
 $linkedin: #0077b5;
