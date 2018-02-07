@@ -30,6 +30,7 @@ class App extends React.Component{
             <Route path={routes.ROOT_ROUTE} component={Landing} />
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
+            <Route path={routes.ABOUT_ROUTE} component={Landing} />
             <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
           </div>
         </BrowserRouter>
