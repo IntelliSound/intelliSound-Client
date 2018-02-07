@@ -3,7 +3,11 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:200,300,400,600');
 
 .hero {
-  background-color: $white;
+  display: inline;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  background-color: $transparent;
 }
 
 .title {

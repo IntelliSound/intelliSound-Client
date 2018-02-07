@@ -8,20 +8,6 @@ class About extends React.Component{
   render(){
     return (
       <div>
-        <section className="hero is-medium is-bold">
-          <div className="hero-body"> 
-            <div className="container has-text-centered">
-              <h1 className="title is-spaced">
-                  The intelliSoundAI Team
-              </h1>
-              <h2 className="subtitle">
-                  Meet the humans behind the machine
-              </h2>
-            </div>
-          </div>
-        </section>
-      
-
         <div className="column">
           <div className="card">
             <div className="card-image">
@@ -41,7 +27,7 @@ class About extends React.Component{
                   <p className="subtitle is-6">@johnsmith</p>
                 </div>
               </div>
-      
+
               <div className="content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
