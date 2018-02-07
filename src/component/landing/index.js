@@ -140,13 +140,13 @@ class Landing extends React.Component{
               line_linked: {
                 enable: true,
                 distance: 300,
-                color: '#0A2239',
+                color: '#4D87E5',
                 opacity: 0.4,
                 width: 2,
               },
               move: {
                 enable: true,
-                speed: 12,
+                speed: 3,
                 random: false,
                 straight: false,
                 bounce: false,
@@ -182,8 +182,8 @@ class Landing extends React.Component{
                   speed: 3,
                 },
                 repulse: {
-                  distance: 400,
-                  duration: 0.4,
+                  distance: 200,
+                  duration: 0.2,
                 },
                 push: {
                   particles_nb: 4,

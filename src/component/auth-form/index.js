@@ -1,4 +1,5 @@
 import './_auth-form.scss';
+import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
 
 let emptyState = {
@@ -59,7 +60,7 @@ class AuthForm extends React.Component{
                   <div className="card-content">
                     <form onSubmit = {this.handleSubmit}>
 
-                      <img className="is-centered" src="https://placehold.it/128x128" alt="logo" width="200"/>
+                      <img className="is-centered" src={LogoSVG} alt="logo" width="200"/>
 
                       <input
                         className="input"
