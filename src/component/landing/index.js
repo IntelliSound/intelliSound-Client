@@ -102,12 +102,12 @@ class Landing extends React.Component{
               },
             },
             color: {
-              value: '#0A2239',
+              value: '#9E9E9E',
             },
             shape: {
               stroke: {
                 width: 0,
-                color: '#0A2239',
+                color: '#9E9E9E',
               },
               circle: {
                 nb_sides: 5,
@@ -140,7 +140,7 @@ class Landing extends React.Component{
             line_linked: {
               enable: true,
               distance: 300,
-              color: '#4D87E5',
+              color: '#9E9E9E',
               opacity: 0.4,
               width: 2,
             },
