@@ -1,6 +1,8 @@
 import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
+import * as FontAwesome from 'react-icons/lib/fa/';
+
 
 let emptyState = {
   username: '',
@@ -89,9 +91,9 @@ class AuthForm extends React.Component{
 
                     </form>
                     <div className="columns">
-                      <a className="column" href="#">Google</a>
-                      <a className="column" href="#">Facebook</a>
-                      <a className="column" href="#">Twitter</a>
+                      <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaTwitter size={30} color='$color-primary'/></a>
                     </div>
 
                   </div>

@@ -50,7 +50,7 @@ class Navigation extends React.Component{
             <div className="navbar-end" id="Options">
               <a className="navbar-item" href="/">Home</a> 
               <a className="navbar-item" href="/login">Login</a> 
-              <a className="navbar-item" href="/home">About Us</a>
+              <a className="navbar-item" href="/about">About Us</a>
             </div>
           </div>
           
