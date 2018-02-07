@@ -20,7 +20,7 @@ class Navigation extends React.Component{
 
   render(){
     return (
-      <section className="navigation">
+      <section className="navigation schoger-border">
         <nav className="navbar is-white">
 
           <div className="navbar-brand">

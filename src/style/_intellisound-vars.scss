@@ -26,6 +26,7 @@ $family-sans-serif: 'Muli', sans-serif;
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $color-primary: $blue;
+$primary: $color-primary;
 $blue-invert: findColorInvert($blue);
 $color-primary-invert: $blue-invert;
 $color-secondary: $dark-blue;
