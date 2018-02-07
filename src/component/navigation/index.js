@@ -1,5 +1,6 @@
 import './_navigation.scss';
 import React from 'react';
+import LogoImage from '../../assets/intelliSound-logo.svg';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
@@ -23,7 +24,7 @@ class Navigation extends React.Component{
 
           <div className="navbar-brand">
             <a className="navbar-item" href="#">
-              <img src="http://via.placeholder.com/200x50" alt="intelliSound" width="112" height="28"/>
+              {LogoImage}
             </a>
 
             <div className="navbar-burger burger" data-target="Options">
