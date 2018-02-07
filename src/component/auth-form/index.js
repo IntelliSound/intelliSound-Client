@@ -51,7 +51,7 @@ class AuthForm extends React.Component{
 
     return(
       <div className="layout-default">
-        <section className="hero is-fullheight is-medium is-primary is-bold auth-form">
+        <section className="hero is-fullheight is-medium is-bold auth-form">
           <div className="hero-body">
             <div className="container has-text-centered">
               <div className="column is-4 is-offset-4">
