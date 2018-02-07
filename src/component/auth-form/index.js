@@ -54,12 +54,12 @@ class AuthForm extends React.Component{
 
     return(
       <div className="layout-default">
-        <section className="hero is-fullheight is-medium is-bold auth-form">
+        <section className="hero is-fullheight is-medium is-bold">
           <div className="hero-body">
             <div className="container has-text-centered">
               <div className="column is-4 is-offset-4">
                 <article className="card is-rounded">
-                  <div className="card-content">
+                  <div className="card-content auth-form">
                     <form onSubmit = {this.handleSubmit}>
 
                       <img className="is-centered" src={LogoSVG} alt="logo" width="200"/>
