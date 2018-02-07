@@ -4,6 +4,11 @@
   background-color: $primary;
 }
 
-// #navbar-logo {
-//   background: url('../../assets/intelliSound-logo.svg')
-// }
+.navbar-items {
+  color: $color-primary;
+}
+
+.navigation .navbar-menu .navbar-end .navbar-item {
+  color: $color-primary;
+
+}
