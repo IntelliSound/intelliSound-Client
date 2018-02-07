@@ -6,6 +6,8 @@ import StyleSheet from '../style-sheet';
 import Landing from '../landing';
 import Navigation from '../navigation';
 import AuthForm from '../auth-form';
+import About from '../about-us';
+
 import * as routes from '../../routes';
 
 // importing font awesome icons
@@ -30,7 +32,7 @@ class App extends React.Component{
             <Route path={routes.ROOT_ROUTE} component={Landing} />
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
-            <Route path={routes.ABOUT_ROUTE} component={Landing} />
+            <Route path={routes.ABOUT_ROUTE} component={About} />
             <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
           </div>
         </BrowserRouter>
