@@ -1,6 +1,7 @@
 import './_wave-uploader.scss';
 
 import React from 'react';
+import * as FontAwesome from 'react-icons/lib/fa/';
 
 class WaveUploader extends React.Component{
   constructor(props){
@@ -103,18 +104,55 @@ class WaveUploader extends React.Component{
       <section className="section is-medium wave-uploader-div">
 
         <div className="columns">
-          <div className="column">
-            <span className="fa-stack fa-lg">
-              <i className="fa fa-circle fa-stack-2x"></i>
-              <i className="fa fa-inverse fa-stack-1x">1</i>
-            </span>
-          </div>
-          <div className="column">
 
+          <div className="column box">
+            <article className="media">
+              <div className="media-left">
+                <figure className="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+                </figure>
+              </div>
+              <div className="media-content">
+                <div className="content">
+                  <p className="">Step One: Upload a WAV file
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div className="column">
 
+          <div className="column box">
+            <article className="media">
+              <div className="media-left">
+                <figure className="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+                </figure>
+              </div>
+              <div className="media-content">
+                <div className="content">
+                  <p className="">Step One: Upload a WAV file
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
+          
+          <div className="column box">
+            <article className="media">
+              <div className="media-left">
+                <figure className="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+                </figure>
+              </div>
+              <div className="media-content">
+                <div className="content">
+                  <p className="">Step One: Upload a WAV file
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
         </div>
 
         <form
@@ -137,6 +175,7 @@ class WaveUploader extends React.Component{
 
           <button type='submit'> upload wav file </button>
         </form>
+
       </section>
     );
   }

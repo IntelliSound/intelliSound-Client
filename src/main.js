@@ -14,6 +14,16 @@ import session from './lib/redux-session';
 import thunk from './lib/redux-thunk';
 import reporter from './lib/redux-reporter';
 
+// import FontAwesome from 'font-awesome';
+// import '../node_modules/font-awesome/css/font-awesome.css';
+
+// require('font-awesome-webpack');
+// require('font-awesome-sass-loader');
+
+// require('font-awesome/css/font-awesome.css');
+
+
+
 let middleware = {
   thunk,
   session,
