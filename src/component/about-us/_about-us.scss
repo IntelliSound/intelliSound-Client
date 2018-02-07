@@ -1,2 +1,15 @@
 @import "_intellisound-vars";
 
+.title {
+  font-family: $family-serif;
+  color: $very-dark-blue;
+}
+
+.subtitle {
+  font-family: $family-sans-serif;
+  color: $very-dark-blue;
+}
+
+.hero .hero-body .container {
+  color: $very-dark-blue;
+}
