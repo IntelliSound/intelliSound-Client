@@ -105,7 +105,7 @@ class WaveUploader extends React.Component{
 
         <div className="columns">
 
-          <div className="column box">
+          <div className="column-gap box">
             <div className="media-left">
               <figure className="image is-64x64">
                 <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
@@ -119,7 +119,7 @@ class WaveUploader extends React.Component{
             </div>
           </div>
 
-          <div className="column box">
+          <div className="column-gap box">
             <div className="media-left">
               <figure className="image is-64x64">
                 <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
@@ -133,7 +133,7 @@ class WaveUploader extends React.Component{
             </div>
           </div>
           
-          <div className="column box">
+          <div className="column-gap box">
             <div className="media-left">
               <figure className="image is-64x64">
                 <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>

@@ -50,35 +50,56 @@ class AuthForm extends React.Component{
 
 
     return(
-      <section className="auth-form">
-        <form onSubmit = {this.handleSubmit}>
+      <div className="layout-default">
+        <section className="hero is-fullheight is-medium is-primary is-bold auth-form">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <div className="column is-4 is-offset-4">
+                <article className="card is-rounded">
+                  <div className="card-content">
+                    <form onSubmit = {this.handleSubmit}>
 
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            required={true}
-          />
+                      <img className="is-centered" src="https://placehold.it/128x128" alt="logo" width="200"/>
 
-          {signupRenderedJSX}
+                      <input
+                        className="input"
+                        autoFocus=""
+                        type="text"
+                        name="username"
+                        placeholder="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        required={true}
+                      />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required={true}
-          />
-          <button type='submit' onClick={this.handleSubmit}> {type} </button>
+                      {signupRenderedJSX}
 
-        </form>
-        <a href="#">Google</a>
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-      </section>
+                      <input
+                        className="input"
+                        autoFocus=""
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        required={true}
+                      />
+                      <button className="button is-primary is-fullwidth is-block" type='submit' onClick={this.handleSubmit}> {type} </button>
+
+                    </form>
+                    <div className="columns">
+                      <a className="column" href="#">Google</a>
+                      <a className="column" href="#">Facebook</a>
+                      <a className="column" href="#">Twitter</a>
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }

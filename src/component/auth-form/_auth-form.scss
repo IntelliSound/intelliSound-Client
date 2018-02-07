@@ -1,57 +1,59 @@
 @import "_intellisound-vars";
 
-.auth-form{
-  position: fixed;
-  width: 3 * 10 * $measures;
-  border-radius: .1em;
-  outline: solid $color-secondary 3px;
-  margin: $measures;
-  box-shadow: 5px 5px 3px black;
-  height: 2 * 10 * $measures;
-  left: 0;
-  right: 0;
-  top: 10 * $measures;
-  margin: auto;
 
-  form {
-    width: 2 * 10 * $measures;
-    margin: (2 * $measures) auto;
 
-    input {
-      height: 2 * $measures;
-      border: solid $color-primary 2px;
-      // margin-bottom: .1em;
-      padding-left: .5 * $measures;
-    }
+// .auth-form{
+//   position: fixed;
+//   width: 3 * 10 * $measures;
+//   border-radius: .1em;
+//   outline: solid $color-secondary 3px;
+//   margin: $measures;
+//   box-shadow: 5px 5px 3px black;
+//   height: 2 * 10 * $measures;
+//   left: 0;
+//   right: 0;
+//   top: 10 * $measures;
+//   margin: auto;
 
-    input:first-child{
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-      border-bottom: none;
-    }
-    input:last-of-type{
-      border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
-      border-top: none;
+//   form {
+//     width: 2 * 10 * $measures;
+//     margin: (2 * $measures) auto;
 
-    }
+//     input {
+//       height: 2 * $measures;
+//       border: solid $color-primary 2px;
+//       // margin-bottom: .1em;
+//       padding-left: .5 * $measures;
+//     }
 
-    button {
-      height: 2 * $measures;
-      box-shadow: 5px 5px 3px $color-accent;
-      background: $color-secondary;
-      border-radius: .5 * $border-radius;
-      margin-top: $measures;
-      font-size: 1.5em;
-    }
+//     input:first-child{
+//       border-top-left-radius: $border-radius;
+//       border-top-right-radius: $border-radius;
+//       border-bottom: none;
+//     }
+//     input:last-of-type{
+//       border-bottom-left-radius: $border-radius;
+//       border-bottom-right-radius: $border-radius;
+//       border-top: none;
 
-  }
+//     }
 
-  a {
+//     button {
+//       height: 2 * $measures;
+//       box-shadow: 5px 5px 3px $color-accent;
+//       background: $color-secondary;
+//       border-radius: .5 * $border-radius;
+//       margin-top: $measures;
+//       font-size: 1.5em;
+//     }
 
-    display: inline-block;
-    width: 0;
-    margin: (3 * $measures) (3 * 1.5 * $measures);
-    background: $color-development;
-  }
-}
+//   }
+
+//   a {
+
+//     display: inline-block;
+//     width: 0;
+//     margin: (3 * $measures) (3 * 1.5 * $measures);
+//     background: $color-development;
+//   }
+// }
