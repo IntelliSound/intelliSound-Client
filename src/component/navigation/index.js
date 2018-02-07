@@ -10,16 +10,18 @@ import React from 'react';
 class Navigation extends React.Component{
   constructor(props){
     super(props);
-    this.showToggleNav = this.showToggleNav.bind(this);
     this.state = {
       isActive: false,
     };
+    this.handleToggleHamNav = this.handleToggleHamNav.bind(this);
   }
 
   //-------------------------------------------------------------
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
-
+  handleToggleHamNav(event){
+    
+  }
 
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
