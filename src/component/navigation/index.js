@@ -20,7 +20,9 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-    
+    event.preventDefault();
+
+
   }
 
   //-------------------------------------------------------------
@@ -37,14 +39,14 @@ class Navigation extends React.Component{
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </a>
 
-            <div className="navbar-burger burger" data-target="Options">
+            <div className="navbar-burger burger" data-target="Options" >
               <span></span>
               <span></span>
               <span></span>
             </div>
           </div>
 
-          <div className="navbar-menu">
+          <div className="navbar-menu"  onClick={this.handleToggleHamNav}>
             <div className="navbar-start">
             </div>
             <div className="navbar-end" id="Options">
