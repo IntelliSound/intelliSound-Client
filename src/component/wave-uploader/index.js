@@ -106,51 +106,45 @@ class WaveUploader extends React.Component{
         <div className="columns">
 
           <div className="column box">
-            <article className="media">
-              <div className="media-left">
-                <figure className="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
-                </figure>
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
               </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Step One: Upload a WAV file
-                  </p>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
 
           <div className="column box">
-            <article className="media">
-              <div className="media-left">
-                <figure className="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
-                </figure>
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
               </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Step One: Upload a WAV file
-                  </p>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
           
           <div className="column box">
-            <article className="media">
-              <div className="media-left">
-                <figure className="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
-                </figure>
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
               </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Step One: Upload a WAV file
-                  </p>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
 
         </div>
