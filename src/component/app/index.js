@@ -29,10 +29,10 @@ class App extends React.Component{
         <Navigation/>
         <BrowserRouter>
           <div>
-            <Route path={routes.ROOT_ROUTE} component={Landing} />
+            <Route exact path={routes.ROOT_ROUTE} component={Landing} />
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
-            <Route path={routes.ABOUT_ROUTE} component={About} />
+            <Route path={routes.ABOUT_ROUTE} component={Landing} />
             <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
           </div>
         </BrowserRouter>
