@@ -57,7 +57,7 @@ class Landing extends React.Component{
         <section className="hero is-medium is-bold">
           <div className="hero-body"> 
             <div className="container has-text-centered">
-              <h1 className="title">
+              <h1 className="title is-spaced">
                 Train your own personal Neural Network
               </h1>
               <h2 className="subtitle">

@@ -1,15 +1,32 @@
 @import "_intellisound-vars";
 
 .card-content {
-  box-shadow: 5px 5px 3px $dark-blue;
+  font-family: $family-sans-serif;
+  padding: 3em;
+}
+
+form {
+  padding: 2em;
+}
+
+.card {
+  border-top: 6px solid $color-secondary;
+}
+
+body > div > div > div > div > div.layout-default > section > div > div > div > article > div > form > input {
   font-family: $family-sans-serif;
 }
 
 body > div > div > div > div:nth-child(1) > div.layout-default > section > div > div > div > article > div > form > button {
   background: linear-gradient( hsl(217, 75%, 60%),  hsl(231, 75%, 60%));
-  background-color: hsl(217, 75%, 60%);
+  // background-color: hsl(217, 75%, 60%);
   font-family: $family-sans-serif;
 }
+body > div > div > div > div:nth-child(1) > div.layout-default > section > div > div > div > article > div > form > button:hover {
+  position: relative; 
+  bottom: 1px;
+  padding-bottom: 1px
+} 
 
 .auth-form {
   background-color: $gray;
