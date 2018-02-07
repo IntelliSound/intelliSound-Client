@@ -1,8 +1,17 @@
 @import "_intellisound-vars";
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Muli:200,300,400,600');
 
 .hero {
   background-color: $white;
-  
+}
+
+.title {
+  font-family: $family-serif;
+}
+
+.subtitle {
+  font-family: $family-sans-serif;
 }
 
 .hero .hero-body .container {
