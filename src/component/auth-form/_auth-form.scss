@@ -3,11 +3,12 @@
 .card-content {
   font-family: $family-sans-serif;
   padding: 3em;
-  background-color: $gray;
+  background-color: $white;
   opacity: 0.8;
   position: fixed;
   top: 50%;
   border-top: 6px solid $color-secondary;
+  border-radius: 2%;
 }
 
 form {

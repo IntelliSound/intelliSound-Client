@@ -91,9 +91,9 @@ class AuthForm extends React.Component{
 
                     </form>
                     <div className="columns">
-                      <a className="column" href="#"><FontAwesome.FaGoogle/></a>
-                      <a className="column" href="#"><FontAwesome.FaFacebook/></a>
-                      <a className="column" href="#"><FontAwesome.FaTwitter/></a>
+                      <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaTwitter size={30} color='$color-primary'/></a>
                     </div>
 
                   </div>
