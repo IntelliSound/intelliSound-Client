@@ -54,23 +54,23 @@ class Landing extends React.Component{
     
     let heroBannerJSX = 
         <section className="hero is-medium is-bold">
-            <div className="hero-body"> 
-              <div className="container has-text-centered">
-                <h1 className="title">
+          <div className="hero-body"> 
+            <div className="container has-text-centered">
+              <h1 className="title">
                 Train a Neural Network using a WAV file
-                </h1>
-                <h2 className="subtitle">
+              </h1>
+              <h2 className="subtitle">
                 Experience the raw power of machine learning
-                </h2>
-              </div>
+              </h2>
             </div>
-          </section>
+          </div>
+        </section>;
 
     let defaultJSX =
         <div className="landing">
           {heroBannerJSX}
           <WaveUploader/>;
-        </div>
+        </div>;
 
     let signupJSX =
         <AuthForm

@@ -1,7 +1,7 @@
 // 1. Import the initial variables
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 @import "../../node_modules/bulma/sass/utilities/functions";
-@import "../../node_modules/bulma/sass/utilities/_all";
+
 
 
 // 2. david - we set up our variables here
@@ -34,6 +34,8 @@ $family-primary: $family-serif;
 
 // david - setting up navbar color background :
 $navbar-background-color: $color-primary;
+
+
 
 // 4. Setup your Custom Colors
 $linkedin: #0077b5;

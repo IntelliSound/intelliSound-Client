@@ -8,6 +8,9 @@ import Navigation from '../navigation';
 import AuthForm from '../auth-form';
 import * as routes from '../../routes';
 
+// importing font awesome icons
+// import FontAwesome from 'font-awesome-webpack';
+
 
 class App extends React.Component{
   componentDidMount(){

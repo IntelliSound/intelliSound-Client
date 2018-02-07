@@ -1,6 +1,7 @@
 import './_wave-uploader.scss';
 
 import React from 'react';
+import * as FontAwesome from 'react-icons/lib/fa/';
 
 class WaveUploader extends React.Component{
   constructor(props){
@@ -100,7 +101,54 @@ class WaveUploader extends React.Component{
   //-------------------------------------------------------------
   render(){
     return(
-      <section className="section wave-uploader-div">
+      <section className="section is-medium wave-uploader-div">
+
+        <div className="columns">
+
+          <div className="column box">
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="column box">
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="column box">
+            <div className="media-left">
+              <figure className="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="content">
+                <p className="">Step One: Upload a WAV file
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <form
           onSubmit={this.handleSubmit}
           className='wave-file-uploader'>
@@ -111,7 +159,7 @@ class WaveUploader extends React.Component{
           </audio>
 
           <input
-            dragable
+            dragable='true'
             type='file'
             name='wav'
             onChange={this.handleChange}
@@ -121,6 +169,7 @@ class WaveUploader extends React.Component{
 
           <button type='submit'> upload wav file </button>
         </form>
+
       </section>
     );
   }

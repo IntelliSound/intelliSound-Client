@@ -1,1 +1,6 @@
-@import "_intellisound-vars"
+@import "_intellisound-vars";
+
+.navigation .navbar-menu .navbar-end .navbar-item {
+  color: $color-primary;
+
+}
