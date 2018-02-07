@@ -58,7 +58,7 @@ class Landing extends React.Component{
           <div className="hero-body"> 
             <div className="container has-text-centered">
               <h1 className="title">
-                Train a Neural Network using a WAV file
+                Train your own personal Neural Network
               </h1>
               <h2 className="subtitle">
                 Experience the raw power of machine learning
@@ -95,7 +95,7 @@ class Landing extends React.Component{
             
             particles: {
               number: {
-                value: 40,
+                value: 30,
                 density: {
                   enable: true,
                   value_area: 800,
@@ -109,7 +109,7 @@ class Landing extends React.Component{
                   width: 0,
                   color: '#0A2239',
                 },
-                polygon: {
+                circle: {
                   nb_sides: 5,
                 },
                 image: {
@@ -122,17 +122,17 @@ class Landing extends React.Component{
                 random: false,
                 anim: {
                   enable: false,
-                  speed: 1,
+                  speed: 0.1,
                   opacity_min: 0.1,
                   sync: false,
                 },
               },
               size: {
-                value: 10,
+                value: 5,
                 random: true,
                 anim: {
                   enable: false,
-                  speed: 80,
+                  speed: 20,
                   size_min: 0.1,
                   sync: false,
                 },

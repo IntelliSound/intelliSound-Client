@@ -20,12 +20,12 @@ class Navigation extends React.Component{
 
   render(){
     return (
-      <section className="navigation">
+      <section className="navigation schoger-border">
         <nav className="navbar is-white">
 
           <div className="navbar-brand">
             <a className="navbar-item" href="#">
-              <img src={logo} alt="intelliSound Logo" width="112" height="28"/>
+              <img src={logo} alt="intelliSound Logo"  height="60"/>
             </a>
 
             <div className="navbar-burger burger" data-target="Options">
