@@ -18,17 +18,19 @@ class Network extends React.Component{
     super(props);
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
-    this.handleNetworkClick = this.handleNetworkClick.bind(this);
   }
 
+  //this will make a post request; switch case based on whether user is logged in or not
+  // if not logged in then they should get the option to save their neural net
   handleWaveformClick(event){
-    let waveformName = event.target.id;
-    // make a request to wave/:waveform
-  }
-
-  handleNetworkClick(event){
-    // grab the name/id of the network selected to attach to PUT request
-    let neuralNetworkId = event.target._id;
+    event.preventDefault();
+    if(!this.token){
+      this.props.loggedOutCreateNeuralNetwork(event.target.id);
+    }
+    /* switch()
+    1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
+    2)
+    */
   }
 
   render(){
@@ -106,7 +108,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateNeuralNetwork: (neuralNetwork) => dispatch(neuralNetworkActions.updateAction(neuralNetwork)),
-  createNeuralNetwork : (neuralNetwork) => dispatch(neuralNetworkActions.createAction(neuralNetwork)),
+  loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
   getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
