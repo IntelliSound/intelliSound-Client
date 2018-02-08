@@ -62,10 +62,10 @@ class Navigation extends React.Component{
 
           <div className="navbar-menu" id='navbar-menu-id'>
             <div className="navbar-start"></div>
-            <div className="navbar-end" id="Options">
-              <Link to="/" className="navbar-item">Home</Link>
-              <Link to="/login" className="navbar-item">Login</Link>
-              <Link to="/about" className="navbar-item">About Us</Link>
+            <div className="navbar-end columns is-mobile" id="Options">
+              <Link to="/" className="navbar-item column has-text-centered">Home</Link>
+              <Link to="/login" className="navbar-item column has-text-centered">Login</Link>
+              <Link to="/about" className="navbar-item column has-text-centered">About Us</Link>
             </div>
           </div>
 
