@@ -4,7 +4,7 @@ import * as FontAwesome from 'react-icons/lib/fa/';
 
 // importing headshots for below
 import andrewPic from '../../assets/andrew-headshot.jpg';
-import nicholasPic from '../../assets/nicholas-headshot.jpg';
+import nicholasPic from '../../assets/Nicholas-headshot.jpg';
 import davidPic from '../../assets/david-headshot.jpg';
 
 
