@@ -6,3 +6,4 @@ export const ROOT_ROUTE = '/';
 export const STYLESHEET_ROUTE = '/stylesheet';
 export const NEURAL_NETWORK_ROUTE = '/neuralnetwork';
 export const USER_ROUTE = '/user';
+export const WAVE_ROUTE = '/wave';

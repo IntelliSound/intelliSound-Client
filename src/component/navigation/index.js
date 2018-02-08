@@ -26,7 +26,7 @@ class Navigation extends React.Component{
     (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', 
       document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  
       document.getElementById('navbar-menu-id').className = 'navbar-menu');
-  }
+
   
 
   //-------------------------------------------------------------
@@ -48,7 +48,6 @@ class Navigation extends React.Component{
 
     let handleLoginVsLogout = (this.state.token) ? logOutNavBar : logInNavBar;
 
-    
 
 
     return (
