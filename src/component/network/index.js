@@ -24,9 +24,14 @@ class Network extends React.Component{
   }
 
   render(){
+    let loggedInView =
+      <div>
+        <p>This is a logged in groot</p>
+      </div>;
+
     return(
       <div>
-        {this.token ? 'blah' : 'groot'}
+        {this.token ? loggedInView : 'blah'}
         <section className="section is-medium network-div">
 
           <section className="message is-primary">

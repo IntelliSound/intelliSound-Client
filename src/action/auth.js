@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import {deleteCookie} from '../lib/cookie';
 
 export const setTokenAction = (token) => ({
   type : 'TOKEN_SET',
@@ -32,4 +33,10 @@ export const loginAction = (user) => (store) => {
       console.log({response});
       return store.dispatch(setTokenAction(response.text));
     });
+};
+
+export const logoutAction = () => (store) => {
+  console.log('user logout');
+  deleteCookie('X-intelliSoundAI-Token');
+  return store.dispatch(removeTokenAction);
 };
