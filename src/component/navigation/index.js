@@ -2,15 +2,15 @@ import logo from '../../assets/intelliSound-logo.svg';
 import './_navigation.scss';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
 
-
-
 class Navigation extends React.Component{
   constructor(props){
     super(props);
+    this.token = this.props.token;
     this.state = {
       isToggle: false,
     };
@@ -21,7 +21,7 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-    
+
     console.log(this.state);
     console.log(event.target);
     this.setState({isToggle : !this.state.isToggle });
@@ -42,6 +42,13 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){
+    console.log(this.token, `is the token in navigation`);
+    let signUpButton =
+      <Link to="/signup" className="navbar-item">Sign Up</Link>;
+
+    let loginButton =
+      <Link to="/login" className="navbar-item">Login</Link>;
+
     return (
       <section className="navigation schoger-border">
         <nav className="navbar is-white">
@@ -64,7 +71,7 @@ class Navigation extends React.Component{
             <div className="navbar-start"></div>
             <div className="navbar-end" id="Options">
               <Link to="/" className="navbar-item">Home</Link>
-              <Link to="/login" className="navbar-item">Login</Link>
+              {this.token ? loginButton : signUpButton}
               <Link to="/about" className="navbar-item">About Us</Link>
             </div>
           </div>
@@ -76,4 +83,8 @@ class Navigation extends React.Component{
   }
 }
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  token: state.token,
+});
+
+export default connect(mapStateToProps)(Navigation);

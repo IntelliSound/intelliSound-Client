@@ -11,11 +11,17 @@ import About from '../about-us';
 
 import * as routes from '../../routes';
 import * as neuralNetworkActions from '../../action/neural-network';
+import * as cookieAction from '../../lib/cookie';
+import * as tokenAction from '../../action/auth';
 
 class App extends React.Component{
   componentDidMount(){
+    let token = cookieAction.fetchCookie('X-intelliSoundAi-Token');
+    if(token){
+      this.props.setTokenAction(token);
+    }
     if(this.props.loggedIn){
-      // this.props.fetchUserNeuralNetworks()
+      this.props.fetchUserNeuralNetworks();
       // .catch(console.error)
 
     }
@@ -44,6 +50,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchUserNeuralNetworks: () => dispatch(neuralNetworkActions.fetchAction()),
+  setTokenAction: (token) => dispatch(tokenAction.setTokenAction(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
