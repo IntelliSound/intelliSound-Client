@@ -12,10 +12,6 @@ import About from '../about-us';
 import * as routes from '../../routes';
 import * as neuralNetworkActions from '../../action/neural-network';
 
-// importing font awesome icons
-// import FontAwesome from 'font-awesome-webpack';
-
-
 class App extends React.Component{
   componentDidMount(){
     if(this.props.loggedIn){

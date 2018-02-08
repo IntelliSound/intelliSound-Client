@@ -42,6 +42,7 @@ class AuthForm extends React.Component{
 
     let signupJSX =
     <input
+      className="input"
       name = 'email'
       placeholder = 'email'
       type = 'email'
@@ -64,6 +65,8 @@ class AuthForm extends React.Component{
 
                       <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
+                     
+
                       <input
                         className="input"
                         autoFocus=""
@@ -74,7 +77,7 @@ class AuthForm extends React.Component{
                         onChange={this.handleChange}
                         required={true}
                       />
-
+                      
                       {signupRenderedJSX}
 
                       <input
