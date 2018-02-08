@@ -21,7 +21,9 @@ class Navigation extends React.Component{
   //-------------------------------------------------------------
   handleToggleHamNav(event){
     event.preventDefault();
-
+    this.setState(prevState => ({
+      isActive: !prevState.isActive,
+    }));
 
   }
 
@@ -39,14 +41,16 @@ class Navigation extends React.Component{
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </a>
 
-            <div className="navbar-burger burger" data-target="Options" >
+            <div className="navbar-burger burger" 
+              data-target={(this.handleToggleHamNav.isActive) ? 'is-active' : 'null'} 
+              onClick={this.state.handleToggleHamNav} >
               <span></span>
               <span></span>
               <span></span>
             </div>
           </div>
 
-          <div className="navbar-menu"  onClick={this.handleToggleHamNav}>
+          <div className="navbar-menu"  >
             <div className="navbar-start">
             </div>
             <div className="navbar-end" id="Options">
