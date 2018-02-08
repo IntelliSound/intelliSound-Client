@@ -1,5 +1,8 @@
 import './_auth-form.scss';
+import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
+import * as FontAwesome from 'react-icons/lib/fa/';
+
 
 let emptyState = {
   username: '',
@@ -50,32 +53,56 @@ class AuthForm extends React.Component{
 
 
     return(
-      <form
-        onSubmit = {this.handleSubmit}
-        className = "auth-form">
+      <div className="layout-default">
+        <section className="hero is-fullheight is-medium is-bold auth-parent-container">
+          <div className="hero-body auth-container">
+            <div className="container has-text-centered">
+              <div className="column is-half is-offset-one-quarter">
+                <article className="card is-rounded container auth-form-container">
+                  <div className="card-content auth-form levels">
+                    <form onSubmit = {this.handleSubmit}>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-          required={true}
-        />
+                      <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
-        {signupRenderedJSX}
+                      <input
+                        className="input"
+                        autoFocus=""
+                        type="text"
+                        name="username"
+                        placeholder="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        required={true}
+                      />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required={true}
-        />
-        <button type='submit' onClick={this.handleSubmit}> {type} </button>
+                      {signupRenderedJSX}
 
-      </form>
+                      <input
+                        className="input level"
+                        autoFocus=""
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        required={true}
+                      />
+                      <button className="button is-primary is-fullwidth is-block" type='submit' onClick={this.handleSubmit}> {type} </button>
+
+                    </form>
+                    <div className="columns">
+                      <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
+                      <a className="column" href="#"><FontAwesome.FaTwitter size={30} color='$color-primary'/></a>
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }

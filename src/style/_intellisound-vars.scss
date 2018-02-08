@@ -1,0 +1,63 @@
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+// david - importing google fonts
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Muli:200,300,400,600');
+
+
+// 2. david - we set up our variables here
+$blue: #4D87E5;
+$dark-blue: #203A65;
+$white: #F8F8F8;
+$gray: #9E9E9E;
+$very-dark-blue: #0A2239;
+
+// nicholas - size variables
+$border-radius: .6em;
+$measures: 1.2em;
+$margin-standard: .666em;
+
+// david - Adding fonts
+$family-serif:'Playfair Display', serif;
+$family-sans-serif: 'Muli', sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$color-primary: $blue;
+$primary: $color-primary;
+$blue-invert: findColorInvert($blue);
+$color-primary-invert: $blue-invert;
+$color-secondary: $dark-blue;
+$color-accent: $gray;
+$color-development: red;
+// Use the existing orange as the danger color
+$danger: $orange;
+// Use the new serif family
+$family-primary: $family-serif;
+
+// david - setting up navbar color background :
+$navbar-background-color: $color-primary;
+
+
+
+// 4. Setup your Custom Colors
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
+
+// 5. Add new color variables to the color map.
+@import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+$addColors: (
+  "twitter":($twitter, $twitter-invert),
+  "linkedin": ($linkedin, $linkedin-invert),
+  "github": ($github, $github-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+// 6. Import the rest of Bulma
+@import "../../node_modules/bulma/bulma.sass";

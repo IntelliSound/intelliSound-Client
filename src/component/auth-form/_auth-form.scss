@@ -1,7 +1,55 @@
-@import "vars";
+@import "_intellisound-vars";
+
+.auth-form {
+  font-family: $family-sans-serif;
+  padding: 3em;
+  background-color: $white;
+  opacity: 0.8;
+ 
+  border-top: 6px solid $color-secondary;
+  border-radius: 2%;
+}
+
+auth-parent-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-logo {
+  margin: 0 auto;
+}
+
+.auth-container {
+  display: inline;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}
+
+.hero-body .auth-container > .container {
+  margin: 0 auto;
+}
+
+.auth-container > div {
+  margin: 0 auto;
+}
 
 form {
-  outline: $color-development 5px dotted;
-  position: fixed;
-
+  padding: 2em;
 }
+
+body > div > div > div > div > div.layout-default > section > div > div > div > article > div > form > input {
+  font-family: $family-sans-serif;
+}
+
+body > div > div > div > div:nth-child(1) > div.layout-default > section > div > div > div > article > div > form > button {
+  background: linear-gradient( hsl(217, 75%, 60%),  hsl(231, 75%, 60%));
+  // background-color: hsl(217, 75%, 60%);
+  font-family: $family-sans-serif;
+}
+body > div > div > div > div:nth-child(1) > div.layout-default > section > div > div > div > article > div > form > button:hover {
+  position: relative; 
+  bottom: 1px;
+  padding-bottom: 1px
+} 
+

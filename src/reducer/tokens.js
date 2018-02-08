@@ -1,4 +1,6 @@
-let initialState = null;
+import * as cookie from '../lib/cookie';
+let initialState = token ? token : null;
+let token = cookie.fetchCookie('X-intelliSoundAI-Token');
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {

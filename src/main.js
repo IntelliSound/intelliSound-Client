@@ -1,4 +1,6 @@
 import './style/main.scss';
+import './style/_intellisound-vars.scss';
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
@@ -11,6 +13,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import session from './lib/redux-session';
 import thunk from './lib/redux-thunk';
 import reporter from './lib/redux-reporter';
+
 
 let middleware = {
   thunk,
