@@ -22,10 +22,12 @@ class Navigation extends React.Component{
   //-------------------------------------------------------------
   handleToggleHamNav(event){
     this.setState({isToggle : !this.state.isToggle });
+    
+    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', 
+      document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  
+      document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
-    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
-
-  }
+  
 
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
@@ -36,11 +38,17 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){
-    let signUpButton =
-      <Link to="/signup" className="navbar-item">Sign Up</Link>;
+    console.log(this.token, `is the token in navigation`);
+    
+    let logInNavBar =
+      <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
 
-    let loginButton =
-      <Link to="/login" className="navbar-item">Login</Link>;
+    let logOutNavBar =
+      <Link to="/logout" className="navbar-item has-text-centered">Log out</Link>;
+
+    let handleLoginVsLogout = (this.state.token) ? logOutNavBar : logInNavBar;
+
+
 
     return (
       <section className="navigation schoger-border  is-transparent">
@@ -65,7 +73,7 @@ class Navigation extends React.Component{
 
             <div className="navbar-end" id="Options">
               <Link to="/" className="navbar-item has-text-centered">Home</Link>
-              <Link to="/login" className="navbar-item has-text-centered">Login</Link>
+              {handleLoginVsLogout}
               <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
 
             </div>
