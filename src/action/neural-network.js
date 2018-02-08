@@ -10,7 +10,7 @@ export const setNetworkAction = (neuralNetwork) => ({
 export const createAction = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}`)
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`)
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)

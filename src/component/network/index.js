@@ -4,40 +4,13 @@ import {connect} from 'react-redux';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
-// make the many buttons for selecting which waveform to train on a template
-// make the many buttons for selecting my own network a template
-
-/* need to get all of the user's saved networks, then map over the array and make a button for each
-
-myNetwork buttons
-<div className="column is-one-quarter">
-  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
-    <div className="media-content">
-      <div className="content">
-        <p className="networkName">{{networkName}}</p>
-      </div>
-    </div>
-  </button>
-</div>
-*/
-
-/* Original
-<div className="column is-one-quarter">
-  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
-    <div className="media-content">
-      <div className="content">
-        <p className="">Network 1</p>
-      </div>
-    </div>
-  </button>
-</div>
+/* Shannon- need to get all of the user's saved networks, then map over the array and make a button for each
 */
 
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
   componentDidMount(){
     if(this.props.token){
-      console.log(this.props, `are props`);
       this.props.getUserNetworks();
     }
   }
@@ -49,12 +22,11 @@ class Network extends React.Component{
   }
 
   handleWaveformClick(event){
-    event.preventDefault();
+    let waveformName = event.target.id;
     // make a request to wave/:waveform
   }
 
   handleNetworkClick(event){
-    event.preventDefault();
     // grab the name/id of the network selected to attach to PUT request
     let neuralNetworkId = event.target._id;
   }
@@ -94,14 +66,24 @@ class Network extends React.Component{
 
           <div className="columns is-multiline is-mobile">
 
-            <div className="column is-one-quarter">
-              <button className="button is-large waveform" onClick={() => {this.handleWaveFormClick();}}>
-                <div className="media-content">
-                  <div className="content">
-                    <p className="">Network 1</p>
-                  </div>
-                </div>
-              </button>
+            <div className="column is-one-fifth">
+              <button id="trumpet" className="button is-large waveform" onClick={this.handleWaveformClick}> Trumpet </button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="tri" className="button is-large waveform" onClick={this.handleWaveformClick}>Tri</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="sqr" className="button is-large waveform" onClick={this.handleWaveformClick}>SQR</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="saw" className="button is-large waveform" onClick={this.handleWaveformClick}>Saw</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="complex" className="button is-large waveform" onClick={this.handleWaveformClick}>Complex</button>
             </div>
 
           </div>
