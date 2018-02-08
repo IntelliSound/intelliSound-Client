@@ -10,6 +10,20 @@
 }
 
 .navbar-item {
+  display: block;
   z-index: 5;
 }
 
+#Options:hover {
+  background-color: none; 
+}
+
+@media screen and (max-width: $desktop) {
+  .navbar-item {
+    display: inline-block;
+    text-align: center;
+  }
+  .navbar-end {
+    text-align: center;
+  }
+}

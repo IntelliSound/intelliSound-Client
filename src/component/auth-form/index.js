@@ -101,8 +101,10 @@ class AuthForm extends React.Component{
                     <h2 className="subtitle">
                       or use:
                     </h2>
-                    <div className="columns">
-                      <a className="column" href={googleOauthLink}><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+
+                    <div className="columns is-mobile">
+                      <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+
                       <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
                       <a className="column" href="#"><FontAwesome.FaTwitter size={30} color='$color-primary'/></a>
                     </div>
