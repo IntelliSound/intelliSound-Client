@@ -21,15 +21,9 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-
-    console.log(this.state);
-    console.log(event.target);
     this.setState({isToggle : !this.state.isToggle });
-    console.log(this.state);
-    
-    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', 
-      document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  
-      document.getElementById('navbar-menu-id').className = 'navbar-menu');
+
+    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
   }
 
@@ -42,7 +36,6 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){
-    console.log(this.token, `is the token in navigation`);
     let signUpButton =
       <Link to="/signup" className="navbar-item">Sign Up</Link>;
 

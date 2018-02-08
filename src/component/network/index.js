@@ -4,65 +4,36 @@ import {connect} from 'react-redux';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
-// make the many buttons for selecting which waveform to train on a template
-// make the many buttons for selecting my own network a template
-
-/* need to get all of the user's saved networks, then map over the array and make a button for each
-
-myNetwork buttons
-<div className="column is-one-quarter">
-  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
-    <div className="media-content">
-      <div className="content">
-        <p className="networkName">{{networkName}}</p>
-      </div>
-    </div>
-  </button>
-</div>
-*/
-
-/* Original
-<div className="column is-one-quarter">
-  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
-    <div className="media-content">
-      <div className="content">
-        <p className="">Network 1</p>
-      </div>
-    </div>
-  </button>
-</div>
+/* Shannon- need to get all of the user's saved networks, then map over the array and make a button for each
 */
 
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
   componentDidMount(){
-    if(this.props.loggedIn){
+    if(this.props.token){
       this.props.getUserNetworks();
     }
   }
   constructor(props){
     super(props);
-    console.log(this.token, `this.token`);
-    console.log(this.props.token, `this.props.token`);
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
-    this.handleNetworkClick = this.handleNetworkClick.bind(this);
   }
 
+  //this will make a post request; switch case based on whether user is logged in or not
+  // if not logged in then they should get the option to save their neural net
   handleWaveformClick(event){
     event.preventDefault();
-    // console.log('you clicked me');
-    // make a request to wave/:waveform
-  }
-
-  handleNetworkClick(event){
-    event.preventDefault();
-    // grab the name/id of the network selected to attach to PUT request
-    let neuralNetworkId = event.target._id;
+    if(!this.token){
+      this.props.loggedOutCreateNeuralNetwork(event.target.id);
+    }
+    /* switch()
+    1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
+    2)
+    */
   }
 
   render(){
-    console.log(this.token, `is the token`);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -86,11 +57,10 @@ class Network extends React.Component{
         Select one of the waveforms below to retrain your network
       </div>;
 
-    // {this.token ? loggedInView : undefined}
     return(
       <div>
         <section className="section is-medium network-div">
-          {loggedInView}
+          {this.token ? loggedInView : undefined}
 
           <section className="message is-primary">
             {this.token ? signedInInstructions : loggedOutInstructions}
@@ -98,14 +68,24 @@ class Network extends React.Component{
 
           <div className="columns is-multiline is-mobile">
 
-            <div className="column is-one-quarter">
-              <button className="button is-large waveform" onClick={() => {this.handleWaveFormClick();}}>
-                <div className="media-content">
-                  <div className="content">
-                    <p className="">Network 1</p>
-                  </div>
-                </div>
-              </button>
+            <div className="column is-one-fifth">
+              <button id="trumpet" className="button is-large waveform" onClick={this.handleWaveformClick}> Trumpet </button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="tri" className="button is-large waveform" onClick={this.handleWaveformClick}>Tri</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="sqr" className="button is-large waveform" onClick={this.handleWaveformClick}>SQR</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="saw" className="button is-large waveform" onClick={this.handleWaveformClick}>Saw</button>
+            </div>
+
+            <div className="column is-one-fifth">
+              <button id="complex" className="button is-large waveform" onClick={this.handleWaveformClick}>Complex</button>
             </div>
 
           </div>
@@ -128,8 +108,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateNeuralNetwork: (neuralNetwork) => dispatch(neuralNetworkActions.updateAction(neuralNetwork)),
-  createNeuralNetwork : (neuralNetwork) => dispatch(neuralNetworkActions.createAction(neuralNetwork)),
+  loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
   getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
-export default connect(mapStateToProps)(Network);
+export default connect(mapStateToProps, mapDispatchToProps)(Network);
