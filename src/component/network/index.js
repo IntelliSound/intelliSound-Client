@@ -42,6 +42,8 @@ class Network extends React.Component{
   }
   constructor(props){
     super(props);
+    console.log(this.token, `this.token`);
+    console.log(this.props.token, `this.props.token`);
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
@@ -60,6 +62,7 @@ class Network extends React.Component{
   }
 
   render(){
+    console.log(this.token, `is the token`);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -69,8 +72,6 @@ class Network extends React.Component{
         </section>
 
         <div className="columns is-multiline is-mobile">
-
-
 
         </div>
       </div>;

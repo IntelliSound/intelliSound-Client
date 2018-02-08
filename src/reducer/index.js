@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 
-import tokens from './tokens';
+import token from './tokens';
 
 export default combineReducers({
-  tokens,
+  token,
 });

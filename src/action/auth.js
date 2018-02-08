@@ -19,8 +19,8 @@ export const signupAction = (user) => (store) => {
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log({response});
-      return store.dispatch(setTokenAction(response.text));
+      console.log(response.body.token, `is the response body token in signupAction`);
+      return store.dispatch(setTokenAction(response.body.token));
     });
 };
 
@@ -31,12 +31,12 @@ export const loginAction = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log(response, `is the response`);
-      return store.dispatch(setTokenAction(response.text));
+      return store.dispatch(setTokenAction(response.body.token));
     });
 };
 
 export const logoutAction = () => (store) => {
   console.log('user logout');
-  deleteCookie('X-intelliSoundAI-Token');
+  deleteCookie('X-intelliSoundAi-Token');
   return store.dispatch(removeTokenAction);
 };
