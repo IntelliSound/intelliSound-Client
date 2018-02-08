@@ -87,9 +87,12 @@ class AuthForm extends React.Component{
                         onChange={this.handleChange}
                         required={true}
                       />
-                      <button className="button is-primary is-fullwidth is-block" type='submit' onClick={this.handleSubmit}> {type} </button>
+                      <button className="button is-primary is-fullwidth is-block subtitle" type='submit' onClick={this.handleSubmit}> {type} </button>
 
                     </form>
+                    <h2 className="subtitle">
+                      or use:
+                    </h2>
                     <div className="columns">
                       <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
                       <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
