@@ -36,14 +36,13 @@ myNetwork buttons
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
   componentDidMount(){
-    if(this.props.loggedIn){
+    if(this.props.token){
+      console.log(this.props, `are props`);
       this.props.getUserNetworks();
     }
   }
   constructor(props){
     super(props);
-    console.log(this.token, `this.token`);
-    console.log(this.props.token, `this.props.token`);
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
@@ -51,7 +50,6 @@ class Network extends React.Component{
 
   handleWaveformClick(event){
     event.preventDefault();
-    // console.log('you clicked me');
     // make a request to wave/:waveform
   }
 
@@ -62,7 +60,6 @@ class Network extends React.Component{
   }
 
   render(){
-    console.log(this.token, `is the token`);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -86,11 +83,10 @@ class Network extends React.Component{
         Select one of the waveforms below to retrain your network
       </div>;
 
-    // {this.token ? loggedInView : undefined}
     return(
       <div>
         <section className="section is-medium network-div">
-          {loggedInView}
+          {this.token ? loggedInView : undefined}
 
           <section className="message is-primary">
             {this.token ? signedInInstructions : loggedOutInstructions}
@@ -132,4 +128,4 @@ const mapDispatchToProps = (dispatch) => ({
   getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
-export default connect(mapStateToProps)(Network);
+export default connect(mapStateToProps, mapDispatchToProps)(Network);
