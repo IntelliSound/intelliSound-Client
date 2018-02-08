@@ -27,7 +27,7 @@ class Navigation extends React.Component{
     this.setState({isToggle : !this.state.isToggle });
     console.log(this.state);
     
-    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
+    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active is-white') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
   }
 
@@ -49,7 +49,7 @@ class Navigation extends React.Component{
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </Link>
 
-            <div className='navbar-burger burger'
+            <div className='navbar-burger burger is-white'
               data-target= "Options"
               onClick={this.handleToggleHamNav} >
               <span></span>
