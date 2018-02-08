@@ -1,53 +1,53 @@
 import './_network.scss';
 import React from 'react';
+import {connect} from 'react-redux';
 
+// make the many buttons for selecting which waveform to train on a template
+// make the many buttons for selecting my own network a template
+
+// Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
+  constructor(props){
+    super(props);
+    this.token = this.props.token;
+    this.handleWaveformClick = this.handleWaveformClick.bind(this);
+    this.handleNetworkClick = this.handleNetworkClick.bind(this);
+  }
+
+  handleWaveformClick(){
+    // console.log('you clicked me');
+    // make a request to wave/:waveform
+  }
+
+  handleNetworkClick(){
+    // grab the name/id of the network selected to attach to PUT request
+  }
+
   render(){
     return(
-      <section className="section is-medium network-div">
+      <div>
+        {this.token ? 'blah' : 'groot'}
+        <section className="section is-medium network-div">
 
-        <section className="message is-primary">
-          <div className="message-body">Instructions Will Go Here</div>
+          <section className="message is-primary">
+            <div className="message-body">Instructions Will Go Here</div>
+          </section>
+
+          <div className="columns is-multiline is-mobile">
+
+            <div className="column is-one-quarter waveform">
+              <button className="button is-large" onClick={() => {this.handleWaveFormClick();}}>
+                <div className="media-content">
+                  <div className="content">
+                    <p className="">Network 1</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+          </div>
         </section>
-
-        <div className="columns">
-
-          <div className="column">
-            <a className="button is-large">
-              <div className="media-left">
-              </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Network 1</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="column">
-            <a className="button is-large">
-              <div className="media-left">
-              </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Network 2</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="column">
-            <a className="button is-large">
-              <div className="media-left">
-              </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Network 3</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-        </div>
-      </section>
+      </div>
     );
   }
 }
@@ -66,4 +66,10 @@ class Network extends React.Component{
     same buttons as for not logged in for selecting which network to train (i.e. what type of waveform we're going to use for the PUT request)
 */
 
-export default Network;
+const mapStateToProps = (state) => ({
+  token: state.token,
+});
+
+// const mapDispatchToProps = (dispatch) => {};
+
+export default connect(mapStateToProps)(Network);
