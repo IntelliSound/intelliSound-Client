@@ -10,6 +10,7 @@ import Particles from 'react-particles-js';
 import WaveUploader from '../wave-uploader';
 import AuthForm from '../auth-form';
 import About from '../about-us';
+import Network from '../network';
 import * as authActions from '../../action/auth';
 import * as userActions from '../../action/user';
 import StyleSheet from '../style-sheet';
@@ -91,7 +92,7 @@ class Landing extends React.Component{
 
     let defaultJSX =
         <div>
-          <WaveUploader/>;
+          <Network />
         </div>;
 
     let signupJSX =
