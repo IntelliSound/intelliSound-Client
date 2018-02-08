@@ -10,8 +10,11 @@
 }
 
 .navbar-item {
+  display: block;
+  z-index: 5;
 }
 
 #Options:hover {
   background-color: none;
+  
 }

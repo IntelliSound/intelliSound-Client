@@ -44,14 +44,14 @@ class Navigation extends React.Component{
   render(){
     return (
       <section className="navigation schoger-border  is-transparent">
-        <nav className="navbar">
+        <nav className="navbar is-white">
 
           <div className="navbar-brand" >
             <Link to='/' className="navbar-item">
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </Link>
 
-            <div className="navbar-burger burger"
+            <div className="navbar-burger burger is-white"
               data-target= "Options"
               onClick={this.handleToggleHamNav} >
               <span></span>
@@ -62,10 +62,10 @@ class Navigation extends React.Component{
 
           <div className="navbar-menu" id='navbar-menu-id'>
             <div className="navbar-start"></div>
-            <div className="navbar-end columns is-mobile level" id="Options">
-              <Link to="/" className="navbar-item column is-narrow has-text-centered level-item">Home</Link>
-              <Link to="/login" className="navbar-item column is-narrow has-text-centered level-item">Login</Link>
-              <Link to="/about" className="navbar-item column is-narrow has-text-centered level-item">About Us</Link>
+            <div className="navbar-end columns is-mobile" id="Options">
+              <Link to="/" className="navbar-item column has-text-centered">Home</Link>
+              <Link to="/login" className="navbar-item column has-text-centered">Login</Link>
+              <Link to="/about" className="navbar-item column has-text-centered">About Us</Link>
             </div>
           </div>
 
