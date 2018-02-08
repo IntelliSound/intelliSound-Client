@@ -53,17 +53,15 @@ class Navigation extends React.Component{
           </div>
 
           <div className="navbar-menu" id='navbar-menu-id'>
-            <div className="navbar-start">
-            </div>
+            <div className="navbar-start"></div>
             <div className="navbar-end" id="Options">
-              <Link className="navbar-item" to="/">Home</Link>
-              <Link className="navbar-item" to="/login">Login</Link>
-              <Link className="navbar-item" to="/about">About Us</Link>
+              <Link to="/" className="navbar-item">Home</Link>
+              <Link to="/login" className="navbar-item">Login</Link>
+              <Link to="/about" className="navbar-item">About Us</Link>
             </div>
           </div>
 
-          <div className="navbar-item">
-          </div>
+          <div className="navbar-item"></div>
 
         </nav>
       </section>);
