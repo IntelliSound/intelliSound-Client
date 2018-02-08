@@ -1,6 +1,7 @@
 import logo from '../../assets/intelliSound-logo.svg';
 import './_navigation.scss';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
@@ -38,11 +39,11 @@ class Navigation extends React.Component{
         <nav className="navbar is-white">
 
           <div className="navbar-brand" >
-            <a className="navbar-item" href="#">
+            <Link to='/' className="navbar-item">
               <img src={logo} alt="intelliSound Logo"  height="60"/>
-            </a>
-            
-            <div className='navbar-burger burger'  
+            </Link>
+
+            <div className='navbar-burger burger'
               data-target= "Options"
               onClick={this.handleToggleHamNav} >
               <span></span>
@@ -55,15 +56,15 @@ class Navigation extends React.Component{
             <div className="navbar-start">
             </div>
             <div className="navbar-end" id="Options">
-              <a className="navbar-item" href="/">Home</a> 
-              <a className="navbar-item" href="/login">Login</a> 
-              <a className="navbar-item" href="/about">About Us</a>
+              <Link className="navbar-item" to="/">Home</Link>
+              <Link className="navbar-item" to="/login">Login</Link>
+              <Link className="navbar-item" to="/about">About Us</Link>
             </div>
           </div>
-          
+
           <div className="navbar-item">
           </div>
-          
+
         </nav>
       </section>);
   }

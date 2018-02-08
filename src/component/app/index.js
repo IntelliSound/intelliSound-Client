@@ -1,6 +1,7 @@
 import './_app.scss';
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import StyleSheet from '../style-sheet';
 import Landing from '../landing';
@@ -9,6 +10,7 @@ import AuthForm from '../auth-form';
 import About from '../about-us';
 
 import * as routes from '../../routes';
+import * as neuralNetworkActions from '../../action/neural-network';
 
 // importing font awesome icons
 // import FontAwesome from 'font-awesome-webpack';
@@ -26,9 +28,9 @@ class App extends React.Component{
     return (
       <div className="app">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <Navigation/>
         <BrowserRouter>
           <div>
+            <Navigation/>
             <Route exact path={routes.ROOT_ROUTE} component={Landing} />
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
@@ -40,8 +42,12 @@ class App extends React.Component{
   }
 }
 
-const mapStateToProps = dispatch => ({
-  fetchUserNeuralNetworks: () => dispatch(neuralNetworks.fetchAction()),
+const mapStateToProps = state => ({
+  loggedIn: !!state.token,
 });
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchUserNeuralNetworks: () => dispatch(neuralNetworkActions.fetchAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
