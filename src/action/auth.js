@@ -30,7 +30,7 @@ export const loginAction = (user) => (store) => {
     .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
-      console.log({response});
+      console.log(response, `is the response`);
       return store.dispatch(setTokenAction(response.text));
     });
 };
