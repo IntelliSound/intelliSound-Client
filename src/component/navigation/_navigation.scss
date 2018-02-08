@@ -15,6 +15,15 @@
 }
 
 #Options:hover {
-  background-color: none;
-  
+  background-color: none; 
+}
+
+@media screen and (max-width: $desktop) {
+  .navbar-item {
+    display: inline-block;
+    text-align: center;
+  }
+  .navbar-end {
+    text-align: center;
+  }
 }
