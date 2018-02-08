@@ -87,10 +87,6 @@ class Landing extends React.Component{
       BannerJSX = heroBannerJSX;
     }else if(location.pathname === routes.ABOUT_ROUTE){
       BannerJSX = aboutUsJSX;
-    }else if(location.pathname === routes.LOGIN_ROUTE){
-      BannerJSX = 'login';
-    }else if(location.pathname === routes.SIGNUP_ROUTE){
-      BannerJSX = 'signup';
     }
 
     let defaultJSX =
