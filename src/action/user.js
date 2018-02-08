@@ -37,6 +37,8 @@ export const fetchAction = () => (store) => {
   return superagent.get(`${__API_URL__}${routes.USER_ROUTE}/me`)
     .set('Authorization',`Bearer ${token}`)
     .then(response => {
+      //should return the entire user
+      console.log(response, `is the response from the 'get/me' route`);
       return store.dispatch(setUserAction(response.body));
     });
 };

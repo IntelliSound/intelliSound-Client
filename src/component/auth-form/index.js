@@ -52,6 +52,11 @@ class AuthForm extends React.Component{
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 
+    let redirectString = (process.env.NODE_ENV === 'debug') ? 'http://localhost:3000' : 'https://intellisoundai.com';
+
+    let clientID = `1009680303973-ctmukkrculf9p3e4i3gr4e54558tjfbr.apps.googleusercontent.com`;
+
+    let googleOauthLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:3000/oauth/google&scope=openid%20email%20profile&client_id=${clientID}&prompt=consent&response_type=code`;
 
     return(
       <div className="layout-default">
@@ -65,7 +70,7 @@ class AuthForm extends React.Component{
 
                       <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
-                     
+
 
                       <input
                         className="input"
@@ -77,7 +82,7 @@ class AuthForm extends React.Component{
                         onChange={this.handleChange}
                         required={true}
                       />
-                      
+
                       {signupRenderedJSX}
 
                       <input
@@ -96,8 +101,10 @@ class AuthForm extends React.Component{
                     <h2 className="subtitle">
                       or use:
                     </h2>
+
                     <div className="columns is-mobile">
                       <a className="column" href="#"><FontAwesome.FaGoogle size={30} color='$color-primary'/></a>
+
                       <a className="column" href="#"><FontAwesome.FaFacebook size={30} color='$color-primary'/></a>
                       <a className="column" href="#"><FontAwesome.FaTwitter size={30} color='$color-primary'/></a>
                     </div>
