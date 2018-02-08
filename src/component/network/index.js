@@ -2,9 +2,36 @@ import './_network.scss';
 import React from 'react';
 import {connect} from 'react-redux';
 import * as neuralNetworkActions from '../../action/neural-network';
+import * as userActions from '../../action/user';
 
 // make the many buttons for selecting which waveform to train on a template
 // make the many buttons for selecting my own network a template
+
+/* need to get all of the user's saved networks, then map over the array and make a button for each
+
+myNetwork buttons
+<div className="column is-one-quarter">
+  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
+    <div className="media-content">
+      <div className="content">
+        <p className="networkName">{{networkName}}</p>
+      </div>
+    </div>
+  </button>
+</div>
+*/
+
+/* Original
+<div className="column is-one-quarter">
+  <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
+    <div className="media-content">
+      <div className="content">
+        <p className="">Network 1</p>
+      </div>
+    </div>
+  </button>
+</div>
+*/
 
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
@@ -13,6 +40,11 @@ class Network extends React.Component{
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
+  }
+  componentDidMount(){
+    if(this.props.loggedIn){
+      this.props.getUserNetworks();
+    }
   }
 
   handleWaveformClick(event){
@@ -38,15 +70,7 @@ class Network extends React.Component{
 
         <div className="columns is-multiline is-mobile">
 
-          <div className="column is-one-quarter">
-            <button className="button is-large myNetwork" onClick={() => {this.handleWaveFormClick();}}>
-              <div className="media-content">
-                <div className="content">
-                  <p className="">Network 1</p>
-                </div>
-              </div>
-            </button>
-          </div>
+
 
         </div>
       </div>;
@@ -104,6 +128,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateNeuralNetwork: (neuralNetwork) => dispatch(neuralNetworkActions.updateAction(neuralNetwork)),
   createNeuralNetwork : (neuralNetwork) => dispatch(neuralNetworkActions.createAction(neuralNetwork)),
+  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
 export default connect(mapStateToProps)(Network);
