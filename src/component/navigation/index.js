@@ -21,9 +21,12 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-    event.preventDefault();
+    
+    console.log(this.state);
     console.log(event.target);
     this.setState({isToggle : !this.state.isToggle });
+    console.log(this.state);
+    
     (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
   }
@@ -31,6 +34,9 @@ class Navigation extends React.Component{
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
+  componentDidMount(){
+    this.handleToggleHamNav(event);
+  }
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){
