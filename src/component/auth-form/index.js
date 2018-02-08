@@ -54,15 +54,15 @@ class AuthForm extends React.Component{
 
     return(
       <div className="layout-default">
-        <section className="hero is-fullheight is-medium is-bold">
-          <div className="hero-body">
+        <section className="hero is-fullheight is-medium is-bold auth-parent-container">
+          <div className="hero-body auth-container">
             <div className="container has-text-centered">
-              <div className="column is-4 is-offset-4">
-                <article className="card is-rounded">
-                  <div className="card-content auth-form">
+              <div className="column is-half is-offset-one-quarter">
+                <article className="card is-rounded container auth-form-container">
+                  <div className="card-content auth-form levels">
                     <form onSubmit = {this.handleSubmit}>
 
-                      <img className="is-centered" src={LogoSVG} alt="logo" width="200"/>
+                      <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
                       <input
                         className="input"
@@ -78,7 +78,7 @@ class AuthForm extends React.Component{
                       {signupRenderedJSX}
 
                       <input
-                        className="input"
+                        className="input level"
                         autoFocus=""
                         type="password"
                         name="password"
