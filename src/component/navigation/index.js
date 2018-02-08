@@ -51,7 +51,7 @@ class Navigation extends React.Component{
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </Link>
 
-            <div className='navbar-burger burger'
+            <div className='navbar-burger burger is-white'
               data-target= "Options"
               onClick={this.handleToggleHamNav} >
               <span></span>
