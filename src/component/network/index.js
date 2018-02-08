@@ -24,13 +24,15 @@ class Network extends React.Component{
   // if not logged in then they should get the option to save their neural net
   handleWaveformClick(event){
     event.preventDefault();
+    let wavename = event.target.id;
     if(!this.token){
-      this.props.loggedOutCreateNeuralNetwork(event.target.id);
+      this.props.loggedOutCreateNeuralNetwork(wavename);
+      /* switch()
+      1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
+      */
+    }else{
+      //put request
     }
-    /* switch()
-    1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
-    2)
-    */
   }
 
   render(){

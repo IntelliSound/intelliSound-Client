@@ -20,7 +20,6 @@ export const fetchUserAction = (neuralNetworkID) => (store) => {
 };
 
 export const loggedOutCreateAction = (wavename) => {
-  console.log(`groot`);
   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`)
     .then(response => console.log(response, `is the response`));
 };
