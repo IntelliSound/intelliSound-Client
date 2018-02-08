@@ -35,16 +35,16 @@ myNetwork buttons
 
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
+  componentDidMount(){
+    if(this.props.loggedIn){
+      this.props.getUserNetworks();
+    }
+  }
   constructor(props){
     super(props);
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
-  }
-  componentDidMount(){
-    if(this.props.loggedIn){
-      this.props.getUserNetworks();
-    }
   }
 
   handleWaveformClick(event){
