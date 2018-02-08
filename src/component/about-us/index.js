@@ -15,19 +15,6 @@ class About extends React.Component{
   render(){
     return (
       <div>
-        <section className="hero is-medium is-bold">
-          <div className="hero-body"> 
-            <div className="container has-text-centered">
-              <h1 className="title is-spaced">
-                  The intelliSoundAI Team
-              </h1>
-              <h2 className="subtitle">
-                  Meet the humans behind the machine
-              </h2>
-            </div>
-          </div>
-        </section>
-      
         <div className="columns">
 
           <div className="column">
@@ -39,18 +26,18 @@ class About extends React.Component{
               </div>
               <div className="card-content">
                 <div className="media">
-                  
+
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Andrew Bloom</p>
                     <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
-      
+
                 <div className="content team-member-bio">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
-                 
+
                 </div>
                 <footer className="card-footer">
                   <a href="https://github.com/ALB37" target="blank" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
@@ -69,18 +56,18 @@ class About extends React.Component{
               </div>
               <div className="card-content">
                 <div className="media">
-                  
+
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Nicholas Carnignan</p>
                     <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
-      
+
                 <div className="content team-member-bio">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
-                 
+
                 </div>
                 <footer className="card-footer">
                   <a href="https://www.linkedin.com/in/nicholascarignan/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
@@ -99,18 +86,18 @@ class About extends React.Component{
               </div>
               <div className="card-content">
                 <div className="media">
-                  
+
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Shannon Dillon</p>
                     <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
-      
+
                 <div className="content team-member-bio">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
-                 
+
                 </div>
                 <footer className="card-footer">
                   <a href="#" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
@@ -130,18 +117,18 @@ class About extends React.Component{
               </div>
               <div className="card-content">
                 <div className="media">
-                  
+
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Jacob Evans</p>
                     <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
-      
+
                 <div className="content team-member-bio">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
-                 
+
                 </div>
                 <footer className="card-footer">
                   <a href="https://www.linkedin.com/in/jacob-m-g-evans/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
@@ -161,18 +148,18 @@ class About extends React.Component{
               </div>
               <div className="card-content">
                 <div className="media">
-                  
+
                   <div className="media-content has-text-centered">
                     <p className="title is-3">David Lindahl</p>
                     <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
-      
+
                 <div className="content team-member-bio">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
-                 
+
                 </div>
                 <footer className="card-footer">
                   <a href="https://www.linkedin.com/in/davidalindahl/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
@@ -183,7 +170,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          
+
 
         </div>
       </div>

@@ -53,10 +53,10 @@ class Landing extends React.Component{
   render(){
 
     let {location} = this.props;
-    
-    let heroBannerJSX = 
+
+    let heroBannerJSX =
         <section className="hero is-medium is-bold">
-          <div className="hero-body"> 
+          <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title is-spaced">
                 Train your own personal Neural Network
@@ -68,9 +68,33 @@ class Landing extends React.Component{
           </div>
         </section>;
 
+    let aboutUsJSX =
+        <section className="hero is-medium is-bold">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <h1 className="title is-spaced">
+                  The intelliSoundAI Team
+              </h1>
+              <h2 className="subtitle">
+                  Meet the humans behind the machine
+              </h2>
+            </div>
+          </div>
+        </section>;
+
+    let BannerJSX = null;
+    if(location.pathname === routes.ROOT_ROUTE){
+      BannerJSX = heroBannerJSX;
+    }else if(location.pathname === routes.ABOUT_ROUTE){
+      BannerJSX = aboutUsJSX;
+    }else if(location.pathname === routes.LOGIN_ROUTE){
+      BannerJSX = 'login';
+    }else if(location.pathname === routes.SIGNUP_ROUTE){
+      BannerJSX = 'signup';
+    }
+
     let defaultJSX =
         <div>
-          {heroBannerJSX}
           <WaveUploader/>;
         </div>;
 
@@ -88,11 +112,11 @@ class Landing extends React.Component{
         authMessage={SWITCH_TO_SIGNUP_MESSAGE}
         authLink={routes.SIGNUP_ROUTE}/>;
 
-    let particlesAnimationJSX = 
-    
-      <Particles 
+    let particlesAnimationJSX =
+
+      <Particles
         params={{
-            
+
           particles: {
             number: {
               value: 30,
@@ -201,23 +225,24 @@ class Landing extends React.Component{
           width: '100%',
         }}
       />;
-    
-    
+
+
 
     console.log('location.pathname :', location.pathname);
     return(
       <div className="landing">
-        
+
         {particlesAnimationJSX}
+        <div className="banner-jsx">{BannerJSX}</div>
 
         {location.pathname === routes.ROOT_ROUTE ? defaultJSX : undefined}
         {location.pathname === routes.SIGNUP_ROUTE ? signupJSX : undefined}
         {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
         {location.pathname === routes.ABOUT_ROUTE ? <About/> : undefined}
-        
+
       </div>
     );
-    
+
 
   }
 }
