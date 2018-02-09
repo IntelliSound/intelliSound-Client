@@ -26,6 +26,7 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 class Landing extends React.Component{
   constructor(props){
     super(props);
+    this.userNetworks = null;
 
     let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
     for(let functionName of memberFunctions){
@@ -101,7 +102,7 @@ class Landing extends React.Component{
 
     let defaultJSX =
         <div>
-          <Network />
+          <Network userNetworks={userNetworks}/>
         </div>;
 
     let signupJSX =
@@ -260,5 +261,6 @@ const mapDispatchToProps = dispatch => ({
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
   createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
+  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

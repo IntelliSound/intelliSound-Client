@@ -21,14 +21,11 @@ export const setNetworkAction = (neuralNetwork) => ({
 export const createAccountAndSaveNetwork = (neuralNetwork, networkName) => (store) => {
   let {token} = store.getState();
 
+  // Shannon- we are only sending back a 200 status, so we don't dispatch to the store after making the POST request
   return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/save/${networkName}`)
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork);
-  // no response body, just a 200 status is sent
-  // .then(() => {
-  //   return store.dispatch(setNetworkAction(response.body));
-  // });
 };
 
 export const loggedOutCreateAction = (wavename) => (store) => {
@@ -53,10 +50,10 @@ export const createAction = (neuralNetwork) => (store) => {
     });
 };
 
-export const updateAction = (neuralNetwork) => (store) => {
+export const updateAction = (neuralNetwork, wavename) => (store) => {
   let {token} = store.getState();
 
-  return superagent.put(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetwork._id}`)
+  return superagent.put(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetwork._id}/${wavename}`)
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
@@ -71,6 +68,6 @@ export const fetchAction = () => (store) => {
   return superagent.get(`${__API_URL__}${routes.USER_ROUTE}/me`)
     .set('Authorization',`Bearer ${token}`)
     .then(response => {
-      return store.dispatch(setNetworkAction(response.body));
+      return store.dispatch(setNetworkAction(response.body.neuralNetworks));
     });
 };
