@@ -1,7 +1,6 @@
 import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
-import NeuralNetworkForm from '../neuralNetworkForm';
 import * as FontAwesome from 'react-icons/lib/fa/';
 
 
@@ -9,6 +8,7 @@ let emptyState = {
   username: '',
   email: '',
   password: '',
+  networkName: '',
 };
 
 class AuthForm extends React.Component{
@@ -32,7 +32,8 @@ class AuthForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.handleComplete(this.state);
+    this.props.handleComplete(this.state)
+      .then();
     this.setState(emptyState);
   }
 
@@ -72,6 +73,16 @@ class AuthForm extends React.Component{
                       <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
 
+                      {this.props.neuralNetwork ?
+                        <input
+                          autoFocus=""
+                          type="text"
+                          name="network"
+                          placeholder="network name"
+                          value={this.state.networkName}
+                          onChange={this.handleChange}
+                          required={true}
+                        /> : undefined}
 
                       <input
                         className="input"

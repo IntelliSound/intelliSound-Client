@@ -7,23 +7,41 @@ export const setNetworkAction = (neuralNetwork) => ({
 });
 
 
-export const fetchUserAction = (neuralNetworkID) => (store) => {
+// export const fetchUserAction = (neuralNetworkID) => (store) => {
+//   let {token} = store.getState();
+//
+//   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetworkID}`)
+//     .set('Authorization',`Bearer ${token}`)
+//     // .set('Content-Type','application/json')
+//     .send(neuralNetwork)
+//     .then(response => {
+//       return store.dispatch(setNetworkAction(response.body));
+//     });
+// };
+
+export const createAccountAndSaveNetwork = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetworkID}`)
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/save/${neuralNetwork}`)
     .set('Authorization',`Bearer ${token}`)
-    // .set('Content-Type','application/json')
+    .set('Content-Type','application/json')
     .send(neuralNetwork)
     .then(response => {
       return store.dispatch(setNetworkAction(response.body));
     });
 };
 
-export const loggedOutCreateAction = (wavename) => {
-  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`)
-    .then(response => console.log(response, `is the response`));
-};
+export const loggedOutCreateAction = (wavename) => (store) => {
+  let {token} = store.getState();
 
+  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`)
+    .then(response => {
+      console.log(response.body.neuralGeneratedFile, `is the neuralGeneratedFile`);
+      console.log(response.body.neuralNetworkToSave, `is the network to save`);
+      return store.dispatch(setNetworkAction(response.body));
+    }
+    );
+};
 
 export const createAction = (neuralNetwork) => (store) => {
   let {token} = store.getState();
