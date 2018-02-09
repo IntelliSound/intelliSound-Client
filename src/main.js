@@ -21,9 +21,16 @@ let middleware = {
   reporter,
 };
 
-let store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(thunk, session, reporter)
-));
+let store = null;
+
+if(process.env.NODE_ENV === 'production'){
+  store = createStore(reducer, applyMiddleware(thunk, session, reporter));
+}else {
+  store = createStore(reducer,composeWithDevTools(
+    applyMiddleware(thunk, session, reporter)
+  ));
+}
+
 
 //-------------
 // Nicholas - state displayer from lecture
