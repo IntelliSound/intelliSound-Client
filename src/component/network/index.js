@@ -35,7 +35,8 @@ class Network extends React.Component{
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
         });
     }else{
-      this.props.updateNeuralNetwork(this.state.neuralNetwork, wavename);
+      console.log(this.props.neuralNetwork, `neuralNetwork I want to update`);
+      this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
     }
   }
 
@@ -46,7 +47,9 @@ class Network extends React.Component{
     2) make a get request for /neuralnetwork/:id to get back that specific id
     3) set the response from that get request as the state.neuralNetwork
     */
-    let networkId = event.target;
+    let networkId = event.target.id;
+    this.props.getNeuralNetwork(networkId)
+      .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
   }
 
 
@@ -60,15 +63,7 @@ class Network extends React.Component{
         </section>
 
         <div className="columns is-multiline is-mobile">
-        // categories.map((category, index) =>
-        //   <div key={index} className='category-item'>
-        //     <h2>Category: {category.label}</h2>
-        //     <h3><em>Budget:</em> ${category.budget}</h3>
-        //     <button onClick={() => this.props.categoryDestroy(category)}> Delete Category </button>
-        //     <CategoryForm category={category} onComplete={categoryUpdate}/>
-        //     <ExpenseForm category={category} onComplete={expenseCreate}/>
-        //     <ExpenseItem expenses={expenses[category.id]}/>
-        //   </div>
+
         </div>
       </div>;
 
@@ -140,9 +135,11 @@ class Network extends React.Component{
 
 const mapStateToProps = (state) => ({
   token: state.token,
+  neuralNetwork: state.neuralNetwork,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getNeuralNetwork : (neuralNetworkId) => dispatch(neuralNetworkActions.fetchAction(neuralNetworkId)),
   updateNeuralNetwork: (neuralNetwork, wavename) => dispatch(neuralNetworkActions.updateAction(neuralNetwork, wavename)),
   loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
 });
