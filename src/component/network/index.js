@@ -32,25 +32,7 @@ class Network extends React.Component{
     if(!this.token){
       this.props.loggedOutCreateNeuralNetwork(wavename)
         .then(response => {
-          let blob = new Blob(response.payload.neuralGeneratedFile.data);
-          let blobURL = URL.createObjectURL(blob);
-          // let size = blob.size;
-          // let type = blob.type;
-          // let reader = new FileReader();
-          // reader.readAsArrayBuffer(blob);
-          // reader.addEventListener('loadend', () => {
-          //   let base64FileData = reader.result.toString();
-          //   let mediaFile = {
-          //     fileUrl: null,
-          //     size: size,
-          //     type: type,
-          //     src: base64FileData,
-          //   };
-          //   localStorage.setItem('audioFile', JSON.stringify(mediaFile));
-          //   let reReadItem = JSON.parse(localStorage.getItem('audioFile'));
-          // });
-          localStorage.setItem('neural-network', JSON.stringify(response.payload.neuralNetworkToSave));
-          this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: blobURL});
+          this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
         });
     }else{
       this.props.updateNeuralNetwork(this.state.neuralNetwork, wavename);
