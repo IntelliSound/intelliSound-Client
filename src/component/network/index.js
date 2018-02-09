@@ -8,6 +8,12 @@ import * as userActions from '../../action/user';
 /* Shannon- need to get all of the user's saved networks, then map over the array and make a button for each
 */
 
+let emptyState = {
+  redirect: false,
+  neuralNetwork: null,
+  audioSrc: null,
+};
+
 // Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
   componentDidMount(){
@@ -17,6 +23,7 @@ class Network extends React.Component{
   }
   constructor(props){
     super(props);
+    this.state = emptyState;
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
   }
@@ -29,14 +36,24 @@ class Network extends React.Component{
     if(!this.token){
       this.props.loggedOutCreateNeuralNetwork(wavename)
         .then(response => {
-          <Redirect to={{
-            pathname:'/login',
-            state: {type:'login', network:{response}},
-          }}/>;
-          // <AuthForm type={'login'} network={response} />;
+          let blob = new Blob(response.payload.neuralGeneratedFile.data);
+          let size = blob.size;
+          let type = blob.type;
+          let reader = new FileReader();
+          reader.readAsArrayBuffer(blob);
+          reader.addEventListener('loadend', () => {
+            let base64FileData = reader.result.toString();
+            let mediaFile = {
+              fileUrl: null,
+              size: size,
+              type: type,
+              src: base64FileData,
+            };
+            localStorage.setItem('audioFile', JSON.stringify(mediaFile));
+            let reReadItem = JSON.parse(localStorage.getItem('audioFile'));
+            this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: reReadItem.src});
+          });
         });
-      /* take to login page to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
-      */
     }else{
       //put request
     }
@@ -66,8 +83,29 @@ class Network extends React.Component{
         Select one of the waveforms below to retrain your network
       </div>;
 
+    let redirectToLogin =
+      <Redirect to={{
+        pathname:'/login',
+        state: {type:'login', network:this.state.neuralnetwork},
+      }}/>;
+
     return(
       <div>
+        {console.log(this.state, `the state`)}
+        {this.state.audioSrc ?
+          <form>
+            <audio
+              controls
+              src={this.state.audioSrc}
+              type='audio/wav'>
+            </audio>
+            <button onClick={() => this.setState({redirect: true})}>Save network</button>
+          </form>
+          : undefined}
+        {this.state.redirect ? redirectToLogin : undefined}
+
+        {this.state.audioSrc ? console.log('it worked') : console.log(`it didn't work`)}
+
         <section className="section is-medium network-div">
           {this.token ? loggedInView : undefined}
 
@@ -94,7 +132,7 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="complex" className="button is-large waveform" onClick={this.handleWaveformClick}>Complex</button>
+              <button id="sin" className="button is-large waveform" onClick={this.handleWaveformClick}>Sin</button>
             </div>
 
           </div>

@@ -1,7 +1,9 @@
 import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
+import {connect} from 'react-redux';
 import * as FontAwesome from 'react-icons/lib/fa/';
+import * as neuralNetworkActions from '../../action/neural-network';
 
 
 let emptyState = {
@@ -33,7 +35,7 @@ class AuthForm extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     this.props.handleComplete(this.state)
-      .then();
+      .then(this.props.createAccountAndSaveNetwork(this.state.network));
     this.setState(emptyState);
   }
 
@@ -77,12 +79,20 @@ class AuthForm extends React.Component{
                         <input
                           autoFocus=""
                           type="text"
-                          name="network"
+                          name="networkName"
                           placeholder="network name"
                           value={this.state.networkName}
                           onChange={this.handleChange}
                           required={true}
-                        /> : undefined}
+                        /> :   <input
+                          autoFocus=""
+                          type="text"
+                          name="networkName"
+                          placeholder="network name"
+                          value={this.state.networkName}
+                          onChange={this.handleChange}
+                          required={true}
+                        />}
 
                       <input
                         className="input"
@@ -132,4 +142,12 @@ class AuthForm extends React.Component{
   }
 }
 
-export default AuthForm;
+const mapStateToProps = (state) => ({
+  token: state.token,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);
