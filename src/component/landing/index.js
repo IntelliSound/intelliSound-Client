@@ -26,6 +26,7 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 class Landing extends React.Component{
   constructor(props){
     super(props);
+    this.userNetworks = null;
 
     let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
     for(let functionName of memberFunctions){
@@ -38,9 +39,9 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
-        console.log(this.state);
-        if(this.state.network){
-          this.props.createAccountAndSaveNetwork(this.state.network);
+        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        if(neuralNetwork){
+          this.props.createAccountAndSaveNetwork(neuralNetwork);
         }
         // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.PROFILE_ROUTE);
@@ -51,8 +52,9 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
-        if(this.state.network){
-          this.props.createAccountAndSaveNetwork(this.state.network);
+        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        if(neuralNetwork){
+          this.props.createAccountAndSaveNetwork(neuralNetwork, user.networkName);
         }
         this.props.history.push(routes.PROFILE_ROUTE);
       })
@@ -100,7 +102,7 @@ class Landing extends React.Component{
 
     let defaultJSX =
         <div>
-          <Network />
+          <Network userNetworks={userNetworks}/>
         </div>;
 
     let signupJSX =
@@ -259,5 +261,6 @@ const mapDispatchToProps = dispatch => ({
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
   createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
+  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
