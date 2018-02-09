@@ -15,7 +15,7 @@ class About extends React.Component{
   render(){
     return (
       <div>
-        <div className="columns">
+        <div className="columns is-multiline is-centered">
 
           <div className="column">
             <div className="card">
