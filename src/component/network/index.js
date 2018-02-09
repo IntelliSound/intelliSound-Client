@@ -14,22 +14,18 @@ let emptyState = {
   audioSrc: null,
 };
 
-// Shannon- need to bind the functions to 'this' to preserve correct scope
 class Network extends React.Component{
-  componentDidMount(){
-    if(this.props.token){
-      this.props.getUserNetworks();
-    }
-  }
+  // Shannon- need to bind the functions to 'this' to preserve correct scope
   constructor(props){
     super(props);
     this.state = emptyState;
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
+    this.handleNetworkClick = this.handleNetworkClick.bind(this);
   }
 
-  //this will make a post request; switch case based on whether user is logged in or not
-  // if not logged in then they should get the option to save their neural net
+  // Shannon- this will make a post request; switch case based on whether user is logged in or not
+  // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
     event.preventDefault();
     let wavename = event.target.id;
@@ -39,21 +35,40 @@ class Network extends React.Component{
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
         });
     }else{
-      //put request
+      this.props.updateNeuralNetwork(this.state.neuralNetwork, wavename);
     }
   }
+
+  handleNetworkClick(event){
+    event.preventDefault();
+    /*
+    1) get the id of the event target (the button corresponding to the network)
+    2) make a get request for /neuralnetwork/:id to get back that specific id
+    3) set the response from that get request as the state.neuralNetwork
+    */
+    let networkId = event.target;
+  }
+
 
   render(){
     let loggedInView =
       <div>
         <section className="message is-primary">
           <div className="message-body">
-            Which network would you like to train? Select one by clicking on the icon below?
+            Which network would you like to train? Select one by clicking on the icon below.
           </div>
         </section>
 
         <div className="columns is-multiline is-mobile">
-
+        // categories.map((category, index) =>
+        //   <div key={index} className='category-item'>
+        //     <h2>Category: {category.label}</h2>
+        //     <h3><em>Budget:</em> ${category.budget}</h3>
+        //     <button onClick={() => this.props.categoryDestroy(category)}> Delete Category </button>
+        //     <CategoryForm category={category} onComplete={categoryUpdate}/>
+        //     <ExpenseForm category={category} onComplete={expenseCreate}/>
+        //     <ExpenseItem expenses={expenses[category.id]}/>
+        //   </div>
         </div>
       </div>;
 
@@ -75,7 +90,6 @@ class Network extends React.Component{
 
     return(
       <div>
-        {console.log(this.state.audioSrc, `the audioSrc`)}
         {this.state.audioSrc ?
           <form>
             <audio
@@ -87,8 +101,6 @@ class Network extends React.Component{
           </form>
           : undefined}
         {this.state.redirect ? redirectToLogin : undefined}
-
-        {this.state.audioSrc ? console.log('it worked') : console.log(`it didn't work`)}
 
         <section className="section is-medium network-div">
           {this.token ? loggedInView : undefined}
@@ -126,21 +138,13 @@ class Network extends React.Component{
   }
 }
 
-/* 1) NOT LOGGED IN
- buttons for making a post request to wave/:waveform that will run a file through the pre-trained networks and return a network & audio file
-          1.a) AFTER CLICKING A BUTTON
-               modal pops up asking them if they want to save the network they just trained; if so make an account or log in
-          1.b) If they do sign up/log in they should be able to name their networks
-*/
-
 const mapStateToProps = (state) => ({
   token: state.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateNeuralNetwork: (neuralNetwork) => dispatch(neuralNetworkActions.updateAction(neuralNetwork)),
+  updateNeuralNetwork: (neuralNetwork, wavename) => dispatch(neuralNetworkActions.updateAction(neuralNetwork, wavename)),
   loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
-  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Network);
