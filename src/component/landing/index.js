@@ -49,12 +49,10 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
-        // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
-        // localStorage.removeItem('neural-network');
+        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, user.networkName);
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
         }
-        // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
@@ -63,11 +61,10 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
-        // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
-        // localStorage.removeItem('neural-network');
+        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          console.log(this.props.neuralNetwork, `neuralNetwork in handleSignup`);
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, user.networkName)
+          console.log(networkName, `is the network name I'm sending to createAccountAndSaveNetwork`);
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
             .then(() => {
               this.props.fetchUserNeuralNetworks()
                 .then(response => {
@@ -281,6 +278,6 @@ const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
-  createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
+  createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

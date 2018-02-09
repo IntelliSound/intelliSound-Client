@@ -65,6 +65,7 @@ export const updateAction = (neuralNetwork, wavename) => (store) => {
 
 export const fetchAction = (neuralNetworkId) => (store) => {
   let {token} = store.getState();
+  console.log(neuralNetworkId, `is the network id, and I ran`);
 
   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetworkId}`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
