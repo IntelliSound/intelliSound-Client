@@ -66,6 +66,7 @@ class Landing extends React.Component{
         // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
         // localStorage.removeItem('neural-network');
         if(this.props.neuralNetwork){
+          console.log(this.props.neuralNetwork, `neuralNetwork in handleSignup`);
           this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, user.networkName)
             .then(() => {
               this.props.fetchUserNeuralNetworks()
