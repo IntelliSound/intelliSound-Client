@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.4.0"
+  },
   "directories": {
     "lib": "lib"
   },
@@ -41,6 +44,7 @@
     "dotenv": "^5.0.0",
     "eslint": "^4.17.0",
     "eslint-plugin-react": "^7.6.1",
+    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "html-webpack-cdn-plugin": "^0.2.0",
