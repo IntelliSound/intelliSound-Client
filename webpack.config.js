@@ -13,7 +13,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
-console.log(process.env.PORT);
 //=======================================
 
 webPackConfig.entry = `${__dirname}/src/main.js`;
