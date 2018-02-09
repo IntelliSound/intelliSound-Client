@@ -61,7 +61,7 @@ class AuthForm extends React.Component{
 
     let googleOauthLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:3000/oauth/google&scope=openid%20email%20profile&client_id=${clientID}&prompt=consent&response_type=code`;
 
-    let signupOnMessageLogInJSX = 
+    let signupOnMessageLogInJSX =
     <div>
       <span className="dontHaveAccountMessage">Dont have an account?</span> <span><Link className="signUpLinkTag " to="/signup">Sign up</Link></span>
     </div>;
@@ -80,7 +80,6 @@ class AuthForm extends React.Component{
 
                       <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
-<<<<<<< HEAD
 
                       {this.props.neuralNetwork ?
                         <input
@@ -100,13 +99,6 @@ class AuthForm extends React.Component{
                           onChange={this.handleChange}
                           required={true}
                         />}
-=======
-                      
-                      <p className="subtitle">
-                        Welcome back!
-                      </p>
-                    
->>>>>>> a3d08d94d2fa703c6ebb5aaab1c1b19321cedbe0
 
                       <input
                         className="input"
