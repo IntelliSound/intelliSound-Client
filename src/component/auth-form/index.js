@@ -84,6 +84,7 @@ class AuthForm extends React.Component{
 
                       {this.props.neuralNetwork ?
                         <input
+                          className="input"
                           autoFocus=""
                           type="text"
                           name="networkName"
