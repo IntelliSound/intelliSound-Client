@@ -14,3 +14,20 @@ a {
     padding-bottom: 5em;
   }
 }
+
+.message {
+  font-family: $family-sans-serif;
+}
+
+.column > .box:hover {
+  $box-shadow:	$very-dark-blue;
+
+}
+
+// david-  changing box colors for network component
+$box-shadow:	0 2px 3px rgba($color-primary, 0.1), 0 0 0 1px rgba($color-secondary, 0.1);
+
+.waveform {
+  cursor: pointer;
+
+}
