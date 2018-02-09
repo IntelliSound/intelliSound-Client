@@ -73,10 +73,15 @@ export const fetchAction = () => (store) => {
     .then(response => {
       let networkIds = response.body.neuralNetworks;
       let userNetworks = [];
-      userNetworks.map(network => {
+      networkIds.map(network => {
         return superagent.get(userNetworks.push(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${network.id}`)
           .set(`Authorization`, `Bearer ${token}`)
-        );});
-      return store.dispatch(setNetworkAction(response.body.neuralNetworks));
+        )
+          .then(network => {
+            userNetworks.push(network);
+          });
+      });
+      // set an action with the generated array of networks
+      return store.dispatch(setNetworkAction(response.body.userNetworks));
     });
 };
