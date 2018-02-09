@@ -23,6 +23,10 @@ let middleware = {
 
 let store = null;
 
+//-------------------------------------------------------------
+// david - this sets up the store for debug environment, removes it for production
+//-------------------------------------------------------------
+
 if(process.env.NODE_ENV === 'production'){
   store = createStore(reducer, applyMiddleware(thunk, session, reporter));
 }else {
