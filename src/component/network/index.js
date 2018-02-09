@@ -10,7 +10,7 @@ import * as userActions from '../../action/user';
 
 let emptyState = {
   redirect: false,
-  // neuralNetwork: null,
+  neuralNetwork: null,
   audioSrc: null,
 };
 
@@ -35,6 +35,7 @@ class Network extends React.Component{
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
         });
     }else{
+      console.log(this.props.neuralNetwork, `neuralNetwork I want to update`);
       this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
     }
   }

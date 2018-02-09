@@ -26,8 +26,14 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 class Landing extends React.Component{
   // Shannon- grab all of the user's neural networks if they are logged in so we can populate the buttons with the network names
   componentWillMount(){
-    if(this.props.loggedIn){
-      this.props.fetchUserNeuralNetworks();
+    if(this.props.token){
+      this.props.fetchUserNeuralNetworks()
+        .then(response => {
+          let neuralNetworks = response.payload.neuralNetworks;
+          neuralNetworks.map(neuralNetwork => {
+            // make a button for each neuralNetwork with it's name as the id
+          });
+        });
     }
   }
   constructor(props){
@@ -261,6 +267,7 @@ class Landing extends React.Component{
 // const mapStateToProps = state => ({token : state.token});
 const mapStateToProps = state => ({
   neuralNetwork: state.neuralNetwork,
+  token: state.token,
 });
 
 const mapDispatchToProps = dispatch => ({
