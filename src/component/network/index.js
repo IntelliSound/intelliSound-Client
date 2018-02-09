@@ -58,7 +58,7 @@ class Network extends React.Component{
         </section>
 
         <div className="columns is-multiline is-mobile">
-          {this.props.ueserNeuralNetworks ? this.props.userNeuralNetworks.map((neuralNetwork, index) => {
+          {this.props.userNeuralNetworks ? this.props.userNeuralNetworks.map((neuralNetwork, index) => {
             return <div key={index} className="userNeuralNetwork" id={neuralNetwork.networkName}>
               <button onClick={this.handleNetworkClick}></button>
             </div>;

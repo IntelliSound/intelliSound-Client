@@ -52,7 +52,7 @@ class Landing extends React.Component{
         // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
         // localStorage.removeItem('neural-network');
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork, user.networkName);
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, user.networkName);
         }
         // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.ROOT_ROUTE);
@@ -66,9 +66,16 @@ class Landing extends React.Component{
         // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
         // localStorage.removeItem('neural-network');
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork, user.networkName);
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, user.networkName)
+            .then(() => {
+              this.props.fetchUserNeuralNetworks()
+                .then(response => {
+                  let neuralNetworks = response.payload.neuralNetworks;
+                  this.userNeuralNetworks = neuralNetworks;
+                });
+            });
+          this.props.history.push(routes.ROOT_ROUTE);
         }
-        this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
   }
