@@ -18,7 +18,6 @@ webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
   path: `${__dirname}/build`,
   filename: 'bundle.[hash].js',
-  publicPath : process.env.CDN_URL,
 },
 
 //=======================================

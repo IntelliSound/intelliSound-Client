@@ -2,15 +2,15 @@ import logo from '../../assets/intelliSound-logo.svg';
 import './_navigation.scss';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
 
-
-
 class Navigation extends React.Component{
   constructor(props){
     super(props);
+    this.token = this.props.token;
     this.state = {
       isToggle: false,
     };
@@ -21,16 +21,14 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-    
-    console.log(this.state);
-    console.log(event.target);
     this.setState({isToggle : !this.state.isToggle });
-    console.log(this.state);
     
-    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  document.getElementById('navbar-menu-id').className = 'navbar-menu');
+    (this.state.isToggle) ? (event.target.className = 'navbar-burger burger is-active', 
+      document.getElementById('navbar-menu-id').className = 'navbar-menu is-active') : (event.target.className = 'navbar-burger burger',  
+      document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
+  
   }
-
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
@@ -40,8 +38,20 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){
+    console.log(this.token, `is the token in navigation`);
+    
+    let logInNavBar =
+      <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
+
+    let logOutNavBar =
+      <Link to="/logout" className="navbar-item has-text-centered">Log out</Link>;
+
+    let handleLoginVsLogout = (this.state.token) ? logOutNavBar : logInNavBar;
+
+
+
     return (
-      <section className="navigation schoger-border">
+      <section className="navigation schoger-border  is-transparent">
         <nav className="navbar is-white">
 
           <div className="navbar-brand" >
@@ -49,7 +59,7 @@ class Navigation extends React.Component{
               <img src={logo} alt="intelliSound Logo"  height="60"/>
             </Link>
 
-            <div className='navbar-burger burger'
+            <div className="navbar-burger burger is-white"
               data-target= "Options"
               onClick={this.handleToggleHamNav} >
               <span></span>
@@ -60,10 +70,12 @@ class Navigation extends React.Component{
 
           <div className="navbar-menu" id='navbar-menu-id'>
             <div className="navbar-start"></div>
+
             <div className="navbar-end" id="Options">
-              <Link to="/" className="navbar-item">Home</Link>
-              <Link to="/login" className="navbar-item">Login</Link>
-              <Link to="/about" className="navbar-item">About Us</Link>
+              <Link to="/" className="navbar-item has-text-centered">Home</Link>
+              {handleLoginVsLogout}
+              <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
+
             </div>
           </div>
 
@@ -74,4 +86,8 @@ class Navigation extends React.Component{
   }
 }
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  token: state.token,
+});
+
+export default connect(mapStateToProps)(Navigation);
