@@ -35,6 +35,7 @@ class AuthForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
+    localStorage.setItem('neural-network-name', JSON.stringify(this.state.networkName));
     this.props.handleComplete(this.state);
     this.setState(emptyState);
   }
@@ -84,6 +85,7 @@ class AuthForm extends React.Component{
 
                       {this.props.neuralNetwork ?
                         <input
+                          className="input"
                           autoFocus=""
                           type="text"
                           name="networkName"
