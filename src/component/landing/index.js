@@ -24,9 +24,9 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 
 
 class Landing extends React.Component{
-  componentDidMount(){
+  // Shannon- grab all of the user's neural networks if they are logged in so we can populate the buttons with the network names
+  componentWillMount(){
     if(this.props.loggedIn){
-      console.log(`I ran`);
       this.props.fetchUserNeuralNetworks();
     }
   }
@@ -68,7 +68,6 @@ class Landing extends React.Component{
   }
 
   render(){
-
     let {location} = this.props;
 
     let heroBannerJSX =
@@ -240,8 +239,6 @@ class Landing extends React.Component{
       />;
 
 
-
-    console.log('location.pathname :', location.pathname);
     return(
       <div className="landing">
 

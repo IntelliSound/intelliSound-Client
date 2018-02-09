@@ -42,7 +42,7 @@ export const loggedOutCreateAction = (wavename) => (store) => {
 export const createAction = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`) 
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`)
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
@@ -68,11 +68,15 @@ export const updateAction = (neuralNetwork, wavename) => (store) => {
 export const fetchAction = () => (store) => {
   let {token} = store.getState();
 
-
   return superagent.get(`${__API_URL__}${routes.USER_ROUTE}/me`) //eslint-disable-line
-
     .set('Authorization',`Bearer ${token}`)
     .then(response => {
+      let networkIds = response.body.neuralNetworks;
+      let userNetworks = [];
+      userNetworks.map(network => {
+        return superagent.get(userNetworks.push(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${network.id}`)
+          .set(`Authorization`, `Bearer ${token}`)
+        );});
       return store.dispatch(setNetworkAction(response.body.neuralNetworks));
     });
 };
