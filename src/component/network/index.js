@@ -5,6 +5,17 @@ import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
+// sound wave files
+import triangleWave from '../../assets/triangle-wave.png';
+import squareWave from '../../assets/square-wave.png';
+import sineWave from '../../assets/sine-wave.png';
+import sawtoothWave from '../../assets/sawtooth-wave.png';
+import trumpetIcon from '../../assets/trumpet-icon.png';
+
+
+import * as FontAwesome from 'react-icons/lib/fa/';
+
+
 /* Shannon- need to get all of the user's saved networks, then map over the array and make a button for each
 */
 
@@ -104,26 +115,26 @@ class Network extends React.Component{
             {this.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
-          <div className="columns is-multiline is-mobile">
+          <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="trumpet" className="button is-large waveform" onClick={this.handleWaveformClick}> Trumpet </button>
+              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon}></img></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="tri" className="button is-large waveform" onClick={this.handleWaveformClick}>Tri</button>
+              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave}></img></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sqr" className="button is-large waveform" onClick={this.handleWaveformClick}>SQR</button>
+              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave}></img></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="saw" className="button is-large waveform" onClick={this.handleWaveformClick}>Saw</button>
+              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave}></img></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sin" className="button is-large waveform" onClick={this.handleWaveformClick}>Sin</button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave}></img></button>
             </div>
 
           </div>
