@@ -3,12 +3,14 @@ import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import * as FontAwesome from 'react-icons/lib/fa/';
+import * as neuralNetworkActions from '../../action/neural-network';
 
 
 let emptyState = {
   username: '',
   email: '',
   password: '',
+  networkName: '',
 };
 
 class AuthForm extends React.Component{
@@ -59,7 +61,7 @@ class AuthForm extends React.Component{
 
     let googleOauthLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http://localhost:3000/oauth/google&scope=openid%20email%20profile&client_id=${clientID}&prompt=consent&response_type=code`;
 
-    let signupOnMessageLogInJSX = 
+    let signupOnMessageLogInJSX =
     <div>
       <span className="dontHaveAccountMessage">Dont have an account?</span> <span><Link className="signUpLinkTag " to="/signup">Sign up</Link></span>
     </div>;
@@ -78,11 +80,25 @@ class AuthForm extends React.Component{
 
                       <img className="is-centered form-logo level" src={LogoSVG} alt="logo" width="200"/>
 
-                      
-                      <p className="subtitle">
-                        Welcome back!
-                      </p>
-                    
+
+                      {this.props.neuralNetwork ?
+                        <input
+                          autoFocus=""
+                          type="text"
+                          name="networkName"
+                          placeholder="network name"
+                          value={this.state.networkName}
+                          onChange={this.handleChange}
+                          required={true}
+                        /> :   <input
+                          autoFocus=""
+                          type="text"
+                          name="networkName"
+                          placeholder="network name"
+                          value={this.state.networkName}
+                          onChange={this.handleChange}
+                          required={true}
+                        />}
 
                       <input
                         className="input"
