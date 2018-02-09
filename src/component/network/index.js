@@ -46,7 +46,10 @@ class Network extends React.Component{
     2) make a get request for /neuralnetwork/:id to get back that specific id
     3) set the response from that get request as the state.neuralNetwork
     */
-    let networkId = event.target;
+    let networkId = event.target._id;
+    this.props.getNeuralNetwork(networkId)
+      .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
+
   }
 
 
@@ -135,6 +138,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getNeuralNetwork : (neuralNetworkId) => dispatch(neuralNetworkActions.fetchAction(neuralNetworkId)),
   updateNeuralNetwork: (neuralNetwork, wavename) => dispatch(neuralNetworkActions.updateAction(neuralNetwork, wavename)),
   loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
 });
