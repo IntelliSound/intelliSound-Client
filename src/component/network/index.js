@@ -1,6 +1,7 @@
 import './_network.scss';
 import React from 'react';
 import {connect} from 'react-redux';
+import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
@@ -26,9 +27,15 @@ class Network extends React.Component{
     event.preventDefault();
     let wavename = event.target.id;
     if(!this.token){
-      this.props.loggedOutCreateNeuralNetwork(wavename);
-      /* switch()
-      1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
+      this.props.loggedOutCreateNeuralNetwork(wavename)
+        .then(response => {
+          <Redirect to={{
+            pathname:'/login',
+            state: {type:'login', network:{response}},
+          }}/>;
+          // <AuthForm type={'login'} network={response} />;
+        });
+      /* take to login page to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
       */
     }else{
       //put request

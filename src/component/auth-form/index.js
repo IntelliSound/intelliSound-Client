@@ -1,6 +1,7 @@
 import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
+import NeuralNetworkForm from '../neuralNetworkForm';
 import * as FontAwesome from 'react-icons/lib/fa/';
 
 
