@@ -123,7 +123,7 @@ class Landing extends React.Component{
 
           particles: {
             number: {
-              value: 30,
+              value: 5,
               density: {
                 enable: true,
                 value_area: 800,

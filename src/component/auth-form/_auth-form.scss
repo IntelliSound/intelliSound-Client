@@ -19,15 +19,12 @@ auth-parent-container {
   margin: 0 auto;
 }
 
-.auth-container {
-  display: inline;
-  position: absolute;
-  top: 20%;
-  width: 100%;
-}
-
 .hero-body .auth-container > .container {
   margin: 0 auto;
+}
+
+body > div > div > div > div > div.layout-default > section > div > div {
+  width: 100%;
 }
 
 .auth-container > div {
@@ -52,4 +49,13 @@ body > div > div > div > div:nth-child(1) > div.layout-default > section > div >
   bottom: 1px;
   padding-bottom: 1px
 } 
+
+.signUpLinkTag {
+  color: $color-secondary;
+  font-weight: 600;
+}
+
+.dontHaveAccountMessage {
+  font-weight: 600;   
+}
 

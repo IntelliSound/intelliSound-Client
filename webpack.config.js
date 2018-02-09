@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
-const UglifyPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
 const webPackConfig = module.exports = {};
 
@@ -12,6 +12,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
+
 //=======================================
 
 webPackConfig.entry = `${__dirname}/src/main.js`;
@@ -33,7 +34,7 @@ webPackConfig.plugins = [
 
 if(PRODUCTION) {
   webPackConfig.plugins = webPackConfig.plugins.concat([
-    new UglifyPlugin(),
+    // new UglifyPlugin(),
     new CleanPlugin(),
   ]);
 }
