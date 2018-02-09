@@ -1,6 +1,6 @@
 # intelliSenseAI
  
-![Logo]('./src/assets/intelliSound-logo.png')
+![Logo]('/src/assets/intelliSound-logo.png')
 
 
 [![Build Status](https://travis-ci.org/IntelliSound/intelliSound-Client.svg?branch=development)](https://travis-ci.org/IntelliSound/intelliSound-Client)
