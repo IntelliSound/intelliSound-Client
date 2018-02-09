@@ -38,6 +38,7 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
+        console.log(this.state);
         if(this.state.network){
           this.props.createAccountAndSaveNetwork(this.state.network);
         }
