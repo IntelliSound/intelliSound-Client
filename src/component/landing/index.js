@@ -13,6 +13,7 @@ import About from '../about-us';
 import Network from '../network';
 import * as authActions from '../../action/auth';
 import * as userActions from '../../action/user';
+import * as neuralNetworkActions from '../../action/neural-network';
 import StyleSheet from '../style-sheet';
 
 //========================================
@@ -23,8 +24,10 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 
 
 class Landing extends React.Component{
+  // Shannon- grab all of the user's neural networks if they are logged in so we can populate the buttons with the network names
   constructor(props){
     super(props);
+    this.userNeuralNetworks = null;
 
     let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
     for(let functionName of memberFunctions){
@@ -33,12 +36,24 @@ class Landing extends React.Component{
       }
     }
   }
+  componentWillMount(){
+    if(this.props.token){
+      this.props.fetchUserNeuralNetworks()
+        .then(response => {
+          let neuralNetworks = response.payload.neuralNetworks;
+          this.userNeuralNetworks = neuralNetworks;
+        });
+    }
+  }
 
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
-        // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
-        this.props.history.push(routes.PROFILE_ROUTE);
+        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
+        if(this.props.neuralNetwork){
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
+        }
+        this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
   }
@@ -46,13 +61,24 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
-        this.props.history.push(routes.PROFILE_ROUTE);
+        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
+        if(this.props.neuralNetwork){
+          console.log(networkName, `is the network name I'm sending to createAccountAndSaveNetwork`);
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
+            .then(() => {
+              this.props.fetchUserNeuralNetworks()
+                .then(response => {
+                  let neuralNetworks = response.payload.neuralNetworks;
+                  this.userNeuralNetworks = neuralNetworks;
+                });
+            });
+          this.props.history.push(routes.ROOT_ROUTE);
+        }
       })
       .catch(console.error);
   }
 
   render(){
-
     let {location} = this.props;
 
     let heroBannerJSX =
@@ -92,7 +118,7 @@ class Landing extends React.Component{
 
     let defaultJSX =
         <div>
-          <Network />
+          <Network userNeuralNetworks={this.userNeuralNetworks}/>
         </div>;
 
     let signupJSX =
@@ -224,8 +250,6 @@ class Landing extends React.Component{
       />;
 
 
-
-    console.log('location.pathname :', location.pathname);
     return(
       <div className="landing">
 
@@ -244,11 +268,16 @@ class Landing extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({token : state.token});
+// const mapStateToProps = state => ({token : state.token});
+const mapStateToProps = state => ({
+  neuralNetwork: state.neuralNetwork,
+  token: state.token,
+});
 
 const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
+  createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

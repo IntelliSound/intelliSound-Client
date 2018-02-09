@@ -36,8 +36,8 @@ class About extends React.Component{
                 I am a full stack JavaScript developer with a passion for creativity in all forms. I am driven by finding novel solutions to difficult problems, using whatever tools I have at my disposal.
                 </div>
                 <footer className="card-footer">
-                  <a href="https://github.com/ALB37" target="blank" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
                   <a href="https://linkedin.com/in/alb37/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
+                  <a href="https://github.com/ALB37" target="blank" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
                 </footer>
               </div>
             </div>
@@ -140,9 +140,7 @@ class About extends React.Component{
                 </div>
 
                 <div className="content team-member-bio">
-                Front end developer, schooled in the MERN Full Stack stack, who loves crafting intuitive digital products and compelling user experiences that surprise and delight end users.
-
-
+                Full Stack JavaScript developer (MERN) totally in love with front-end development. I love crafting intuitive digital products and compelling user experiences that surprise and delight end users.
                 </div>
                 <footer className="card-footer">
                   <a href="https://www.linkedin.com/in/davidalindahl/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>

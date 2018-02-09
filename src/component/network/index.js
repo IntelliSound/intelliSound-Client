@@ -1,49 +1,87 @@
 import './_network.scss';
 import React from 'react';
 import {connect} from 'react-redux';
+import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
+
+// sound wave files images
+import triangleWave from '../../assets/triangle-wave.png';
+import squareWave from '../../assets/square-wave.png';
+import sineWave from '../../assets/sine-wave.png';
+import sawtoothWave from '../../assets/sawtooth-wave.png';
+import trumpetIcon from '../../assets/trumpet-icon.png';
+
+// sound wave files images
+// import triangleClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import squareClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import sineClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import sawtoothClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import trumpetClip from '';
+
+
+import * as FontAwesome from 'react-icons/lib/fa/';
+
 
 /* Shannon- need to get all of the user's saved networks, then map over the array and make a button for each
 */
 
-// Shannon- need to bind the functions to 'this' to preserve correct scope
+let emptyState = {
+  redirect: false,
+  neuralNetwork: null,
+  audioSrc: null,
+};
+
 class Network extends React.Component{
-  componentDidMount(){
-    if(this.props.token){
-      this.props.getUserNetworks();
-    }
-  }
+  // Shannon- need to bind the functions to 'this' to preserve correct scope
   constructor(props){
     super(props);
+    this.state = emptyState;
     this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
+    this.handleNetworkClick = this.handleNetworkClick.bind(this);
   }
 
-  //this will make a post request; switch case based on whether user is logged in or not
-  // if not logged in then they should get the option to save their neural net
+  // Shannon- this will make a post request; switch case based on whether user is logged in or not
+  // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
     event.preventDefault();
+    console.log(event.target, `event target`);
+    let wavename = event.target.id;
     if(!this.token){
-      this.props.loggedOutCreateNeuralNetwork(event.target.id);
+      this.props.loggedOutCreateNeuralNetwork(wavename)
+        .then(response => {
+          this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
+        });
+    }else{
+      console.log(this.props.neuralNetwork, `neuralNetwork I want to update`);
+      this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
     }
-    /* switch()
-    1) not logged in, click on a network to train: call loggedOutCreateNeuralNetwork then render the modal to create an account & button with onClick = post(neuralnetwork/save/:neuralNetworkName); user needs to set neuralnetwork name or we generate one for them with faker
-    2)
-    */
   }
+
+  handleNetworkClick(event){
+    event.preventDefault();
+    let networkId = event.target.id;
+    this.props.getNeuralNetwork(networkId)
+      .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
+  }
+
 
   render(){
     let loggedInView =
       <div>
         <section className="message is-primary">
           <div className="message-body">
-            Which network would you like to train? Select one by clicking on the icon below?
+            Which network would you like to train? Select one by clicking on the icon below.
           </div>
         </section>
 
         <div className="columns is-multiline is-mobile">
-
+          {this.props.userNeuralNetworks ? this.props.userNeuralNetworks.map((neuralNetwork, index) => {
+            return <div key={index} className="userNeuralNetwork" id={neuralNetwork.networkName}>
+              <button onClick={this.handleNetworkClick}></button>
+            </div>;
+          }) : undefined}
         </div>
       </div>;
 
@@ -57,8 +95,26 @@ class Network extends React.Component{
         Select one of the waveforms below to retrain your network
       </div>;
 
+    let redirectToLogin =
+      <Redirect to={{
+        pathname:'/login',
+        state: {type:'login', network:this.state.neuralnetwork},
+      }}/>;
+
     return(
       <div>
+        {this.state.audioSrc ?
+          <form>
+            <audio
+              controls
+              src={this.state.audioSrc}
+              type='audio/wav'>
+            </audio>
+            <button onClick={() => this.setState({redirect: true})}>Save network</button>
+          </form>
+          : undefined}
+        {this.state.redirect ? redirectToLogin : undefined}
+
         <section className="section is-medium network-div">
           {this.token ? loggedInView : undefined}
 
@@ -66,26 +122,51 @@ class Network extends React.Component{
             {this.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
-          <div className="columns is-multiline is-mobile">
+          <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="trumpet" className="button is-large waveform" onClick={this.handleWaveformClick}> Trumpet </button>
+              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon} id="trumpet"></img><p className="subtitle">Trumpet Sound</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/trumpet.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="tri" className="button is-large waveform" onClick={this.handleWaveformClick}>Tri</button>
+              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave} id="tri"></img><p className="subtitle">Triangle Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/tri.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sqr" className="button is-large waveform" onClick={this.handleWaveformClick}>SQR</button>
+              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave} id="sqr"></img><p className="subtitle">Square Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/sqr.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="saw" className="button is-large waveform" onClick={this.handleWaveformClick}>Saw</button>
+              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave} id="saw"></img><p className="subtitle">Sawtooth Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/saw.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="complex" className="button is-large waveform" onClick={this.handleWaveformClick}>Complex</button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave} id="sin"></img><p className="subtitle">Sine Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/sin.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
           </div>
@@ -95,21 +176,15 @@ class Network extends React.Component{
   }
 }
 
-/* 1) NOT LOGGED IN
- buttons for making a post request to wave/:waveform that will run a file through the pre-trained networks and return a network & audio file
-          1.a) AFTER CLICKING A BUTTON
-               modal pops up asking them if they want to save the network they just trained; if so make an account or log in
-          1.b) If they do sign up/log in they should be able to name their networks
-*/
-
 const mapStateToProps = (state) => ({
   token: state.token,
+  neuralNetwork: state.neuralNetwork,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateNeuralNetwork: (neuralNetwork) => dispatch(neuralNetworkActions.updateAction(neuralNetwork)),
+  getNeuralNetwork : (neuralNetworkId) => dispatch(neuralNetworkActions.fetchAction(neuralNetworkId)),
+  updateNeuralNetwork: (neuralNetwork, wavename) => dispatch(neuralNetworkActions.updateAction(neuralNetwork, wavename)),
   loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
-  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Network);
