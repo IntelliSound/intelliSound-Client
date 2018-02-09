@@ -5,12 +5,19 @@ import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
-// sound wave files
+// sound wave files images
 import triangleWave from '../../assets/triangle-wave.png';
 import squareWave from '../../assets/square-wave.png';
 import sineWave from '../../assets/sine-wave.png';
 import sawtoothWave from '../../assets/sawtooth-wave.png';
 import trumpetIcon from '../../assets/trumpet-icon.png';
+
+// sound wave files images
+// import triangleClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import squareClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import sineClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import sawtoothClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
+// import trumpetClip from '';
 
 
 import * as FontAwesome from 'react-icons/lib/fa/';
@@ -119,22 +126,47 @@ class Network extends React.Component{
 
             <div className="column is-one-fifth">
               <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon}></img><p className="subtitle">Trumpet Sound</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/trumpet.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
               <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave}></img><p className="subtitle">Triangle Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/tri.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
               <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave}></img><p className="subtitle">Square Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/sqr.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
               <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave}></img><p className="subtitle">Sawtooth Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/saw.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
             <div className="column is-one-fifth">
               <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave}></img><p className="subtitle">Sine Wave</p></button>
+              <audio
+                controls
+                src={'https://s3.amazonaws.com/intellisoundai/sin.wav'}
+                type='audio/wav'>
+              </audio>
             </div>
 
           </div>
