@@ -6,8 +6,8 @@ import * as FontAwesome from 'react-icons/lib/fa/';
 import andrewPic from '../../assets/andrew-headshot.jpg';
 import nicholasPic from '../../assets/Nicholas-headshot.jpg';
 import davidPic from '../../assets/david-headshot.jpg';
-
-
+import jacobPic from '../../assets/jacob-headshot.jpg';
+import shannonPic from '../../assets/shannon-headshot.jpg';
 
 
 class About extends React.Component{
@@ -15,7 +15,7 @@ class About extends React.Component{
   render(){
     return (
       <div>
-        <div className="columns">
+        <div className="columns is-multiline is-centered">
 
           <div className="column">
             <div className="card">
@@ -29,15 +29,11 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Andrew Bloom</p>
-                    <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
 
                 <div className="content team-member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
-
+                I am a full stack JavaScript developer with a passion for creativity in all forms. I am driven by finding novel solutions to difficult problems, using whatever tools I have at my disposal.
                 </div>
                 <footer className="card-footer">
                   <a href="https://github.com/ALB37" target="blank" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
@@ -59,15 +55,11 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Nicholas Carnignan</p>
-                    <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
 
                 <div className="content team-member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
-
+                Javascript developer with strong mathematics background; experience managing and de-escalating team stress during difficult situations. I excel at mitigating risk and managing teams. 
                 </div>
                 <footer className="card-footer">
                   <a href="https://www.linkedin.com/in/nicholascarignan/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
@@ -81,7 +73,7 @@ class About extends React.Component{
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
-                  <img className="headshots" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                  <img className="headshots" src={shannonPic} alt="Shannon Dillion Headshot"/>
                 </figure>
               </div>
               <div className="card-content">
@@ -89,20 +81,16 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Shannon Dillon</p>
-                    <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
 
                 <div className="content team-member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
+                Full-stack JavaScript developer hoping to make an impact on the world utilizing the power of technology. I started simply building websites to cheer up friends. 
 
                 </div>
                 <footer className="card-footer">
-                  <a href="#" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
-                  <a href="#" className="card-footer-item"><FontAwesome.FaTwitter color='$color-primary'/></a>
-                  <a href="#" className="card-footer-item"><FontAwesome.FaInstagram color='$color-primary'/></a>
+                  <a href="https://www.linkedin.com/in/shannon-e-dillon/" target="blank" className="card-footer-item"><FontAwesome.FaLinkedin color='$color-primary'/></a>
+                  <a href="https://github.com/sedillon93" target="blank" className="card-footer-item"><FontAwesome.FaGithub color='$color-primary'/></a>
                 </footer>
               </div>
             </div>
@@ -112,7 +100,7 @@ class About extends React.Component{
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4 level">
-                  <img className="headshots level-item has-text-centered" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                  <img className="headshots level-item has-text-centered" src={jacobPic} alt="Jacob Evans Headshot"/>
                 </figure>
               </div>
               <div className="card-content">
@@ -120,14 +108,11 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Jacob Evans</p>
-                    <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
 
                 <div className="content team-member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
+                As a Developer, I am an ambitious individual that will seek opportunities that will foster my growth and experience as a software engineer to continue to expand my knowledge and skill base in the software engineering field.
 
                 </div>
                 <footer className="card-footer">
@@ -151,14 +136,12 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">David Lindahl</p>
-                    <p className="subtitle is-5">@johnsmith</p>
                   </div>
                 </div>
 
                 <div className="content team-member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
+                Front end developer, schooled in the MERN Full Stack stack, who loves crafting intuitive digital products and compelling user experiences that surprise and delight end users.
+
 
                 </div>
                 <footer className="card-footer">
