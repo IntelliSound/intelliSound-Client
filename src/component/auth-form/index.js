@@ -61,7 +61,7 @@ class AuthForm extends React.Component{
 
     let signupOnMessageLogInJSX = 
     <div>
-      <span className="tag">Dont have an account?</span> <span><Link className="tag" to="/signup">Sign up</Link></span>
+      <span className="dontHaveAccountMessage">Dont have an account?</span> <span><Link className="signUpLinkTag " to="/signup">Sign up</Link></span>
     </div>;
 
     let signupOnLogInJSX = (type === 'login') ? signupOnMessageLogInJSX : undefined;
@@ -69,8 +69,8 @@ class AuthForm extends React.Component{
     return(
       <div className="layout-default">
         <section className="hero is-fullheight is-medium is-bold auth-parent-container">
-          <div className="hero-body auth-container">
-            <div className="container has-text-centered">
+          <div className="hero-body">
+            <div className="has-text-centered setWidth100">
               <div className="column is-half is-offset-one-quarter">
                 <article className="card is-rounded container auth-form-container">
                   <div className="card-content auth-form levels">
