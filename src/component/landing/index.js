@@ -44,10 +44,10 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
-        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
-        localStorage.removeItem('neural-network');
-        if(neuralNetwork){
-          this.props.createAccountAndSaveNetwork(neuralNetwork, user.networkName);
+        // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        // localStorage.removeItem('neural-network');
+        if(this.props.neuralNetwork){
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork, user.networkName);
         }
         // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.ROOT_ROUTE);
@@ -58,9 +58,10 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
-        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
-        if(neuralNetwork){
-          this.props.createAccountAndSaveNetwork(neuralNetwork, user.networkName);
+        // let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        // localStorage.removeItem('neural-network');
+        if(this.props.neuralNetwork){
+          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork, user.networkName);
         }
         this.props.history.push(routes.ROOT_ROUTE);
       })
@@ -257,7 +258,10 @@ class Landing extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({token : state.token});
+// const mapStateToProps = state => ({token : state.token});
+const mapStateToProps = state => ({
+  neuralNetwork: state.neuralNetwork,
+});
 
 const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),

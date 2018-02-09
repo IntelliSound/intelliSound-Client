@@ -10,7 +10,7 @@ import * as userActions from '../../action/user';
 
 let emptyState = {
   redirect: false,
-  neuralNetwork: null,
+  // neuralNetwork: null,
   audioSrc: null,
 };
 
@@ -35,7 +35,7 @@ class Network extends React.Component{
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
         });
     }else{
-      this.props.updateNeuralNetwork(this.state.neuralNetwork, wavename);
+      this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
     }
   }
 
@@ -46,10 +46,9 @@ class Network extends React.Component{
     2) make a get request for /neuralnetwork/:id to get back that specific id
     3) set the response from that get request as the state.neuralNetwork
     */
-    let networkId = event.target._id;
+    let networkId = event.target.id;
     this.props.getNeuralNetwork(networkId)
       .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
-
   }
 
 
@@ -135,6 +134,7 @@ class Network extends React.Component{
 
 const mapStateToProps = (state) => ({
   token: state.token,
+  neuralNetwork: state.neuralNetwork,
 });
 
 const mapDispatchToProps = (dispatch) => ({
