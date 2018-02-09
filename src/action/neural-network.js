@@ -21,7 +21,7 @@ export const setNetworkAction = (neuralNetwork) => ({
 export const createAccountAndSaveNetwork = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/save/${neuralNetwork}`)
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/save/${neuralNetwork}`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
@@ -34,7 +34,7 @@ export const createAccountAndSaveNetwork = (neuralNetwork) => (store) => {
 export const loggedOutCreateAction = (wavename) => (store) => {
   let {token} = store.getState();
 
-  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`)
+  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`) //eslint-disable-line
     .then(response => {
       return store.dispatch(setNetworkAction(response.body));
     }
@@ -44,7 +44,7 @@ export const loggedOutCreateAction = (wavename) => (store) => {
 export const createAction = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`)
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`) 
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
@@ -56,7 +56,7 @@ export const createAction = (neuralNetwork) => (store) => {
 export const updateAction = (neuralNetwork) => (store) => {
   let {token} = store.getState();
 
-  return superagent.put(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetwork._id}`)
+  return superagent.put(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${neuralNetwork._id}`)//eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
@@ -68,7 +68,7 @@ export const updateAction = (neuralNetwork) => (store) => {
 export const fetchAction = () => (store) => {
   let {token} = store.getState();
 
-  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/me`)
+  return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/me`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .then(response => {
       return store.dispatch(setNetworkAction(response.body));
