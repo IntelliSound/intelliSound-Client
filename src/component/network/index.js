@@ -42,11 +42,6 @@ class Network extends React.Component{
 
   handleNetworkClick(event){
     event.preventDefault();
-    /*
-    1) get the id of the event target (the button corresponding to the network)
-    2) make a get request for /neuralnetwork/:id to get back that specific id
-    3) set the response from that get request as the state.neuralNetwork
-    */
     let networkId = event.target.id;
     this.props.getNeuralNetwork(networkId)
       .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
@@ -63,7 +58,11 @@ class Network extends React.Component{
         </section>
 
         <div className="columns is-multiline is-mobile">
-
+          {this.props.ueserNeuralNetworks ? this.props.userNeuralNetworks.map((neuralNetwork, index) => {
+            return <div key={index} className="userNeuralNetwork" id={neuralNetwork.networkName}>
+              <button onClick={this.handleNetworkClick}></button>
+            </div>;
+          }) : undefined}
         </div>
       </div>;
 
