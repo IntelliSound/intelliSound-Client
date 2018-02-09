@@ -38,9 +38,9 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
-        console.log(this.state);
-        if(this.state.network){
-          this.props.createAccountAndSaveNetwork(this.state.network);
+        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        if(neuralNetwork){
+          this.props.createAccountAndSaveNetwork(neuralNetwork);
         }
         // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.PROFILE_ROUTE);
@@ -51,8 +51,9 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
-        if(this.state.network){
-          this.props.createAccountAndSaveNetwork(this.state.network);
+        let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        if(neuralNetwork){
+          this.props.createAccountAndSaveNetwork(neuralNetwork, user.networkName);
         }
         this.props.history.push(routes.PROFILE_ROUTE);
       })

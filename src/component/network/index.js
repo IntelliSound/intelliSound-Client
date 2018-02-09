@@ -53,6 +53,7 @@ class Network extends React.Component{
           //   localStorage.setItem('audioFile', JSON.stringify(mediaFile));
           //   let reReadItem = JSON.parse(localStorage.getItem('audioFile'));
           // });
+          localStorage.setItem('neural-network', JSON.stringify(response.payload.neuralNetworkToSave));
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: blobURL});
         });
     }else{
