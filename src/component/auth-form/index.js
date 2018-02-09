@@ -2,6 +2,7 @@ import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import * as FontAwesome from 'react-icons/lib/fa/';
 import * as neuralNetworkActions from '../../action/neural-network';
 
@@ -90,15 +91,8 @@ class AuthForm extends React.Component{
                           value={this.state.networkName}
                           onChange={this.handleChange}
                           required={true}
-                        /> :   <input
-                          autoFocus=""
-                          type="text"
-                          name="networkName"
-                          placeholder="network name"
-                          value={this.state.networkName}
-                          onChange={this.handleChange}
-                          required={true}
-                        />}
+                        /> : undefined
+                      }
 
                       <input
                         className="input"
@@ -150,4 +144,8 @@ class AuthForm extends React.Component{
   }
 }
 
-export default AuthForm;
+const mapStateToProps = (state) => ({
+  neuralNetwork : state.neuralNetwork,
+});
+
+export default connect(mapStateToProps)(AuthForm);

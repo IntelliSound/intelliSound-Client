@@ -78,15 +78,7 @@ class Network extends React.Component{
         </section>
 
         <div className="columns is-multiline is-mobile">
-        // categories.map((category, index) =>
-        //   <div key={index} className='category-item'>
-        //     <h2>Category: {category.label}</h2>
-        //     <h3><em>Budget:</em> ${category.budget}</h3>
-        //     <button onClick={() => this.props.categoryDestroy(category)}> Delete Category </button>
-        //     <CategoryForm category={category} onComplete={categoryUpdate}/>
-        //     <ExpenseForm category={category} onComplete={expenseCreate}/>
-        //     <ExpenseItem expenses={expenses[category.id]}/>
-        //   </div>
+
         </div>
       </div>;
 

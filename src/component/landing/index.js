@@ -24,9 +24,14 @@ const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 
 
 class Landing extends React.Component{
+  componentDidMount(){
+    if(this.props.loggedIn){
+      console.log(`I ran`);
+      this.props.fetchUserNeuralNetworks();
+    }
+  }
   constructor(props){
     super(props);
-    this.userNetworks = null;
 
     let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
     for(let functionName of memberFunctions){
@@ -40,6 +45,7 @@ class Landing extends React.Component{
     this.props.handleLogin(user)
       .then(() => {
         let neuralNetwork = JSON.parse(localStorage.getItem('neural-network'));
+        localStorage.removeItem('neural-network');
         if(neuralNetwork){
           this.props.createAccountAndSaveNetwork(neuralNetwork);
         }
@@ -102,7 +108,7 @@ class Landing extends React.Component{
 
     let defaultJSX =
         <div>
-          <Network userNetworks={userNetworks}/>
+          <Network />
         </div>;
 
     let signupJSX =
@@ -261,6 +267,5 @@ const mapDispatchToProps = dispatch => ({
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
   createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
-  getUserNetworks : (user) => dispatch(userActions.fetchAction()),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
