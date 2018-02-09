@@ -46,6 +46,7 @@ class Network extends React.Component{
   // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
     event.preventDefault();
+    console.log(event.target, `event target`);
     let wavename = event.target.id;
     if(!this.token){
       this.props.loggedOutCreateNeuralNetwork(wavename)
@@ -124,7 +125,7 @@ class Network extends React.Component{
           <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon}></img><p className="subtitle">Trumpet Sound</p></button>
+              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon} id="trumpet"></img><p className="subtitle">Trumpet Sound</p></button>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundai/trumpet.wav'}
@@ -133,7 +134,7 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave}></img><p className="subtitle">Triangle Wave</p></button>
+              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave} id="tri"></img><p className="subtitle">Triangle Wave</p></button>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundai/tri.wav'}
@@ -142,7 +143,7 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave}></img><p className="subtitle">Square Wave</p></button>
+              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave} id="sqr"></img><p className="subtitle">Square Wave</p></button>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundai/sqr.wav'}
@@ -151,7 +152,7 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave}></img><p className="subtitle">Sawtooth Wave</p></button>
+              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave} id="saw"></img><p className="subtitle">Sawtooth Wave</p></button>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundai/saw.wav'}
@@ -160,7 +161,7 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave}></img><p className="subtitle">Sine Wave</p></button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave} id="sin"></img><p className="subtitle">Sine Wave</p></button>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundai/sin.wav'}
