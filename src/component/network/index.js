@@ -118,23 +118,23 @@ class Network extends React.Component{
           <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon}></img></button>
+              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon}></img><p className="subtitle">Trumpet Sound</p></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave}></img></button>
+              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave}></img><p className="subtitle">Triangle Wave</p></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave}></img></button>
+              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave}></img><p className="subtitle">Square Wave</p></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave}></img></button>
+              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave}></img><p className="subtitle">Sawtooth Wave</p></button>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave}></img></button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave}></img><p className="subtitle">Sine Wave</p></button>
             </div>
 
           </div>
