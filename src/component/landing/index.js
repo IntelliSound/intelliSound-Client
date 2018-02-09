@@ -13,6 +13,7 @@ import About from '../about-us';
 import Network from '../network';
 import * as authActions from '../../action/auth';
 import * as userActions from '../../action/user';
+import * as neuralNetworkActions from '../../action/neural-network';
 import StyleSheet from '../style-sheet';
 
 //========================================
@@ -37,6 +38,9 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
+        if(this.state.network){
+          this.props.createAccountAndSaveNetwork(this.state.network);
+        }
         // this.props.fetchUserNeuralNetworks(); //Nicholas this may be needed to render nets
         this.props.history.push(routes.PROFILE_ROUTE);
       })
@@ -46,6 +50,9 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.handleSignup(user)
       .then(() => {
+        if(this.state.network){
+          this.props.createAccountAndSaveNetwork(this.state.network);
+        }
         this.props.history.push(routes.PROFILE_ROUTE);
       })
       .catch(console.error);
@@ -250,5 +257,6 @@ const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
+  createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

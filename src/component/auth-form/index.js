@@ -1,7 +1,6 @@
 import './_auth-form.scss';
 import LogoSVG from '../../assets/intelliSound-logo.svg';
 import React from 'react';
-import {connect} from 'react-redux';
 import * as FontAwesome from 'react-icons/lib/fa/';
 import * as neuralNetworkActions from '../../action/neural-network';
 
@@ -34,8 +33,7 @@ class AuthForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.handleComplete(this.state)
-      .then(this.props.createAccountAndSaveNetwork(this.state.network));
+    this.props.handleComplete(this.state);
     this.setState(emptyState);
   }
 
@@ -142,12 +140,4 @@ class AuthForm extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => ({
-  token: state.token,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  createAccountAndSaveNetwork: (network) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);
+export default AuthForm;

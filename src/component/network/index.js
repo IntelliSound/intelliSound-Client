@@ -91,7 +91,7 @@ class Network extends React.Component{
 
     return(
       <div>
-        {console.log(this.state, `the state`)}
+        {console.log(this.state.audioSrc, `the audioSrc`)}
         {this.state.audioSrc ?
           <form>
             <audio

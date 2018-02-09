@@ -26,6 +26,7 @@ export const createAccountAndSaveNetwork = (neuralNetwork) => (store) => {
     .set('Content-Type','application/json')
     .send(neuralNetwork)
     .then(response => {
+      console.log(`I ran with: `, response);
       return store.dispatch(setNetworkAction(response.body));
     });
 };
@@ -35,9 +36,6 @@ export const loggedOutCreateAction = (wavename) => (store) => {
 
   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`)
     .then(response => {
-      console.log(response.body, `the response body`);
-      // console.log(response.body.neuralGeneratedFile, `is the neuralGeneratedFile`);
-      // console.log(response.body.neuralNetworkToSave, `is the network to save`);
       return store.dispatch(setNetworkAction(response.body));
     }
     );
