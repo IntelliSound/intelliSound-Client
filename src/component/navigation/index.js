@@ -28,7 +28,7 @@ class Navigation extends React.Component{
       document.getElementById('navbar-menu-id').className = 'navbar-menu');
 
   
-
+  }
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
