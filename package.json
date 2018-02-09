@@ -13,7 +13,7 @@
     "watch": "webpack-dev-server --inline --hot",
     "build": "webpack",
     "test": "jest -i --coverage",
-    "start": "node main.js",
+    "start": "node index.js",
     "heroku-postbuild": "webpack"
   },
   "repository": {
