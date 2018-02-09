@@ -1,16 +1,17 @@
 # intelliSenseAI
+ 
+![Logo]('./src/assets/intelliSound-logo.png')
+
 
 [![Build Status](https://travis-ci.org/IntelliSound/intelliSound-Client.svg?branch=development)](https://travis-ci.org/IntelliSound/intelliSound-Client)
 ![Heroku](http://heroku-badge.herokuapp.com/?app=heroku-badge&root=projects.html)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-[]()
-
-badges
-webpack
-react
-font awesome
-bulma
+Badges to add:
+- webpack
+- react
+- font awesome
+- bulma
 
 
 
