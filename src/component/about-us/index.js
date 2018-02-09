@@ -29,7 +29,6 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Andrew Bloom</p>
-                    <p className="subtitle is-6">"Backend Magician"</p>
                   </div>
                 </div>
 
@@ -56,7 +55,6 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Nicholas Carnignan</p>
-                    <p className="subtitle is-6">"Makes Backend dreams come true"</p>
                   </div>
                 </div>
 
@@ -83,7 +81,6 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Shannon Dillon</p>
-                    <p className="subtitle is-6">"React rules my world"</p>
                   </div>
                 </div>
 
@@ -111,7 +108,6 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">Jacob Evans</p>
-                    <p className="subtitle is-6">"Resident Machine Learning Human"</p>
                   </div>
                 </div>
 
@@ -140,7 +136,6 @@ class About extends React.Component{
 
                   <div className="media-content has-text-centered">
                     <p className="title is-3">David Lindahl</p>
-                    <p className="subtitle is-6">Jack of All Things CSS</p>
                   </div>
                 </div>
 
