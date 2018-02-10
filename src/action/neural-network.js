@@ -33,7 +33,7 @@ export const createAccountAndSaveNetwork = (neuralNetwork, networkName) => (stor
 
 export const loggedOutCreateAction = (wavename) => (store) => {
   let {token} = store.getState();
-
+  console.log(wavename);
   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`) //eslint-disable-line
     .then(response => {
       return store.dispatch(setNetworkAction(response.body));
