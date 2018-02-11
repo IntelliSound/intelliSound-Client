@@ -12,13 +12,6 @@ import sineWave from '../../assets/sine-wave.png';
 import sawtoothWave from '../../assets/sawtooth-wave.png';
 import trumpetIcon from '../../assets/trumpet-icon.png';
 
-// sound wave files images
-// import triangleClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
-// import squareClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
-// import sineClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
-// import sawtoothClip from 'https://s3.amazonaws.com/intellisoundai/saw.wav';
-// import trumpetClip from '';
-
 
 import * as FontAwesome from 'react-icons/lib/fa/';
 
@@ -124,46 +117,46 @@ class Network extends React.Component{
           <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="trumpet" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={trumpetIcon} id="trumpet"></img><p className="subtitle" id="trumpet">Trumpet Sound</p></button>
+              <button id="org" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="org">org</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundai/trumpet.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
                 type='audio/wav'>
               </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><img  src={triangleWave} id="tri"></img><p className="subtitle" id="tri">Triangle Wave</p></button>
+              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="tri">tri</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundai/tri.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/tri.wav'}
                 type='audio/wav'>
               </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={squareWave} id="sqr"></img><p className="subtitle" id="sqr">Square Wave</p></button>
+              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sqr">sqr</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundai/sqr.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sqr.wav'}
                 type='audio/wav'>
               </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sawtoothWave} id="saw"></img><p className="subtitle" id="saw">Sawtooth Wave</p></button>
+              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="saw">saw</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundai/saw.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/saw.wav'}
                 type='audio/wav'>
               </audio>
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><img src={sineWave} id="sin"></img><p className="subtitle" id="sin">Sine Wave</p></button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sin">sin</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundai/sin.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
                 type='audio/wav'>
               </audio>
             </div>
