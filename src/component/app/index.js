@@ -10,7 +10,7 @@ import AuthForm from '../auth-form';
 import About from '../about-us';
 
 import * as routes from '../../routes';
-import * as neuralNetworkActions from '../../action/neural-network';
+import * as userActions from '../../action/user';
 import * as cookieAction from '../../lib/cookie';
 import * as tokenAction from '../../action/auth';
 
@@ -49,7 +49,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserNeuralNetworks: () => dispatch(neuralNetworkActions.fetchAction()),
+  fetchUserNeuralNetworks: () => dispatch(userActions.fetchAction()),
   setTokenAction: (token) => dispatch(tokenAction.setTokenAction(token)),
 });
 

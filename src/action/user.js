@@ -34,10 +34,10 @@ export const updateAction = (user) => (store) => {
 export const fetchAction = () => (store) => {
   let {token} = store.getState();
 
-  return superagent.get(`${__API_URL__}${routes.USER_ROUTE}/me`) //eslint-disable-line
+  return superagent.get(`${__API_URL__}${routes.USER_ROUTE}`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .then(response => {
-      console.log(response.body, `is the response from the 'get/me' route`);
+      console.log(response.body, `is the response from the get on 'user' route`);
       return store.dispatch(setUserAction(response.body));
     });
 };
@@ -45,7 +45,7 @@ export const fetchAction = () => (store) => {
 // export const fetchAction = () => (store) => {
 //   let {token} = store.getState();
 //
-//   return superagent.get(`${__API_URL__}${routes.USER_ROUTE}/me`) //eslint-disable-line
+//   return superagent.get(`${__API_URL__}${routes.USER_ROUTE}`) //eslint-disable-line
 //     .set('Authorization',`Bearer ${token}`)
 //     .then(response => {
 //       let networkIds = response.body.neuralNetworks;

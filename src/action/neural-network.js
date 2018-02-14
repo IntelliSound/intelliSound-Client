@@ -39,10 +39,10 @@ export const loggedOutCreateAction = (wavename) => (store) => {
     });
 };
 
-export const createAction = (neuralNetwork) => (store) => {
+export const createAction = (neuralNetwork, wavename) => (store) => {
   let {token} = store.getState();
 
-  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${WAVENAME}`)
+  return superagent.post(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}/${wavename}`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(neuralNetwork)
