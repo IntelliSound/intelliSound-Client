@@ -3,6 +3,7 @@ import './_navigation.scss';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import * as authActions from '../../action/auth';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
@@ -14,7 +15,12 @@ class Navigation extends React.Component{
     this.state = {
       isToggle: true,
     };
-    this.handleToggleHamNav = this.handleToggleHamNav.bind(this);
+    let memberFunctions = Object.getOwnPropertyNames(Navigation.prototype);
+    for (let functionName of memberFunctions) {
+      if (functionName.startsWith('handle')) {
+        this[functionName] = this[functionName].bind(this);
+      }
+    }
   }
 
   //-------------------------------------------------------------
@@ -38,6 +44,12 @@ class Navigation extends React.Component{
     }
 
   }
+
+  handleLogout(){
+    console.log('handling logout');
+    console.log(this.props);
+    this.props.userLogout();
+  }
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
@@ -45,13 +57,14 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){    
+    console.log('render on nav', this);
     let logInNavBar =
       <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
 
     let logOutNavBar =
-      <Link to="/logout" className="navbar-item has-text-centered">Log out</Link>;
+      <a onClick={this.handleLogout} className="navbar-item has-text-centered">Log Out</a>;
 
-    let handleLoginVsLogout = (this.state.token) ? logOutNavBar : logInNavBar;
+    let handleLoginVsLogout = (this.props.token) ? logOutNavBar : logInNavBar;
 
 
 
@@ -95,4 +108,10 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = dispatch => ({
+  
+  userLogout: () => dispatch(authActions.logoutAction()),
+  
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
