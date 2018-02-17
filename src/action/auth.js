@@ -14,7 +14,6 @@ export const removeTokenAction = () => ({
 
 
 export const signupAction = (user) => (store) => {
-  console.log('user signup:', user);
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`) //eslint-disable-line
     .send(user)
     .withCredentials()
@@ -24,7 +23,6 @@ export const signupAction = (user) => (store) => {
 };
 
 export const loginAction = (user) => (store) => {
-  console.log('user login', user);
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`) //eslint-disable-line
     .auth(user.username, user.password)
     .withCredentials()

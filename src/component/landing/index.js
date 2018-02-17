@@ -38,6 +38,7 @@ class Landing extends React.Component{
   }
   componentWillMount(){
     if(this.props.token){
+      // change to actually fetch each neural network
       this.props.fetchUserNeuralNetworks()
         .then(response => {
           let neuralNetworks = response.payload.neuralNetworks;
@@ -72,8 +73,8 @@ class Landing extends React.Component{
                   this.userNeuralNetworks = neuralNetworks;
                 });
             });
-          this.props.history.push(routes.ROOT_ROUTE);
         }
+        this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
   }
@@ -278,6 +279,7 @@ const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
+  fetchNeuralNetworks : (neuralNetId) => dispatch(neuralNetworkActions.fetchAction(neuralNetId)),
   createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
