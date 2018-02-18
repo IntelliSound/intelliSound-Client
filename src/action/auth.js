@@ -34,5 +34,5 @@ export const loginAction = (user) => (store) => {
 export const logoutAction = () => (store) => {
   console.log('user logout');
   deleteCookie('X-intelliSoundAi-Token');
-  return store.dispatch(removeTokenAction);
+  return store.dispatch(removeTokenAction());
 };

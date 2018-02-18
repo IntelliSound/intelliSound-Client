@@ -37,6 +37,7 @@ class Landing extends React.Component{
     }
   }
   componentWillMount(){
+    console.log('landing props', this.props);
     if(this.props.token){
       // change to actually fetch each neural network
       this.props.fetchUserNeuralNetworks()

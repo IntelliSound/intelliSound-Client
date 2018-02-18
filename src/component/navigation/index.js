@@ -1,8 +1,9 @@
 import logo from '../../assets/intelliSound-logo.svg';
 import './_navigation.scss';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import * as routes from '../../routes';
 import * as authActions from '../../action/auth';
 
 // david - need to change below anchor tags to Link tags
@@ -49,6 +50,7 @@ class Navigation extends React.Component{
     console.log('handling logout');
     console.log(this.props);
     this.props.userLogout();
+    this.props.history.push(routes.ROOT_ROUTE);
   }
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
@@ -109,9 +111,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  
   userLogout: () => dispatch(authActions.logoutAction()),
-  
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));
