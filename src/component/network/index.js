@@ -108,10 +108,10 @@ class Network extends React.Component{
         {this.state.redirect ? redirectToLogin : undefined}
 
         <section className="section is-medium network-div">
-          {this.token ? loggedInView : undefined}
+          {this.props.token ? loggedInView : undefined}
 
           <section className="message is-primary">
-            {this.token ? signedInInstructions : loggedOutInstructions}
+            {this.props.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
           <div className="columns .is-centered is-multiline">
