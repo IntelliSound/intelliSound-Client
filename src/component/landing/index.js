@@ -53,7 +53,7 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
         }
         this.props.history.push(routes.ROOT_ROUTE);
       })
@@ -65,8 +65,8 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          console.log(networkName, `is the network name I'm sending to createAccountAndSaveNetwork`);
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
+          console.log(networkName, `is the network name I'm sending to saveNetwork`);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
             .then(() => {
               this.props.fetchUserNeuralNetworks()
                 .then(response => {
@@ -281,6 +281,6 @@ const mapDispatchToProps = dispatch => ({
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
   fetchNeuralNetworks : (neuralNetId) => dispatch(neuralNetworkActions.fetchAction(neuralNetId)),
-  createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
+  saveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.saveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

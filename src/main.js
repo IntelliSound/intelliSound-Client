@@ -28,7 +28,7 @@ let store = null;
 //-------------------------------------------------------------
 
 if (process.env.NODE_ENV === 'production'){
-  store = createStore(reducer, applyMiddleware(thunk, session, reporter));
+  store = createStore(reducer, applyMiddleware(thunk, session));
 } else {
   store = createStore(reducer,composeWithDevTools(
     applyMiddleware(thunk, session, reporter)

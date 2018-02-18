@@ -23,9 +23,9 @@ class App extends React.Component{
     if(this.props.loggedIn){
       this.props.fetchUserNeuralNetworks();
       // .catch(console.error)
-
     }
   }
+  
   render(){
     return (
       <div className="app">
