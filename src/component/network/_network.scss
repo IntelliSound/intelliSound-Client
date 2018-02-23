@@ -7,8 +7,8 @@
 
 $box-color: $color-primary;
 
-.box {
-  margin-bottom: 0;
+.box:last-child {
+  margin-bottom: 1.5em !important;
 }
 
 .message {

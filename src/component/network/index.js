@@ -84,7 +84,7 @@ class Network extends React.Component{
 
     let signedInInstructions =
       <div className="message-body subtitle">
-        Select one of the waveforms below to retrain your network
+        Select one of the waveforms below to retrain your network.
       </div>;
 
     let redirectToLogin =
