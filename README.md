@@ -1,6 +1,6 @@
 # intelliSenseAI
  
-![Logo]('/src/assets/intelliSound-logo.png')
+![Logo](/src/assets/intelliSound-logo.png)
 
 
 [![Build Status](https://travis-ci.org/IntelliSound/intelliSound-Client.svg?branch=development)](https://travis-ci.org/IntelliSound/intelliSound-Client)
@@ -20,10 +20,10 @@ intelliSoundAI is a web application that allows a user to choose a simple wave f
 
 ## To View The Site
 
-[Go here](http://intellisenseai.com)
+[Go here](http://intelliSoundAI.com)
 
 ## Style Guide
-To see our stylesheets guide, go [here](http://intellisenseai.com/stylesheet).
+To see our stylesheets guide, go [here](http://intelliSoundAI.com/stylesheet).
 
 ## Built With
 
