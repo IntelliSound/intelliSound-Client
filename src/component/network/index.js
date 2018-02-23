@@ -107,7 +107,7 @@ class Network extends React.Component{
           : undefined}
         {this.state.redirect ? redirectToLogin : undefined}
 
-        <section className="section is-medium network-div">
+        <section className="section is-medium network-div" id="train">
           {this.props.token ? loggedInView : undefined}
 
           <section className="message is-primary">
