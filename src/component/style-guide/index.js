@@ -1,20 +1,28 @@
-import './_style-sheet.scss';
+import './_style-guide.scss';
 import React from 'react';
 
-class StyleSheet extends React.Component{
+class StyleGuide extends React.Component{
   render(){
     return (
       <div className="StyleSheet">
-        <section className="color-schemes">
+        <p className="title is-1"> Style Guide
+        </p>
+
+        <section className="color-schemes columns">
           <ul>
-            <li className="color-primary">primary</li>
-            <li className="color-secondary">secondary</li>
-            <li className="color-tertiarty">tertiarty</li>
-            <li className="color-auxillary">auxillary</li>
+            <p className="title is-2"> Colors
+            </p>
+            <li className="color-primary column">Primary Color</li>
+            <li className="color-secondary column">Secondary Color</li>
+            <li className="color-white column">White Color</li>
+            <li className="color-gray column">Gray Color</li>
+            <li className="color-dark column">Pseudo-Black Color</li>
           </ul>
         </section>
 
-        <section className="standard-fonts">
+        <section className="standard-fonts columns">
+          <p className="title is-2"> Typography
+          </p>
           <h1>h1 Font Style</h1>
           <h2>h2 Font Style</h2>
           <h3>h3 Font Style</h3>
@@ -26,10 +34,11 @@ class StyleSheet extends React.Component{
           <h1>h1 Font Style</h1>
           <h1>h1 Font Style</h1>
           <h1>h1 Font Style</h1>
-
         </section>
 
         <section className="buttons">
+          <p className="title is-2"> Typography
+          </p>
           <section className="small-button">
             <button> Button Primary Small </button>
             <button> Button Secondary Small </button>
@@ -57,11 +66,8 @@ class StyleSheet extends React.Component{
 
         <section className="feedback-messages">
         </section>
-
-
-
       </div>);
   }
 }
 
-export default StyleSheet;
+export default StyleGuide;
