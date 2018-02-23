@@ -17,7 +17,7 @@ class About extends React.Component{
       <div>
         <div className="columns is-multiline is-centered">
 
-          <div className="column">
+          <div className="column is-one-fifth">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -43,7 +43,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column">
+          <div className="column is-one-fifth">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -69,7 +69,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column">
+          <div className="column is-one-fifth">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -96,7 +96,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column">
+          <div className="column is-one-fifth">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4 level">
@@ -124,7 +124,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column">
+          <div className="column is-one-fifth">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
