@@ -30,7 +30,6 @@ class Network extends React.Component{
   constructor(props){
     super(props);
     this.state = emptyState;
-    this.token = this.props.token;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
   }
@@ -40,7 +39,7 @@ class Network extends React.Component{
   handleWaveformClick(event){
     event.preventDefault();
     let wavename = event.target.id;
-    if(!this.token){
+    if(!this.props.token){
       this.props.loggedOutCreateNeuralNetwork(wavename)
         .then(response => {
           this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
@@ -60,6 +59,7 @@ class Network extends React.Component{
 
 
   render(){
+    console.log(this.props.userNeuralNetworks);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -108,10 +108,10 @@ class Network extends React.Component{
         {this.state.redirect ? redirectToLogin : undefined}
 
         <section className="section is-medium network-div">
-          {this.token ? loggedInView : undefined}
+          {this.props.token ? loggedInView : undefined}
 
           <section className="message is-primary">
-            {this.token ? signedInInstructions : loggedOutInstructions}
+            {this.props.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
           <div className="columns .is-centered is-multiline">

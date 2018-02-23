@@ -37,7 +37,9 @@ class Landing extends React.Component{
     }
   }
   componentWillMount(){
+    console.log('landing props', this.props);
     if(this.props.token){
+      // change to actually fetch each neural network
       this.props.fetchUserNeuralNetworks()
         .then(response => {
           let neuralNetworks = response.payload.neuralNetworks;
@@ -51,7 +53,7 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
         }
         this.props.history.push(routes.ROOT_ROUTE);
       })
@@ -63,8 +65,8 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          console.log(networkName, `is the network name I'm sending to createAccountAndSaveNetwork`);
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
+          console.log(networkName, `is the network name I'm sending to saveNetwork`);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
             .then(() => {
               this.props.fetchUserNeuralNetworks()
                 .then(response => {
@@ -72,8 +74,8 @@ class Landing extends React.Component{
                   this.userNeuralNetworks = neuralNetworks;
                 });
             });
-          this.props.history.push(routes.ROOT_ROUTE);
         }
+        this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
   }
@@ -278,6 +280,7 @@ const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
-  createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
+  fetchNeuralNetworks : (neuralNetId) => dispatch(neuralNetworkActions.fetchAction(neuralNetId)),
+  saveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.saveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
