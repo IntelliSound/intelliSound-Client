@@ -27,9 +27,9 @@ let store = null;
 // david - this sets up the store for debug environment, removes it for production
 //-------------------------------------------------------------
 
-if(process.env.NODE_ENV === 'production'){
-  store = createStore(reducer, applyMiddleware(thunk, session, reporter));
-}else {
+if (process.env.NODE_ENV === 'production'){
+  store = createStore(reducer, applyMiddleware(thunk, session));
+} else {
   store = createStore(reducer,composeWithDevTools(
     applyMiddleware(thunk, session, reporter)
   ));

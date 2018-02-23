@@ -3,6 +3,7 @@ let token = cookie.fetchCookie('X-intelliSoundAi-Token');
 let initialState = token ? token : null;
 
 export default (state = initialState, {type, payload}) => {
+  console.log('token reducer', type);
   switch (type) {
     case 'TOKEN_SET' :
       return payload;

@@ -3,14 +3,14 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import StyleSheet from '../style-sheet';
+import StyleGuide from '../style-guide';
 import Landing from '../landing';
 import Navigation from '../navigation';
 import AuthForm from '../auth-form';
 import About from '../about-us';
 
 import * as routes from '../../routes';
-import * as neuralNetworkActions from '../../action/neural-network';
+import * as userActions from '../../action/user';
 import * as cookieAction from '../../lib/cookie';
 import * as tokenAction from '../../action/auth';
 
@@ -23,9 +23,9 @@ class App extends React.Component{
     if(this.props.loggedIn){
       this.props.fetchUserNeuralNetworks();
       // .catch(console.error)
-
     }
   }
+  
   render(){
     return (
       <div className="app">
@@ -37,7 +37,7 @@ class App extends React.Component{
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
             <Route path={routes.ABOUT_ROUTE} component={Landing} />
-            <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
+            <Route path={routes.STYLEGUIDE_ROUTE} component={StyleGuide} />
           </div>
         </BrowserRouter>
       </div>);
@@ -49,7 +49,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserNeuralNetworks: () => dispatch(neuralNetworkActions.fetchAction()),
+  fetchUserNeuralNetworks: () => dispatch(userActions.fetchAction()),
   setTokenAction: (token) => dispatch(tokenAction.setTokenAction(token)),
 });
 

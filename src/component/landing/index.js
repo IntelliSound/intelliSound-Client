@@ -14,7 +14,7 @@ import Network from '../network';
 import * as authActions from '../../action/auth';
 import * as userActions from '../../action/user';
 import * as neuralNetworkActions from '../../action/neural-network';
-import StyleSheet from '../style-sheet';
+import StyleSheet from '../style-guide';
 
 //========================================
 // Magic Strings
@@ -37,7 +37,9 @@ class Landing extends React.Component{
     }
   }
   componentWillMount(){
+    console.log('landing props', this.props);
     if(this.props.token){
+      // change to actually fetch each neural network
       this.props.fetchUserNeuralNetworks()
         .then(response => {
           let neuralNetworks = response.payload.neuralNetworks;
@@ -51,7 +53,7 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
         }
         this.props.history.push(routes.ROOT_ROUTE);
       })
@@ -63,8 +65,8 @@ class Landing extends React.Component{
       .then(() => {
         let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
         if(this.props.neuralNetwork){
-          console.log(networkName, `is the network name I'm sending to createAccountAndSaveNetwork`);
-          this.props.createAccountAndSaveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
+          console.log(networkName, `is the network name I'm sending to saveNetwork`);
+          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
             .then(() => {
               this.props.fetchUserNeuralNetworks()
                 .then(response => {
@@ -72,8 +74,8 @@ class Landing extends React.Component{
                   this.userNeuralNetworks = neuralNetworks;
                 });
             });
-          this.props.history.push(routes.ROOT_ROUTE);
         }
+        this.props.history.push(routes.ROOT_ROUTE);
       })
       .catch(console.error);
   }
@@ -86,11 +88,12 @@ class Landing extends React.Component{
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title is-spaced">
-                Train your own personal Neural Network
+                Train Your Own Personal Neural Network
               </h1>
               <h2 className="subtitle">
                 Experience the raw power of machine learning
               </h2>
+              <a className="button is-primary is-outlined tryBtn" href="#train">Try it out</a>
             </div>
           </div>
         </section>;
@@ -278,6 +281,7 @@ const mapDispatchToProps = dispatch => ({
   handleSignup : (user) => dispatch(authActions.signupAction(user)),
   handleLogin : (user) => dispatch(authActions.loginAction(user)),
   fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
-  createAccountAndSaveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.createAccountAndSaveNetwork(network, networkName)),
+  fetchNeuralNetworks : (neuralNetId) => dispatch(neuralNetworkActions.fetchAction(neuralNetId)),
+  saveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.saveNetwork(network, networkName)),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

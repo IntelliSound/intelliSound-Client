@@ -1,0 +1,45 @@
+@import "_intellisound-vars";
+
+// *{
+//   outline: $color-primary dotted 2px;
+// }
+
+.colorCircles{
+  display: block;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
+
+.color-primary {
+  background-color: $color-primary;
+}
+
+.color-secondary {
+  background-color: $color-secondary;
+}
+
+.color-white {
+  background-color: $white;
+}
+
+.color-gray {
+  background-color: $gray;
+}
+
+.color-dark {
+  background-color: $very-dark-blue;
+}
+
+.serif {
+  font-family: $family-serif;
+}
+
+.sans-serif {
+  font-family: $family-sans-serif;
+}
+
+.StyleSheet {
+  padding: 2em;
+}
