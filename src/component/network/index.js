@@ -117,10 +117,10 @@ class Network extends React.Component{
           <div className="columns .is-centered is-multiline">
 
             <div className="column is-one-fifth">
-              <button id="org" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="org">org</p></button>
+              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sin">sin</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
                 type='audio/wav'>
               </audio>
             </div>
@@ -153,10 +153,10 @@ class Network extends React.Component{
             </div>
 
             <div className="column is-one-fifth">
-              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sin">sin</p></button>
+              <button id="org" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="org">org</p></button>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
                 type='audio/wav'>
               </audio>
             </div>
