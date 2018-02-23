@@ -6,11 +6,11 @@ import * as neuralNetworkActions from '../../action/neural-network';
 import * as userActions from '../../action/user';
 
 // sound wave files images
-import triangleWave from '../../assets/triangle-wave.png';
-import squareWave from '../../assets/square-wave.png';
-import sineWave from '../../assets/sine-wave.png';
-import sawtoothWave from '../../assets/sawtooth-wave.png';
-import trumpetIcon from '../../assets/trumpet-icon.png';
+import triangleWave from '../../assets/triangle-wave.svg';
+import squareWave from '../../assets/square-wave.svg';
+import sineWave from '../../assets/sine-wave.svg';
+import sawtoothWave from '../../assets/sawtooth-wave.svg';
+import organWave from '../../assets/organ-wave.svg';
 
 
 import * as FontAwesome from 'react-icons/lib/fa/';
@@ -64,7 +64,7 @@ class Network extends React.Component{
       <div>
         <section className="message is-primary">
           <div className="message-body">
-            Which network would you like to train? Select one by clicking on the icon below.
+            Which network would you like to train? Select one below.
           </div>
         </section>
 
@@ -78,13 +78,13 @@ class Network extends React.Component{
       </div>;
 
     let loggedOutInstructions =
-      <div className="message-body">
-        Select one of the waveforms below to train a neural network. You will receive an audio file produced by the network after a few minutes.
+      <div className="message-body subtitle">
+        A neural network is a type of machine learning that takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Then it generates new sound waves at the end of the file and generates an output file with new sound. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds. 
       </div>;
 
     let signedInInstructions =
-      <div className="message-body">
-        Select one of the waveforms below to retrain your network
+      <div className="message-body subtitle">
+        Select one of the waveforms below to retrain your network.
       </div>;
 
     let redirectToLogin =
@@ -107,26 +107,43 @@ class Network extends React.Component{
           : undefined}
         {this.state.redirect ? redirectToLogin : undefined}
 
-        <section className="section is-medium network-div">
+        <section className="section is-medium network-div" id="train">
           {this.props.token ? loggedInView : undefined}
 
-          <section className="message is-primary">
+          <section className="message">
             {this.props.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
-          <div className="columns .is-centered is-multiline">
-
-            <div className="column is-one-fifth">
-              <button id="org" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="org">org</p></button>
+          <div className="columns is-multiline">
+            <div className="column is-one-fifth box is-large">
+              <div className="box">
+                <img src={sineWave}></img>
+              </div>
+              <div className="buttons is-centered">
+                <a id="sin" 
+                  className="waveform button is-primary is-outlined" 
+                  onClick={this.handleWaveformClick}>
+                  <p id="sin">Sine Wave</p>
+                </a>
+              </div>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
                 type='audio/wav'>
               </audio>
             </div>
 
-            <div className="column is-one-fifth">
-              <button id="tri" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="tri">tri</p></button>
+            <div className="column is-one-fifth box is-large">
+              <div className="box">
+                <img src={triangleWave}></img>
+              </div>
+              <div className="buttons is-centered">
+                <a id="tri" 
+                  className="waveform button is-primary is-outlined" 
+                  onClick={this.handleWaveformClick}>
+                  <p id="tri">Triangle Wave</p>
+                </a>
+              </div>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/tri.wav'}
@@ -134,8 +151,17 @@ class Network extends React.Component{
               </audio>
             </div>
 
-            <div className="column is-one-fifth">
-              <button id="sqr" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sqr">sqr</p></button>
+            <div className="column is-one-fifth box is-large">
+              <div className="box">
+                <img src={squareWave}></img>
+              </div>
+              <div className="buttons is-centered">
+                <a id="sqr" 
+                  className="waveform button is-primary is-outlined" 
+                  onClick={this.handleWaveformClick}>
+                  <p id="sqr">Square Wave</p>
+                </a>
+              </div>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sqr.wav'}
@@ -143,8 +169,17 @@ class Network extends React.Component{
               </audio>
             </div>
 
-            <div className="column is-one-fifth">
-              <button id="saw" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="saw">saw</p></button>
+            <div className="column is-one-fifth box is-large">
+              <div className="box">
+                <img src={sawtoothWave}></img>
+              </div>
+              <div className="buttons is-centered">
+                <a id="saw" 
+                  className="waveform button is-primary is-outlined" 
+                  onClick={this.handleWaveformClick}>
+                  <p id="saw">Sawtooth Wave</p>
+                </a>
+              </div>
               <audio
                 controls
                 src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/saw.wav'}
@@ -152,11 +187,20 @@ class Network extends React.Component{
               </audio>
             </div>
 
-            <div className="column is-one-fifth">
-              <button id="sin" className="box is-large waveform" onClick={this.handleWaveformClick}><p className="subtitle" id="sin">sin</p></button>
+            <div className="column is-one-fifth box is-large">
+              <div className="box">
+                <img src={organWave}></img>
+              </div>
+              <div className="buttons is-centered">
+                <a id="org" 
+                  className="waveform button is-primary is-outlined" 
+                  onClick={this.handleWaveformClick}>
+                  <p id="org">Organ Wave</p>
+                </a>
+              </div>
               <audio
                 controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
+                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
                 type='audio/wav'>
               </audio>
             </div>
