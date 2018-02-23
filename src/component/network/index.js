@@ -64,7 +64,7 @@ class Network extends React.Component{
       <div>
         <section className="message is-primary">
           <div className="message-body">
-            Which network would you like to train? Select one by clicking on the icon below.
+            Which network would you like to train? Select one below.
           </div>
         </section>
 
@@ -79,7 +79,7 @@ class Network extends React.Component{
 
     let loggedOutInstructions =
       <div className="message-body subtitle">
-        Select one of the waveforms below to train a neural network. You will receive an audio file produced by the network after a few minutes.
+        A neural network is a type of machine learning that takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Then it generates new sound waves at the end of the file and generates an output file with new sound. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds. 
       </div>;
 
     let signedInInstructions =
@@ -110,7 +110,7 @@ class Network extends React.Component{
         <section className="section is-medium network-div" id="train">
           {this.props.token ? loggedInView : undefined}
 
-          <section className="message is-primary">
+          <section className="message">
             {this.props.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
