@@ -3,7 +3,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import StyleSheet from '../style-sheet';
+import StyleGuide from '../style-guide';
 import Landing from '../landing';
 import Navigation from '../navigation';
 import AuthForm from '../auth-form';
@@ -37,7 +37,7 @@ class App extends React.Component{
             <Route path={routes.LOGIN_ROUTE} component={Landing} />
             <Route path={routes.SIGNUP_ROUTE} component={Landing} />
             <Route path={routes.ABOUT_ROUTE} component={Landing} />
-            <Route path={routes.STYLESHEET_ROUTE} component={StyleSheet} />
+            <Route path={routes.STYLEGUIDE_ROUTE} component={StyleGuide} />
           </div>
         </BrowserRouter>
       </div>);

@@ -8,56 +8,72 @@ class StyleGuide extends React.Component{
         <p className="title is-1"> Style Guide
         </p>
 
+        <p className="title is-2"> 
+          Colors
+        </p>
+          
         <section className="color-schemes columns">
-          <ul>
-            <p className="title is-2"> Colors
+
+          <div className="column">
+            <span className="colorCircles color-primary">
+            </span>
+            <p className="title is-5 has-text-centered">Primary Color
             </p>
-            <li className="color-primary column">Primary Color</li>
-            <li className="color-secondary column">Secondary Color</li>
-            <li className="color-white column">White Color</li>
-            <li className="color-gray column">Gray Color</li>
-            <li className="color-dark column">Pseudo-Black Color</li>
-          </ul>
+          </div>
+
+          <div className="column">
+            <span className="colorCircles color-secondary"></span>
+            <p className="title is-5 has-text-centered">Secondary Color</p>
+          </div>
+
+          <div className="column">
+            <span className="colorCircles color-white"></span>
+            <p className="title is-5 has-text-centered">White Color</p>
+          </div>
+
+          <div className="column">
+            <span className="colorCircles color-gray"></span>
+            <p className="title is-5 has-text-centered">Gray Color</p>
+          </div>
+
+          <div className="column">
+            <span className="colorCircles color-dark"></span>
+            <p className="title is-5 has-text-centered">Pseudo Black</p>
+          </div>
+
         </section>
+
+
+        <p className="title is-2">Typography
+        </p>
 
         <section className="standard-fonts columns">
-          <p className="title is-2"> Typography
-          </p>
-          <h1>h1 Font Style</h1>
-          <h2>h2 Font Style</h2>
-          <h3>h3 Font Style</h3>
-          <h4>h4 Font Style</h4>
-          <h5>h5 Font Style</h5>
-          <h6>h6 Font Style</h6>
+          <div className="column">
+            <p className="serif is-size-3 has-text-centered">Title Font: Playfair Display</p>
+          </div>
 
-          <p>p Font Style</p>
-          <h1>h1 Font Style</h1>
-          <h1>h1 Font Style</h1>
-          <h1>h1 Font Style</h1>
+          <div className="column">
+            <p className="sans-serif is-size-3 has-text-centered">Body Font: Muli</p>
+          </div>
+          
         </section>
 
+        <p className="title is-2"> Buttons
+        </p>
+
         <section className="buttons">
-          <p className="title is-2"> Typography
-          </p>
-          <section className="small-button">
-            <button> Button Primary Small </button>
-            <button> Button Secondary Small </button>
-            <button> Button Ternary Small </button>
-            <button> Button Auxillary Small </button>
+          
+
+          <section className="medium-button columns">
+            <button className="button is-primary is-medium column"> Primary Medium </button>
+            <button className="button is-medium column"> Secondary Medium </button>
+            
           </section>
 
-          <section className="medium-button">
-            <button> Button Primary Medium </button>
-            <button> Button Secondary Medium </button>
-            <button> Button Ternary Medium </button>
-            <button> Button Auxillary Medium </button>
-          </section>
-
-          <section className="large-button">
-            <button> Button Primary Large </button>
-            <button> Button Secondary Large </button>
-            <button> Button Ternary Large </button>
-            <button> Button Auxillary Large </button>
+          <section className="large-button columns">
+            <button className="button is-primary is-large column">Primary Large </button>
+            <button className="button is-large column">  Secondary Large </button>
+            
           </section>
         </section>
 
