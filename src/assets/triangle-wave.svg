@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="553px" height="168px" viewBox="0 0 553 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="551px" height="204px" viewBox="0 0 551 204" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
     <title>triangle-wave</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="triangle-wave" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-        <g transform="translate(3.000000, 3.000000)" stroke="#4D87E5" stroke-width="5">
-            <path d="M0.5,99.5 L103.5,0.5" id="Line-4"></path>
-            <path d="M443.5,161.5 L546.5,62.5" id="Line-4"></path>
-            <path d="M105.5,0.5 L442.5,161.5" id="Line-5"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="triangle-wave" transform="translate(2.000000, 2.000000)" stroke="#4D87E5" stroke-width="5">
+            <path d="M0.506445672,122.839506 L104.834254,0.617283951" id="Line-4"></path>
+            <path d="M442.165746,200.382716 L546.493554,78.1604938" id="Line-4"></path>
+            <path d="M102.808471,0.617283951 L444.152855,199.382716" id="Line-5"></path>
         </g>
     </g>
 </svg>

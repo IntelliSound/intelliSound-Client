@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="525px" height="161px" viewBox="0 0 525 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="554px" height="203px" viewBox="0 0 554 203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>intelliSound-waveforms</title>
+    <title>square-wave</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="square-wave" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-        <g transform="translate(3.000000, 3.000000)">
-            <polyline id="Line-2" stroke="#4D87E5" stroke-width="5" points="2.5 0.5 261.618345 0.5 261.618345 155.070312 519 155.070312 519 95.6953125"></polyline>
-            <path d="M1.5,46.5 L1.5,0.5" id="Line" stroke="#4D87E5" stroke-width="5"></path>
-            <path d="M97.5,0.5 L99,2" id="Line-3" stroke="#979797"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="square-wave" transform="translate(1.000000, 0.000000)">
+            <polyline id="Line-2" stroke="#4D87E5" stroke-width="5" points="0.593743627 2.62788621 276.220539 2.62788621 276.220539 199.809047 550 199.809047 550 124.065968"></polyline>
+            <path d="M1.53367653,59.3187907 L1.53367653,0.637836459" id="Line" stroke="#4D87E5" stroke-width="5"></path>
+            <path d="M101.646201,2.62788621 L103.241766,4.54139559" id="Line-3" stroke="#979797"></path>
         </g>
     </g>
 </svg>
