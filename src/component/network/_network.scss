@@ -5,29 +5,36 @@
   background-color: $color-primary;
 }
 
-$box-color: $color-secondary;
+$box-color: $color-primary;
 
 $box-padding: 1.5rem;
 
-a {
-  .button {
-    padding-bottom: 5em;
-  }
-}
+// a {
+//   .button {
+//     padding-bottom: 5em;
+//     padding-top: 5em;
+//   }
+// }
 
 .message {
+  background-color: none;
+}
+
+.message-body {
   font-family: $family-sans-serif;
+  border: none;
+  color: $color-primary;
 }
 
 .column > .box:hover {
   $box-shadow:	$very-dark-blue;
-
 }
 
 // david-  changing box colors for network component
 $box-shadow:	0 2px 3px rgba($color-primary, 0.1), 0 0 0 1px rgba($color-secondary, 0.1);
 
 .waveform {
-  cursor: pointer;
-
+  font-family: $family-sans-serif;
+  margin-bottom: 1.5em;
+  display: block;
 }
