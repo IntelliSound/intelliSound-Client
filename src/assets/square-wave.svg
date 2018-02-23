@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="525px" height="161px" viewBox="0 0 525 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>intelliSound-waveforms</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="square-wave" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g transform="translate(3.000000, 3.000000)">
+            <polyline id="Line-2" stroke="#4D87E5" stroke-width="5" points="2.5 0.5 261.618345 0.5 261.618345 155.070312 519 155.070312 519 95.6953125"></polyline>
+            <path d="M1.5,46.5 L1.5,0.5" id="Line" stroke="#4D87E5" stroke-width="5"></path>
+            <path d="M97.5,0.5 L99,2" id="Line-3" stroke="#979797"></path>
+        </g>
+    </g>
+</svg>
