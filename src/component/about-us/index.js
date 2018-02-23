@@ -17,7 +17,7 @@ class About extends React.Component{
       <div>
         <div className="columns is-multiline is-centered">
 
-          <div className="column is-one-fifth">
+          <div className="column is-one-third">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -27,8 +27,8 @@ class About extends React.Component{
               <div className="card-content">
                 <div className="media">
 
-                  <div className="media-content has-text-centered">
-                    <p className="title is-3">Andrew Bloom</p>
+                  <div className="has-text-centered">
+                    <p className="title is-4">Andrew Bloom</p>
                   </div>
                 </div>
 
@@ -43,7 +43,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column is-one-fifth">
+          <div className="column is-one-third">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -53,8 +53,8 @@ class About extends React.Component{
               <div className="card-content">
                 <div className="media">
 
-                  <div className="media-content has-text-centered">
-                    <p className="title is-3">Nicholas Carnignan</p>
+                  <div className="has-text-centered">
+                    <p className="title is-4">Nicholas Carnignan</p>
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column is-one-fifth">
+          <div className="column is-one-third">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -79,8 +79,8 @@ class About extends React.Component{
               <div className="card-content">
                 <div className="media">
 
-                  <div className="media-content has-text-centered">
-                    <p className="title is-3">Shannon Dillon</p>
+                  <div className="has-text-centered">
+                    <p className="title is-4">Shannon Dillon</p>
                   </div>
                 </div>
 
@@ -95,8 +95,11 @@ class About extends React.Component{
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="column is-one-fifth">
+        <div className="columns is-multiline is-centered">
+
+          <div className="column is-one-third">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4 level">
@@ -106,8 +109,8 @@ class About extends React.Component{
               <div className="card-content">
                 <div className="media">
 
-                  <div className="media-content has-text-centered">
-                    <p className="title is-3">Jacob Evans</p>
+                  <div className="has-text-centered">
+                    <p className="title is-4">Jacob Evans</p>
                   </div>
                 </div>
 
@@ -124,7 +127,7 @@ class About extends React.Component{
             </div>
           </div>
 
-          <div className="column is-one-fifth">
+          <div className="column is-one-third">
             <div className="card">
               <div className="card-image is-rounded">
                 <figure className="image is-4by4">
@@ -134,8 +137,8 @@ class About extends React.Component{
               <div className="card-content">
                 <div className="media">
 
-                  <div className="media-content has-text-centered">
-                    <p className="title is-3">David Lindahl</p>
+                  <div className="has-text-centered">
+                    <p className="title is-4">David Lindahl</p>
                   </div>
                 </div>
 
