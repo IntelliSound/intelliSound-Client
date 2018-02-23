@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="553px" height="204px" viewBox="0 0 553 204" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>sawtooth-wave</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sawtooth-wave" transform="translate(2.000000, 2.000000)" stroke="#4D87E5" stroke-width="5">
+            <path d="M0.50831793,103.246753 L0.50831793,0.649350649" id="Line-4"></path>
+            <path d="M548.475046,199.350649 L548.475046,96.7532468" id="Line-4"></path>
+            <path d="M1.52495379,0.649350649 L547.45841,199.350649" id="Line-5"></path>
+        </g>
+    </g>
+</svg>

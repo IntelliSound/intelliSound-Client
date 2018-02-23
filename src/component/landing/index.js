@@ -88,11 +88,12 @@ class Landing extends React.Component{
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title is-spaced">
-                Train your own personal Neural Network
+                Train Your Own Personal Neural Network
               </h1>
               <h2 className="subtitle">
                 Experience the raw power of machine learning
               </h2>
+              <a className="button is-primary is-outlined tryBtn" href="#train">Try it out</a>
             </div>
           </div>
         </section>;
