@@ -23,7 +23,8 @@ intelliSoundAI is a web application that allows a user to choose a simple wave f
 [Go here](http://intelliSoundAI.com)
 
 ## Style Guide
-To see our stylesheets guide, go [here](http://intelliSoundAI.com/stylesheet).
+
+To see our Style Guide, go [here](http://intellisenseai.com/style-guide).
 
 ## Built With
 

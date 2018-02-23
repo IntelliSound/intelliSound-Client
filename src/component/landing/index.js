@@ -14,7 +14,7 @@ import Network from '../network';
 import * as authActions from '../../action/auth';
 import * as userActions from '../../action/user';
 import * as neuralNetworkActions from '../../action/neural-network';
-import StyleSheet from '../style-sheet';
+import StyleSheet from '../style-guide';
 
 //========================================
 // Magic Strings
