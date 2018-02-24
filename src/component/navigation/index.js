@@ -45,8 +45,6 @@ class Navigation extends React.Component{
 
 
   handleLogout(){
-    console.log('handling logout');
-    console.log(this.props);
     this.props.userLogout();
     this.props.history.push(routes.ROOT_ROUTE);
   }
