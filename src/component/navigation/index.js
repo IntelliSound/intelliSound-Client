@@ -14,7 +14,7 @@ class Navigation extends React.Component{
     super(props);
     this.token = this.props.token;
     this.state = {
-      isToggle: true,
+      isToggle: false,
     };
     let memberFunctions = Object.getOwnPropertyNames(Navigation.prototype);
     for (let functionName of memberFunctions) {
@@ -40,16 +40,22 @@ class Navigation extends React.Component{
       (event.target.className = 'navbar-burger burger',
         document.getElementById('navbar-menu-id').className = 'navbar-menu');
     }
-
   }
 
+  // handleResetHamNav(event){
+  //   this.setState({isToggle: true});
+  //   if(this.state.isToggle === true){
+  //     (this.handleToggleHamNav.target.className = 'navbar-burger burger',
+  //       document.getElementById('navbar-menu-id').className = 'navbar-menu');
+  //   }
+  // }
 
   handleLogout(){
     this.props.userLogout();
     this.props.history.push(routes.ROOT_ROUTE);
   }
   //-------------------------------------------------------------
-  // LIFE CYCLE HOOKS
+  // LIFE CYCLE HOOKS 
   //-------------------------------------------------------------
 
 
@@ -78,7 +84,7 @@ class Navigation extends React.Component{
             </Link>
 
             <div className="navbar-burger burger is-white"
-              data-target= "Options"
+              data-targ 
               onClick={(event) => this.handleToggleHamNav(event)} >
               <span></span>
               <span></span>
@@ -89,7 +95,7 @@ class Navigation extends React.Component{
           <div className="navbar-menu" id='navbar-menu-id'>
             <div className="navbar-start"></div>
 
-            <div className="navbar-end" id="Options">
+            <div className="navbar-end" id="Options" /* Jacob - onClick={(event) => this.handleResetHamNav(event)}*/>
               <Link to="/" className="navbar-item has-text-centered">Home</Link>
               {handleLoginVsLogout}
               <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
