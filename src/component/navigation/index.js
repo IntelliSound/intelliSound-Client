@@ -16,6 +16,7 @@ class Navigation extends React.Component{
     this.state = {
       isToggle: true,
     };
+ 
     let memberFunctions = Object.getOwnPropertyNames(Navigation.prototype);
     for (let functionName of memberFunctions) {
       if (functionName.startsWith('handle')) {
@@ -43,8 +44,18 @@ class Navigation extends React.Component{
       (event.target.className = 'navbar-burger burger',
         document.getElementById('navbar-menu-id').className = 'navbar-menu');
     }
-
   }
+
+
+  handleResetHamburger() {
+    console.log('reset burgers');
+    console.log('before state', this.state);
+    this.setState({
+      isToggle : true,
+    });
+    console.log('after state', this.state);
+  }
+
 
   handleLogout(){
     console.log('handling logout');
@@ -55,6 +66,7 @@ class Navigation extends React.Component{
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
+
 
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
@@ -68,10 +80,8 @@ class Navigation extends React.Component{
 
     let handleLoginVsLogout = (this.props.token) ? logOutNavBar : logInNavBar;
 
-
-
     return (
-      <section className="navigation schoger-border  is-transparent">
+      <section className="navigation schoger-border is-transparent">
         <nav className="navbar is-white">
 
           <div className="navbar-brand" >
@@ -80,8 +90,7 @@ class Navigation extends React.Component{
             </Link>
 
             <div className="navbar-burger burger is-white"
-              data-target= "Options"
-              onClick={(event) => this.handleToggleHamNav(event)} >
+              data-target= "Options" onClick={(event) => this.handleToggleHamNav(event)}>
               <span></span>
               <span></span>
               <span></span>
@@ -92,10 +101,9 @@ class Navigation extends React.Component{
             <div className="navbar-start"></div>
 
             <div className="navbar-end" id="Options">
-              <Link to="/" className="navbar-item has-text-centered">Home</Link>
+              <Link to="/" className="navbar-item has-text-centered" onClick= {this.handleResetHamburger}>Home</Link>
               {handleLoginVsLogout}
-              <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
-
+              <Link to="/about" className="navbar-item has-text-centered" onClick={this.handleResetHamburger}>About Us</Link>
             </div>
           </div>
 
