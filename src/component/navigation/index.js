@@ -28,13 +28,10 @@ class Navigation extends React.Component{
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
   handleToggleHamNav(event){
-    console.log('before state', event.target);
+
     this.setState({isToggle : !this.state.isToggle });
-    console.log('after state', event.target);
 
     if (this.state.isToggle) {
-      console.log('first event', event.target);
-      console.log('this.state.isToggle', this.state.isToggle);
 
       (event.target.className = 'navbar-burger burger is-active',
         document.getElementById('navbar-menu-id').className = 'navbar-menu is-active');
@@ -46,6 +43,7 @@ class Navigation extends React.Component{
 
   }
 
+
   handleLogout(){
     console.log('handling logout');
     console.log(this.props);
@@ -56,13 +54,15 @@ class Navigation extends React.Component{
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
 
+
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
+
   render(){    
-    console.log('render on nav', this);
+
     let logInNavBar =
       <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
-
+   
     let logOutNavBar =
       <a onClick={this.handleLogout} className="navbar-item has-text-centered">Log Out</a>;
 

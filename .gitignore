@@ -120,6 +120,7 @@ Session.vim
 tags
 
 ### VisualStudioCode ###
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
