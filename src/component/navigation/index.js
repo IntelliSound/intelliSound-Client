@@ -51,7 +51,7 @@ class Navigation extends React.Component{
     console.log('reset burgers');
     console.log('before state', this.state);
     this.setState({
-      isToggle : true,
+      isToggle : false,
     });
     console.log('after state', this.state);
   }
