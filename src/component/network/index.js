@@ -59,7 +59,7 @@ class Network extends React.Component{
 
 
   render(){
-    console.log(this.props.userNeuralNetworks);
+    console.log('network props', this.props);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -84,7 +84,7 @@ class Network extends React.Component{
 
     let signedInInstructions =
       <div className="message-body">
-        Select one of the waveforms below to retrain your network
+        Select one of the waveforms below to train your network
       </div>;
 
     let redirectToLogin =
