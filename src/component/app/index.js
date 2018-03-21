@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 
 // david - importing the package to handle GA in react
 import ReactGA from 'react-ga';
+import createHistory from 'history/createBrowserHistory';
+
 
 import StyleGuide from '../style-guide';
 import Landing from '../landing';
@@ -31,9 +33,11 @@ class App extends React.Component{
     // david - setting up GA with our tracking ID
     ReactGA.initialize('UA-105899470-2');
     
-    let fireTracking = () => {
-      ReactGA.pageview(window.location.hash);
-    };
+    const history = createHistory();
+    history.listen((location, action) => {
+      ReactGA.set({ page: location.pathname });
+      ReactGA.pageview(location.pathname);
+    });
 
   }
   
@@ -41,7 +45,7 @@ class App extends React.Component{
     return (
       <div className="app">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <BrowserRouter onUpdate={fireTracking} history={bashHistory}>
+        <BrowserRouter history={history}>
           <div>
             <Navigation/>
             <Route exact path={routes.ROOT_ROUTE} component={Landing} />
