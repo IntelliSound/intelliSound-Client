@@ -23,6 +23,7 @@ let emptyState = {
   redirect: false,
   neuralNetwork: null,
   audioSrc: null,
+  isLoadingData: false,
 };
 
 class Network extends React.Component{
@@ -38,6 +39,7 @@ class Network extends React.Component{
   // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
     event.preventDefault();
+    this.setState({isLoadingData: true});
     let wavename = event.target.id;
     if(!this.props.token){
       this.props.loggedOutCreateNeuralNetwork(wavename)
@@ -56,7 +58,6 @@ class Network extends React.Component{
     this.props.getNeuralNetwork(networkId)
       .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
   }
-
 
   render(){
     console.log('network props', this.props);
@@ -95,22 +96,27 @@ class Network extends React.Component{
 
     return(
       <div>
-        {this.state.audioSrc ?
+        {/* {this.state.isLoadingData ? */}
+        <section
+          id="returned-audio"
+          style={this.state.isLoadingData ? {width: '100%'} : {width: '0'}}>
+        
           <form>
             <audio
               controls
               src={this.state.audioSrc}
               type='audio/wav'>
             </audio>
-            <button onClick={() => this.setState({redirect: true})}>Save network</button>
+            {/* <button onClick={() => this.setState({redirect: true})}>Save network</button> */}
           </form>
-          : undefined}
+        </section>
+        {/* : undefined} */}
         {this.state.redirect ? redirectToLogin : undefined}
 
-        <section className="section is-medium network-div" id="train">
+        <section className="section is-medium network-div">
           {this.props.token ? loggedInView : undefined}
 
-          <section className="message">
+          <section className="message" id="train">
             {this.props.token ? signedInInstructions : loggedOutInstructions}
           </section>
 
@@ -120,10 +126,11 @@ class Network extends React.Component{
                 <img src={sineWave}></img>
               </div>
               <div className="buttons is-centered">
-                <a id="sin" 
+                <a id="sin"
                   className="waveform button is-primary is-outlined" 
+                  href="#returned-audio" 
                   onClick={this.handleWaveformClick}>
-                  <p id="sin">Sine Wave</p>
+                  Sine Wave
                 </a>
               </div>
               <audio
@@ -138,10 +145,11 @@ class Network extends React.Component{
                 <img src={triangleWave}></img>
               </div>
               <div className="buttons is-centered">
-                <a id="tri" 
+                <a id="tri"
                   className="waveform button is-primary is-outlined" 
+                  href="#returned-audio" 
                   onClick={this.handleWaveformClick}>
-                  <p id="tri">Triangle Wave</p>
+                  Triangle Wave
                 </a>
               </div>
               <audio
@@ -156,10 +164,11 @@ class Network extends React.Component{
                 <img src={squareWave}></img>
               </div>
               <div className="buttons is-centered">
-                <a id="sqr" 
+                <a id="sqr"
                   className="waveform button is-primary is-outlined" 
+                  href="#returned-audio" 
                   onClick={this.handleWaveformClick}>
-                  <p id="sqr">Square Wave</p>
+                  Square Wave
                 </a>
               </div>
               <audio
@@ -174,10 +183,11 @@ class Network extends React.Component{
                 <img src={sawtoothWave}></img>
               </div>
               <div className="buttons is-centered">
-                <a id="saw" 
+                <a id="saw"
                   className="waveform button is-primary is-outlined" 
+                  href="#returned-audio" 
                   onClick={this.handleWaveformClick}>
-                  <p id="saw">Sawtooth Wave</p>
+                  Sawtooth Wave
                 </a>
               </div>
               <audio
@@ -192,10 +202,11 @@ class Network extends React.Component{
                 <img src={organWave}></img>
               </div>
               <div className="buttons is-centered">
-                <a id="org" 
+                <a id="org"
                   className="waveform button is-primary is-outlined" 
+                  href="#returned-audio" 
                   onClick={this.handleWaveformClick}>
-                  <p id="org">Organ Wave</p>
+                  Organ Wave
                 </a>
               </div>
               <audio
