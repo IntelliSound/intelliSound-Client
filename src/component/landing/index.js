@@ -7,20 +7,20 @@ import Particles from 'react-particles-js';
 //========================================
 // Components and Actions
 //========================================
-import WaveUploader from '../wave-uploader';
-import AuthForm from '../auth-form';
+// import WaveUploader from '../wave-uploader';
+// import AuthForm from '../auth-form';
 import About from '../about-us';
 import Network from '../network';
-import * as authActions from '../../action/auth';
-import * as userActions from '../../action/user';
+// import * as authActions from '../../action/auth';
+// import * as userActions from '../../action/user';
 import * as neuralNetworkActions from '../../action/neural-network';
 import StyleSheet from '../style-guide';
 
 //========================================
 // Magic Strings
 //========================================
-const SWITCH_TO_LOGIN_MESSAGE = 'Already a User?';
-const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
+// const SWITCH_TO_LOGIN_MESSAGE = 'Already a User?';
+// const SWITCH_TO_SIGNUP_MESSAGE = 'Make a new Account';
 
 
 class Landing extends React.Component{
@@ -36,49 +36,49 @@ class Landing extends React.Component{
       }
     }
   }
-  componentWillMount(){
-    console.log('landing props', this.props);
-    if(this.props.token){
-      // change to actually fetch each neural network
-      this.props.fetchUserNeuralNetworks()
-        .then(response => {
-          let neuralNetworks = response.payload.neuralNetworks;
-          this.userNeuralNetworks = neuralNetworks;
-        });
-    }
-  }
+  // componentWillMount(){
+  //   console.log('landing props', this.props);
+  //   if(this.props.token){
+  //     // change to actually fetch each neural network
+  //     this.props.fetchUserNeuralNetworks()
+  //       .then(response => {
+  //         let neuralNetworks = response.payload.neuralNetworks;
+  //         this.userNeuralNetworks = neuralNetworks;
+  //       });
+  //   }
+  // }
 
-  handleLogin(user){
-    this.props.handleLogin(user)
-      .then(() => {
-        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
-        if(this.props.neuralNetwork){
-          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
-        }
-        this.props.history.push(routes.ROOT_ROUTE);
-      })
-      .catch(console.error);
-  }
+  // handleLogin(user){
+  //   this.props.handleLogin(user)
+  //     .then(() => {
+  //       let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
+  //       if(this.props.neuralNetwork){
+  //         this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName);
+  //       }
+  //       this.props.history.push(routes.ROOT_ROUTE);
+  //     })
+  //     .catch(console.error);
+  // }
 
-  handleSignup(user){
-    this.props.handleSignup(user)
-      .then(() => {
-        let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
-        if(this.props.neuralNetwork){
-          console.log(networkName, `is the network name I'm sending to saveNetwork`);
-          this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
-            .then(() => {
-              this.props.fetchUserNeuralNetworks()
-                .then(response => {
-                  let neuralNetworks = response.payload.neuralNetworks;
-                  this.userNeuralNetworks = neuralNetworks;
-                });
-            });
-        }
-        this.props.history.push(routes.ROOT_ROUTE);
-      })
-      .catch(console.error);
-  }
+  // handleSignup(user){
+  //   this.props.handleSignup(user)
+  //     .then(() => {
+  //       let networkName = JSON.parse(localStorage.getItem('neural-network-name'));
+  //       if(this.props.neuralNetwork){
+  //         console.log(networkName, `is the network name I'm sending to saveNetwork`);
+  //         this.props.saveNetwork(this.props.neuralNetwork.neuralNetworkToSave, networkName)
+  //           .then(() => {
+  //             this.props.fetchUserNeuralNetworks()
+  //               .then(response => {
+  //                 let neuralNetworks = response.payload.neuralNetworks;
+  //                 this.userNeuralNetworks = neuralNetworks;
+  //               });
+  //           });
+  //       }
+  //       this.props.history.push(routes.ROOT_ROUTE);
+  //     })
+  //     .catch(console.error);
+  // }
 
   render(){
     let {location} = this.props;
@@ -124,19 +124,19 @@ class Landing extends React.Component{
           <Network userNeuralNetworks={this.userNeuralNetworks}/>
         </div>;
 
-    let signupJSX =
-        <AuthForm
-          type={'signup'}
-          handleComplete={this.handleSignup}
-          authMessage={SWITCH_TO_LOGIN_MESSAGE}
-          authLink={routes.LOGIN_ROUTE}/>;
+    // let signupJSX =
+    //     <AuthForm
+    //       type={'signup'}
+    //       handleComplete={this.handleSignup}
+    //       authMessage={SWITCH_TO_LOGIN_MESSAGE}
+    //       authLink={routes.LOGIN_ROUTE}/>;
 
-    let loginJSX =
-      <AuthForm
-        type={'login'}
-        handleComplete={this.handleLogin}
-        authMessage={SWITCH_TO_SIGNUP_MESSAGE}
-        authLink={routes.SIGNUP_ROUTE}/>;
+    // let loginJSX =
+    //   <AuthForm
+    //     type={'login'}
+    //     handleComplete={this.handleLogin}
+    //     authMessage={SWITCH_TO_SIGNUP_MESSAGE}
+    //     authLink={routes.SIGNUP_ROUTE}/>;
 
     let particlesAnimationJSX =
 
@@ -274,13 +274,12 @@ class Landing extends React.Component{
 // const mapStateToProps = state => ({token : state.token});
 const mapStateToProps = state => ({
   neuralNetwork: state.neuralNetwork,
-  token: state.token,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSignup : (user) => dispatch(authActions.signupAction(user)),
-  handleLogin : (user) => dispatch(authActions.loginAction(user)),
-  fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
+  // handleSignup : (user) => dispatch(authActions.signupAction(user)),
+  // handleLogin : (user) => dispatch(authActions.loginAction(user)),
+  // fetchUserNeuralNetworks : () => dispatch(userActions.fetchAction()),
   fetchNeuralNetworks : (neuralNetId) => dispatch(neuralNetworkActions.fetchAction(neuralNetId)),
   saveNetwork: (network, networkName) =>  dispatch(neuralNetworkActions.saveNetwork(network, networkName)),
 });

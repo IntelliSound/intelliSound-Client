@@ -3,7 +3,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
-import * as userActions from '../../action/user';
 
 // sound wave files images
 import triangleWave from '../../assets/triangle-wave.svg';
@@ -41,15 +40,12 @@ class Network extends React.Component{
     event.preventDefault();
     this.setState({isLoadingData: true});
     let wavename = event.target.id;
-    if(!this.props.token){
-      this.props.loggedOutCreateNeuralNetwork(wavename)
-        .then(response => {
-          this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
-        });
-    }else{
-      console.log(this.props.neuralNetwork, `neuralNetwork I want to update`);
-      this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
-    }
+ 
+    this.props.loggedOutCreateNeuralNetwork(wavename)
+      .then(response => {
+        this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
+      });
+  
   }
 
   handleNetworkClick(event){
