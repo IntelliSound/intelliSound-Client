@@ -34,8 +34,8 @@ class App extends React.Component{
           <div>
             <Navigation/>
             <Route exact path={routes.ROOT_ROUTE} component={Landing} />
-            <Route path={routes.LOGIN_ROUTE} component={Landing} />
-            <Route path={routes.SIGNUP_ROUTE} component={Landing} />
+            {/* <Route path={routes.LOGIN_ROUTE} component={Landing} />
+            <Route path={routes.SIGNUP_ROUTE} component={Landing} /> */}
             <Route path={routes.ABOUT_ROUTE} component={Landing} />
             <Route path={routes.STYLEGUIDE_ROUTE} component={StyleGuide} />
           </div>

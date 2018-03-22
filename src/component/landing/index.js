@@ -88,7 +88,7 @@ class Landing extends React.Component{
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title is-spaced">
-                Train Your Own Personal Neural Network
+                Train A Neural Network From Scratch
               </h1>
               <h2 className="subtitle">
                 Experience the raw power of machine learning
@@ -260,8 +260,8 @@ class Landing extends React.Component{
         <div className="banner-jsx">{BannerJSX}</div>
 
         {location.pathname === routes.ROOT_ROUTE ? defaultJSX : undefined}
-        {location.pathname === routes.SIGNUP_ROUTE ? signupJSX : undefined}
-        {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
+        {/* {location.pathname === routes.SIGNUP_ROUTE ? signupJSX : undefined} */}
+        {/* {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined} */}
         {location.pathname === routes.ABOUT_ROUTE ? <About/> : undefined}
 
       </div>

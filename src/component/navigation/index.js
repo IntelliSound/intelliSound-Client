@@ -60,13 +60,13 @@ class Navigation extends React.Component{
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){    
     console.log('render on nav', this);
-    let logInNavBar =
-      <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
+    // let logInNavBar =
+    //   <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
 
-    let logOutNavBar =
-      <a onClick={this.handleLogout} className="navbar-item has-text-centered">Log Out</a>;
+    // let logOutNavBar =
+    //   <a onClick={this.handleLogout} className="navbar-item has-text-centered">Log Out</a>;
 
-    let handleLoginVsLogout = (this.props.token) ? logOutNavBar : logInNavBar;
+    // let handleLoginVsLogout = (this.props.token) ? logOutNavBar : logInNavBar;
 
 
 
@@ -93,7 +93,7 @@ class Navigation extends React.Component{
 
             <div className="navbar-end" id="Options">
               <Link to="/" className="navbar-item has-text-centered">Home</Link>
-              {handleLoginVsLogout}
+              {/* {handleLoginVsLogout} */}
               <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
 
             </div>
