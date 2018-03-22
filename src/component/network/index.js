@@ -76,7 +76,7 @@ class Network extends React.Component{
 
     let loggedOutInstructions =
       <div className="message-body subtitle">
-        A neural network is a type of machine learning that takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Then it generates new sound waves at the end of the file and generates an output file with new sound. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds. 
+        A neural network is a machine learning methodology. It is based off the biological model of neural firing patterns in brains. The model that we are using is called a perceptron, which is a relatively simple neural network. Our model takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Next, it is given a random burst of noise. It is then told to generate output based on the patterns it was trained on and the patterns in the random seed input. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds.
       </div>;
 
     let signedInInstructions =
@@ -92,7 +92,6 @@ class Network extends React.Component{
 
     return(
       <div>
-        {/* {this.state.isLoadingData ? */}
         <section
           id="returned-audio"
           style={this.state.isLoadingData ? {width: '100%'} : {width: '0'}}>
@@ -103,10 +102,8 @@ class Network extends React.Component{
               src={this.state.audioSrc}
               type='audio/wav'>
             </audio>
-            {/* <button onClick={() => this.setState({redirect: true})}>Save network</button> */}
           </form>
         </section>
-        {/* : undefined} */}
         {this.state.redirect ? redirectToLogin : undefined}
 
         <section className="section is-medium network-div">
@@ -220,7 +217,6 @@ class Network extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-  token: state.token,
   neuralNetwork: state.neuralNetwork,
 });
 
