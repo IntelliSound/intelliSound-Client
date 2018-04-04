@@ -52,8 +52,6 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){    
-    console.log('render on nav', this);
-
     return (
       <section className="navigation schoger-border  is-transparent">
         <nav className="navbar is-white">
