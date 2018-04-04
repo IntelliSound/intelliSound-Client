@@ -3,7 +3,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
 import * as neuralNetworkActions from '../../action/neural-network';
-import * as userActions from '../../action/user';
 
 // sound wave files images
 import triangleWave from '../../assets/triangle-wave.svg';
@@ -23,6 +22,9 @@ let emptyState = {
   redirect: false,
   neuralNetwork: null,
   audioSrc: null,
+  isLoadingData: false,
+  selectedOption: 'noise',
+  waveQuery: undefined,
 };
 
 class Network extends React.Component{
@@ -32,34 +34,37 @@ class Network extends React.Component{
     this.state = emptyState;
     this.handleWaveformClick = this.handleWaveformClick.bind(this);
     this.handleNetworkClick = this.handleNetworkClick.bind(this);
+    this.handleSeedClick = this.handleSeedClick.bind(this);
   }
 
   // Shannon- this will make a post request; switch case based on whether user is logged in or not
   // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
-    event.preventDefault();
+    this.setState({isLoadingData: true});
     let wavename = event.target.id;
-    if(!this.props.token){
-      this.props.loggedOutCreateNeuralNetwork(wavename)
-        .then(response => {
-          this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
-        });
-    }else{
-      console.log(this.props.neuralNetwork, `neuralNetwork I want to update`);
-      this.props.updateNeuralNetwork(this.props.neuralNetwork, wavename);
+ 
+    this.props.loggedOutCreateNeuralNetwork(wavename, this.state.waveQuery)
+      .then(response => {
+        this.setState({neuralNetwork: response.payload.neuralNetworkToSave, audioSrc: response.payload.awsURL});
+      });
+  
+  }
+
+  handleSeedClick(event){
+    if (event.target.value === 'noise'){
+      this.setState({waveQuery: undefined, selectedOption: 'noise'});
+    } else {
+      this.setState({waveQuery: event.target.value, selectedOption: event.target.value});
     }
   }
 
   handleNetworkClick(event){
-    event.preventDefault();
     let networkId = event.target.id;
     this.props.getNeuralNetwork(networkId)
       .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
   }
 
-
   render(){
-    console.log(this.props.userNeuralNetworks);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -79,12 +84,22 @@ class Network extends React.Component{
 
     let loggedOutInstructions =
       <div className="message-body subtitle">
-        A neural network is a type of machine learning that takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Then it generates new sound waves at the end of the file and generates an output file with new sound. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds. 
+        A neural network is a machine learning methodology. It is based off the biological model of neural firing patterns in brains. The model that we are using is called a perceptron, which is a relatively simple neural network. Our model takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Next, it is given a random burst of noise. It is then told to generate output based on the patterns it was trained on and the patterns in the random seed input. <br></br><br></br>
+      </div>;
+
+    let seedInstructions = 
+      <div className="is-centered subtitle center-text">
+        Select one of the following seed waves, upon which your neural net will build the output audio:
+      </div>;
+
+    let waveInstructions = 
+      <div className="is-centered subtitle center-text">
+        Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds:
       </div>;
 
     let signedInInstructions =
-      <div className="message-body subtitle">
-        Select one of the waveforms below to retrain your network.
+      <div className="message-body subtitle center-text">
+        Select one of the waveforms below to retrain your network:
       </div>;
 
     let redirectToLogin =
@@ -93,134 +108,124 @@ class Network extends React.Component{
         state: {type:'login', network:this.state.neuralnetwork},
       }}/>;
 
-    return(
-      <div>
-        {this.state.audioSrc ?
-          <form>
-            <audio
-              controls
-              src={this.state.audioSrc}
-              type='audio/wav'>
-            </audio>
-            <button onClick={() => this.setState({redirect: true})}>Save network</button>
-          </form>
-          : undefined}
-        {this.state.redirect ? redirectToLogin : undefined}
+    return <div>
+      <section id="returned-audio" style={this.state.isLoadingData ? {width: '100%'} : {width: '0'}}>
+        <form>
+          <audio controls src={this.state.audioSrc} type="audio/wav" />
+        </form>
+      </section>
+      {this.state.redirect ? redirectToLogin : undefined}
 
-        <section className="section is-medium network-div" id="train">
-          {this.props.token ? loggedInView : undefined}
+      <section className="section is-medium network-div">
+        {this.props.token ? loggedInView : undefined}
 
-          <section className="message">
-            {this.props.token ? signedInInstructions : loggedOutInstructions}
-          </section>
-
-          <div className="columns is-multiline">
-            <div className="column is-one-fifth box is-large">
-              <div className="box">
-                <img src={sineWave}></img>
-              </div>
-              <div className="buttons is-centered">
-                <a id="sin" 
-                  className="waveform button is-primary is-outlined" 
-                  onClick={this.handleWaveformClick}>
-                  <p id="sin">Sine Wave</p>
-                </a>
-              </div>
-              <audio
-                controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'}
-                type='audio/wav'>
-              </audio>
-            </div>
-
-            <div className="column is-one-fifth box is-large">
-              <div className="box">
-                <img src={triangleWave}></img>
-              </div>
-              <div className="buttons is-centered">
-                <a id="tri" 
-                  className="waveform button is-primary is-outlined" 
-                  onClick={this.handleWaveformClick}>
-                  <p id="tri">Triangle Wave</p>
-                </a>
-              </div>
-              <audio
-                controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/tri.wav'}
-                type='audio/wav'>
-              </audio>
-            </div>
-
-            <div className="column is-one-fifth box is-large">
-              <div className="box">
-                <img src={squareWave}></img>
-              </div>
-              <div className="buttons is-centered">
-                <a id="sqr" 
-                  className="waveform button is-primary is-outlined" 
-                  onClick={this.handleWaveformClick}>
-                  <p id="sqr">Square Wave</p>
-                </a>
-              </div>
-              <audio
-                controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sqr.wav'}
-                type='audio/wav'>
-              </audio>
-            </div>
-
-            <div className="column is-one-fifth box is-large">
-              <div className="box">
-                <img src={sawtoothWave}></img>
-              </div>
-              <div className="buttons is-centered">
-                <a id="saw" 
-                  className="waveform button is-primary is-outlined" 
-                  onClick={this.handleWaveformClick}>
-                  <p id="saw">Sawtooth Wave</p>
-                </a>
-              </div>
-              <audio
-                controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/saw.wav'}
-                type='audio/wav'>
-              </audio>
-            </div>
-
-            <div className="column is-one-fifth box is-large">
-              <div className="box">
-                <img src={organWave}></img>
-              </div>
-              <div className="buttons is-centered">
-                <a id="org" 
-                  className="waveform button is-primary is-outlined" 
-                  onClick={this.handleWaveformClick}>
-                  <p id="org">Organ Wave</p>
-                </a>
-              </div>
-              <audio
-                controls
-                src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'}
-                type='audio/wav'>
-              </audio>
-            </div>
-
-          </div>
+        <section className="message" id="train">
+          {loggedOutInstructions}
         </section>
-      </div>
-    );
+        {seedInstructions}
+        <div className="tabs columns is-centered">
+          <form>
+            <input className="icon" type="radio" name="seed" value="noise" id="noise" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'noise'} />
+            <label htmlFor="noise" className="radio">
+              noise
+            </label>
+            <input className="icon" type="radio" name="seed" value="sin" id="sin" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sin'} />
+            <label htmlFor="sin" className="radio">
+              sin
+            </label>
+            <input className="icon" type="radio" name="seed" value="tri" id="tri" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'tri'} />
+            <label htmlFor="tri" className="radio">
+              tri
+            </label>
+            <input className="icon" type="radio" name="seed" value="sqr" id="sqr" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sqr'} />
+            <label htmlFor="sqr" className="radio">
+              sqr
+            </label>
+            <input className="icon" type="radio" name="seed" value="saw" id="saw" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'saw'} />
+            <label htmlFor="saw" className="radio">
+              saw
+            </label>
+            <input className="icon" type="radio" name="seed" value="org" id="org" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'org'} />
+            <label htmlFor="org" className="radio">
+              org
+            </label>
+          </form>
+        </div>
+        {waveInstructions}
+        <div className="columns is-multiline">
+          <div className="column is-one-fifth box is-large">
+            <div className="box">
+              <img src={sineWave} />
+            </div>
+            <div className="buttons is-centered">
+              <a id="sin" className="waveform button is-primary is-outlined" href="#returned-audio" onClick={this.handleWaveformClick}>
+                Sine Wave
+              </a>
+            </div>
+            <audio controls src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sin.wav'} type="audio/wav" />
+          </div>
+
+          <div className="column is-one-fifth box is-large">
+            <div className="box">
+              <img src={triangleWave} />
+            </div>
+            <div className="buttons is-centered">
+              <a id="tri" className="waveform button is-primary is-outlined" href="#returned-audio" onClick={this.handleWaveformClick}>
+                Triangle Wave
+              </a>
+            </div>
+            <audio controls src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/tri.wav'} type="audio/wav" />
+          </div>
+
+          <div className="column is-one-fifth box is-large">
+            <div className="box">
+              <img src={squareWave} />
+            </div>
+            <div className="buttons is-centered">
+              <a id="sqr" className="waveform button is-primary is-outlined" href="#returned-audio" onClick={this.handleWaveformClick}>
+                Square Wave
+              </a>
+            </div>
+            <audio controls src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/sqr.wav'} type="audio/wav" />
+          </div>
+
+          <div className="column is-one-fifth box is-large">
+            <div className="box">
+              <img src={sawtoothWave} />
+            </div>
+            <div className="buttons is-centered">
+              <a id="saw" className="waveform button is-primary is-outlined" href="#returned-audio" onClick={this.handleWaveformClick}>
+                Sawtooth Wave
+              </a>
+            </div>
+            <audio controls src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/saw.wav'} type="audio/wav" />
+          </div>
+
+          <div className="column is-one-fifth box is-large">
+            <div className="box">
+              <img src={organWave} />
+            </div>
+            <div className="buttons is-centered">
+              <a id="org" className="waveform button is-primary is-outlined" href="#returned-audio" onClick={this.handleWaveformClick}>
+                Organ Wave
+              </a>
+            </div>
+            <audio controls src={'https://s3.amazonaws.com/intellisoundaibasicwaveforms/org.wav'} type="audio/wav" />
+          </div>
+        </div>
+      </section>
+    </div>;
   }
 }
 
 const mapStateToProps = (state) => ({
-  token: state.token,
   neuralNetwork: state.neuralNetwork,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getNeuralNetwork : (neuralNetworkId) => dispatch(neuralNetworkActions.fetchAction(neuralNetworkId)),
   updateNeuralNetwork: (neuralNetwork, wavename) => dispatch(neuralNetworkActions.updateAction(neuralNetwork, wavename)),
-  loggedOutCreateNeuralNetwork : (wavename) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename)),
+  loggedOutCreateNeuralNetwork : (wavename, queryString) => dispatch(neuralNetworkActions.loggedOutCreateAction(wavename, queryString)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Network);

@@ -4,7 +4,6 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as routes from '../../routes';
-import * as authActions from '../../action/auth';
 
 // david - need to change below anchor tags to Link tags
 // import {Landing} from 'react-router-dom';
@@ -12,7 +11,6 @@ import * as authActions from '../../action/auth';
 class Navigation extends React.Component{
   constructor(props){
     super(props);
-    this.token = this.props.token;
     this.state = {
       isToggle: true,
     };
@@ -46,12 +44,7 @@ class Navigation extends React.Component{
 
   }
 
-  handleLogout(){
-    console.log('handling logout');
-    console.log(this.props);
-    this.props.userLogout();
-    this.props.history.push(routes.ROOT_ROUTE);
-  }
+
   //-------------------------------------------------------------
   // LIFE CYCLE HOOKS
   //-------------------------------------------------------------
@@ -59,17 +52,6 @@ class Navigation extends React.Component{
   // on event listener on the burger onClick toggle is-active class on and off
   // also it needs to grab the children from the options ID and append them to the burger menu
   render(){    
-    console.log('render on nav', this);
-    let logInNavBar =
-      <Link to="/login" className="navbar-item has-text-centered">Login</Link>;
-
-    let logOutNavBar =
-      <a onClick={this.handleLogout} className="navbar-item has-text-centered">Log Out</a>;
-
-    let handleLoginVsLogout = (this.props.token) ? logOutNavBar : logInNavBar;
-
-
-
     return (
       <section className="navigation schoger-border  is-transparent">
         <nav className="navbar is-white">
@@ -93,7 +75,6 @@ class Navigation extends React.Component{
 
             <div className="navbar-end" id="Options">
               <Link to="/" className="navbar-item has-text-centered">Home</Link>
-              {handleLoginVsLogout}
               <Link to="/about" className="navbar-item has-text-centered">About Us</Link>
 
             </div>
@@ -106,12 +87,5 @@ class Navigation extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => ({
-  token: state.token,
-});
 
-const mapDispatchToProps = dispatch => ({
-  userLogout: () => dispatch(authActions.logoutAction()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));
+export default Navigation;
