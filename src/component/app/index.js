@@ -16,8 +16,7 @@ import About from '../about-us';
 import * as routes from '../../routes';
 
 class App extends React.Component{
-<<<<<<< HEAD
-=======
+
   componentDidMount(){
     let token = cookieAction.fetchCookie('X-intelliSoundAi-Token');
     if(token){
@@ -25,7 +24,6 @@ class App extends React.Component{
     }
     if(this.props.loggedIn){
       this.props.fetchUserNeuralNetworks();
-      // .catch(console.error)
     }
 
     // david - setting up GA with our tracking ID
@@ -38,7 +36,6 @@ class App extends React.Component{
     });
 
   }
->>>>>>> 5b0ce2198d8a5eb7028fc8d9f02418583b629cf3
   
   render(){
     return (
