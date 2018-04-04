@@ -32,8 +32,11 @@ export const saveNetwork = (neuralNetwork, networkName) => (store) => {
     });
 };
 
-export const loggedOutCreateAction = (wavename) => (store) => {
+export const loggedOutCreateAction = (wavename, queryParam = undefined) => (store) => {
   let {token} = store.getState();
+  if (queryParam) {
+    wavename += `?seed=${queryParam}`;
+  }
   return superagent.get(`${__API_URL__}${routes.NEURAL_NETWORK_ROUTE}${routes.WAVE_ROUTE}/${wavename}`) //eslint-disable-line
     .then(response => {
       return store.dispatch(setNetworkAction(response.body));
