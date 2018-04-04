@@ -57,7 +57,6 @@ class Network extends React.Component{
     } else {
       this.setState({waveQuery: event.target.value, selectedOption: event.target.value});
     }
-    console.log(this.state);
   }
 
   handleNetworkClick(event){
@@ -68,7 +67,6 @@ class Network extends React.Component{
   }
 
   render(){
-    console.log('network state', this.state);
     let loggedInView =
       <div>
         <section className="message is-primary">
@@ -88,12 +86,22 @@ class Network extends React.Component{
 
     let loggedOutInstructions =
       <div className="message-body subtitle">
-        A neural network is a machine learning methodology. It is based off the biological model of neural firing patterns in brains. The model that we are using is called a perceptron, which is a relatively simple neural network. Our model takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Next, it is given a random burst of noise. It is then told to generate output based on the patterns it was trained on and the patterns in the random seed input. <br></br> Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds.
+        A neural network is a machine learning methodology. It is based off the biological model of neural firing patterns in brains. The model that we are using is called a perceptron, which is a relatively simple neural network. Our model takes an input (a wave file) and analyzes the wave to learn the patterns that exist in the file. Next, it is given a random burst of noise. It is then told to generate output based on the patterns it was trained on and the patterns in the random seed input. <br></br><br></br>
+      </div>;
+
+    let seedInstructions = 
+      <div className="is-centered subtitle center-text">
+        Select one of the following seed waves, upon which your neural net will build the output audio:
+      </div>;
+
+    let waveInstructions = 
+      <div className="is-centered subtitle center-text">
+        Select one of the waveforms below to train a neural network. You will receive the output within 30 seconds:
       </div>;
 
     let signedInInstructions =
-      <div className="message-body subtitle">
-        Select one of the waveforms below to retrain your network.
+      <div className="message-body subtitle center-text">
+        Select one of the waveforms below to retrain your network:
       </div>;
 
     let redirectToLogin =
@@ -114,38 +122,38 @@ class Network extends React.Component{
         {this.props.token ? loggedInView : undefined}
 
         <section className="message" id="train">
-          {this.props.token ? signedInInstructions : loggedOutInstructions}
+          {loggedOutInstructions}
         </section>
-
-        <div className="columns">
+        {seedInstructions}
+        <div className="tabs columns is-centered">
           <form>
-            <input type="radio" name="seed" value="noise" id="noise" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'noise'} />
+            <input className="icon" type="radio" name="seed" value="noise" id="noise" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'noise'} />
             <label htmlFor="noise" className="radio">
               noise
             </label>
-            <input type="radio" name="seed" value="sin" id="sin" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sin'} />
+            <input className="icon" type="radio" name="seed" value="sin" id="sin" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sin'} />
             <label htmlFor="sin" className="radio">
               sin
             </label>
-            <input type="radio" name="seed" value="tri" id="tri" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'tri'} />
+            <input className="icon" type="radio" name="seed" value="tri" id="tri" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'tri'} />
             <label htmlFor="tri" className="radio">
               tri
             </label>
-            <input type="radio" name="seed" value="sqr" id="sqr" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sqr'} />
+            <input className="icon" type="radio" name="seed" value="sqr" id="sqr" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'sqr'} />
             <label htmlFor="sqr" className="radio">
               sqr
             </label>
-            <input type="radio" name="seed" value="saw" id="saw" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'saw'} />
+            <input className="icon" type="radio" name="seed" value="saw" id="saw" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'saw'} />
             <label htmlFor="saw" className="radio">
               saw
             </label>
-            <input type="radio" name="seed" value="org" id="org" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'org'} />
+            <input className="icon" type="radio" name="seed" value="org" id="org" onChange={this.handleSeedClick} checked={this.state.selectedOption === 'org'} />
             <label htmlFor="org" className="radio">
               org
             </label>
           </form>
         </div>
-
+        {waveInstructions}
         <div className="columns is-multiline">
           <div className="column is-one-fifth box is-large">
             <div className="box">
