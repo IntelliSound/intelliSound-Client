@@ -40,7 +40,6 @@ class Network extends React.Component{
   // Shannon- this will make a post request; switch case based on whether user is logged in or not
   // if not logged in then they should get the option to save their neural net which will redirect them to the login  component
   handleWaveformClick(event){
-    event.preventDefault();
     this.setState({isLoadingData: true});
     let wavename = event.target.id;
  
@@ -60,7 +59,6 @@ class Network extends React.Component{
   }
 
   handleNetworkClick(event){
-    event.preventDefault();
     let networkId = event.target.id;
     this.props.getNeuralNetwork(networkId)
       .then(neuralNetwork => this.setState({neuralNetwork: neuralNetwork}));
