@@ -3,6 +3,11 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
+// david - importing the package to handle GA in react
+import ReactGA from 'react-ga';
+import createHistory from 'history/createBrowserHistory';
+
+
 import StyleGuide from '../style-guide';
 import Landing from '../landing';
 import Navigation from '../navigation';
@@ -24,13 +29,23 @@ class App extends React.Component{
       this.props.fetchUserNeuralNetworks();
       // .catch(console.error)
     }
+
+    // david - setting up GA with our tracking ID
+    ReactGA.initialize('UA-105899470-2');
+    
+    const history = createHistory();
+    history.listen((location, action) => {
+      ReactGA.set({ page: location.pathname });
+      ReactGA.pageview(location.pathname);
+    });
+
   }
   
   render(){
     return (
       <div className="app">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <BrowserRouter>
+        <BrowserRouter history={history}>
           <div>
             <Navigation/>
             <Route exact path={routes.ROOT_ROUTE} component={Landing} />
