@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="nightwatch-test"
+    errors="0" failures="0" hostname="" id="" package="nightwatch-test" skipped="0"
+    tests="1" time="7.504" timestamp="Sun, 06 May 2018 04:48:04 GMT">
+  
+    <testcase name="intelliSound basic check" classname="nightwatch-test" time="7.504" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

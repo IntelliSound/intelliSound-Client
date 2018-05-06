@@ -12,6 +12,7 @@
   "scripts": {
     "watch": "webpack-dev-server --inline --hot",
     "build": "webpack",
+    "nightwatch": "node_modules/.bin/nightwatch --config nightwatch.conf.js",
     "test": "jest -i --coverage",
     "start": "node index.js",
     "heroku-postbuild": "webpack"
@@ -49,7 +50,6 @@
     "file-loader": "^1.1.6",
     "html-webpack-cdn-plugin": "^0.2.0",
     "html-webpack-plugin": "^2.30.1",
-    "nightwatch": "^0.9.21",
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -73,8 +73,11 @@
     "webpack-dev-server": "^2.11.1"
   },
   "devDependencies": {
+    "chromedriver": "^2.38.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.1.4"
+    "jest": "^22.1.4",
+    "nightwatch": "^0.9.21",
+    "selenium-server": "^3.11.0"
   }
 }
